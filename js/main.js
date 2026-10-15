@@ -14,6 +14,10 @@ var charts = [
   ["#vis11", "js/c12_line_chart_search_terms.vg.json"]
 ];
 
-charts.forEach(function (c) {
-  vegaEmbed(c[0], c[1], { "actions": false }).catch(console.error);
+// Wait for the web fonts, so Vega measures label widths with the right font.
+// SVG renderer keeps charts sharp at any zoom and leaves the text selectable.
+document.fonts.ready.then(function () {
+  charts.forEach(function (c) {
+    vegaEmbed(c[0], c[1], { "actions": false, "renderer": "svg" }).catch(console.error);
+  });
 });

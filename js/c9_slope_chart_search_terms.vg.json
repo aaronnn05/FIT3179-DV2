@@ -1,13 +1,11 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Searches for \"stargazing\" nearly tripled; specialist terms stayed flat",
-    "subtitle": [
-      "Average monthly search interest in Australia, 2016 and 2025 (100 = the busiest month of the four terms)."
-    ]
+    "text": "Searches for \"stargazing\" almost tripled",
+    "subtitle": "Average monthly Google searches in Australia (100 = busiest month)."
   },
-  "width": 420,
-  "height": 340,
+  "width": 440,
+  "height": 330,
   "data": {
     "url": "data/stargazing_searches_monthly.csv",
     "format": {
@@ -51,7 +49,7 @@
       ]
     },
     {
-      "calculate": "datum.Term == 'StarMap' ? 'Star map' : (datum.Term == 'NightSky' ? 'Night sky' : (datum.Term == 'Astrophotography' ? 'Astrophotography' : 'Stargazing'))",
+      "calculate": "datum.Term == 'StarMap' ? 'Star map' : (datum.Term == 'NightSky' ? 'Night sky' : datum.Term)",
       "as": "TermName"
     },
     {
@@ -73,15 +71,16 @@
       "type": "ordinal",
       "title": null,
       "axis": {
-        "labelFontSize": 13,
+        "labelFontSize": 15,
+        "labelColor": "#14213d",
         "labelAngle": 0,
         "orient": "top",
         "domain": false,
         "ticks": false,
-        "labelPadding": 8
+        "labelPadding": 10
       },
       "scale": {
-        "padding": 0.55
+        "padding": 0.6
       }
     },
     "y": {
@@ -92,7 +91,7 @@
       "scale": {
         "domain": [
           0,
-          48
+          46
         ]
       }
     },
@@ -108,10 +107,10 @@
           "Night sky"
         ],
         "range": [
-          "#e8a33d",
-          "#5b6f93",
-          "#8aa0c4",
-          "#26406e"
+          "#c2410c",
+          "#9aa3b2",
+          "#9aa3b2",
+          "#9aa3b2"
         ]
       }
     }
@@ -139,7 +138,7 @@
             "field": "AverageInterest",
             "type": "quantitative",
             "format": ".1f",
-            "title": "Average interest"
+            "title": "Average searches"
           }
         ]
       }
@@ -162,7 +161,7 @@
         "type": "text",
         "align": "left",
         "dx": 10,
-        "fontSize": 13
+        "fontSize": 14
       },
       "encoding": {
         "y": {
@@ -171,6 +170,13 @@
         },
         "text": {
           "field": "LabelRight"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.Term == 'Stargazing'",
+            "value": "#c2410c"
+          },
+          "value": "#4a5568"
         }
       }
     },
@@ -184,7 +190,7 @@
         "type": "text",
         "align": "right",
         "dx": -10,
-        "fontSize": 13
+        "fontSize": 14
       },
       "encoding": {
         "y": {
@@ -193,46 +199,74 @@
         },
         "text": {
           "field": "LabelLeft"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.Term == 'Stargazing'",
+            "value": "#c2410c"
+          },
+          "value": "#4a5568"
         }
       }
     }
   ],
+  "padding": {
+    "left": 0,
+    "top": 2,
+    "right": 8,
+    "bottom": 4
+  },
+  "background": "transparent",
   "config": {
-    "font": "Space Grotesk, Helvetica, Arial, sans-serif",
+    "font": "'Source Sans 3', Helvetica, Arial, sans-serif",
+    "background": "transparent",
     "view": {
       "stroke": null
     },
     "title": {
-      "anchor": "start",
-      "fontSize": 17,
+      "font": "'Source Serif 4', Georgia, serif",
+      "fontSize": 21,
       "fontWeight": 600,
-      "color": "#10213f",
-      "subtitleFontSize": 13,
+      "color": "#14213d",
+      "anchor": "start",
+      "frame": "bounds",
+      "offset": 14,
+      "subtitleFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "subtitleFontSize": 15,
       "subtitleColor": "#4a5568",
       "subtitlePadding": 6,
-      "offset": 10,
-      "font": "Space Grotesk, Helvetica, Arial, sans-serif",
-      "subtitleFont": "Space Grotesk, Helvetica, Arial, sans-serif"
+      "lineHeight": 26,
+      "subtitleLineHeight": 19
     },
     "axis": {
-      "labelFontSize": 12,
-      "titleFontSize": 12,
-      "titleFontWeight": 500,
-      "labelColor": "#334155",
-      "titleColor": "#334155",
-      "domainColor": "#9aa5b8",
-      "tickColor": "#9aa5b8",
-      "gridColor": "#e6e9ef"
+      "labelFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "titleFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "titleFontWeight": "normal",
+      "labelColor": "#4a5568",
+      "titleColor": "#4a5568",
+      "domainColor": "#b8c0cc",
+      "tickColor": "#b8c0cc",
+      "gridColor": "#e3e7ee"
     },
     "legend": {
-      "labelFontSize": 12,
-      "titleFontSize": 12,
-      "titleFontWeight": 500,
-      "labelColor": "#334155",
-      "titleColor": "#334155"
+      "labelFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "titleFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "titleFontWeight": "normal",
+      "labelColor": "#4a5568",
+      "titleColor": "#14213d"
     },
     "text": {
-      "font": "Space Grotesk, Helvetica, Arial, sans-serif"
+      "font": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "fontSize": 13,
+      "color": "#14213d"
+    },
+    "header": {
+      "labelFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "titleFont": "'Source Serif 4', Georgia, serif"
     }
   }
 }

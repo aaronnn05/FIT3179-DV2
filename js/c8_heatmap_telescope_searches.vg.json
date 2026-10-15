@@ -1,13 +1,13 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Telescope searches stay steady, with one spike in July 2022",
+    "text": "Telescope searches barely change, with one exception",
     "subtitle": [
-      "Monthly search interest in Australia for \"telescope\" (100 = the busiest month). Colours stop at 30,",
-      "so the steady years stay readable; the July 2022 value is 100."
+      "Monthly Google searches for \"telescope\" in Australia. Darker = more searches.",
+      "Colours stop at 30 so small changes show; July 2022 reached 100."
     ]
   },
-  "width": 470,
+  "width": 440,
   "height": 300,
   "data": {
     "url": "data/telescope_searches_monthly.csv",
@@ -22,8 +22,9 @@
     {
       "mark": {
         "type": "rect",
-        "stroke": "white",
-        "strokeWidth": 1
+        "stroke": "#f7f8fa",
+        "strokeWidth": 1.5,
+        "cornerRadius": 2
       },
       "encoding": {
         "x": {
@@ -52,9 +53,15 @@
         "color": {
           "field": "Interest",
           "type": "quantitative",
-          "title": "Search interest",
+          "title": "Searches (100 = busiest month)",
           "scale": {
-            "scheme": "blues",
+            "scheme": {
+              "name": "oranges",
+              "extent": [
+                0.05,
+                1
+              ]
+            },
             "domain": [
               0,
               30
@@ -83,7 +90,7 @@
           {
             "field": "Interest",
             "type": "quantitative",
-            "title": "Search interest"
+            "title": "Searches (100 = busiest month)"
           }
         ]
       }
@@ -97,8 +104,9 @@
       "mark": {
         "type": "rect",
         "fill": null,
-        "stroke": "#e8a33d",
-        "strokeWidth": 3
+        "stroke": "#14213d",
+        "strokeWidth": 2.5,
+        "cornerRadius": 2
       },
       "encoding": {
         "x": {
@@ -119,7 +127,7 @@
           {
             "Month": "2022-12-01",
             "Row": "2022-07-01",
-            "text": "July 2022: 100.\nThe James Webb Space\nTelescope released\nits first images."
+            "text": "July 2022: the James Webb\nSpace Telescope shared\nits first pictures"
           }
         ],
         "format": {
@@ -134,11 +142,9 @@
         "type": "text",
         "align": "left",
         "baseline": "middle",
-        "dx": 24,
-        "fontSize": 12,
-        "color": "#10213f",
+        "dx": 26,
         "lineBreak": "\n",
-        "lineHeight": 14
+        "lineHeight": 16
       },
       "encoding": {
         "x": {
@@ -158,44 +164,62 @@
     }
   ],
   "padding": {
-    "right": 180
+    "left": 0,
+    "top": 2,
+    "right": 150,
+    "bottom": 4
   },
+  "background": "transparent",
   "config": {
-    "font": "Space Grotesk, Helvetica, Arial, sans-serif",
+    "font": "'Source Sans 3', Helvetica, Arial, sans-serif",
+    "background": "transparent",
     "view": {
       "stroke": null
     },
     "title": {
-      "anchor": "start",
-      "fontSize": 17,
+      "font": "'Source Serif 4', Georgia, serif",
+      "fontSize": 21,
       "fontWeight": 600,
-      "color": "#10213f",
-      "subtitleFontSize": 13,
+      "color": "#14213d",
+      "anchor": "start",
+      "frame": "bounds",
+      "offset": 14,
+      "subtitleFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "subtitleFontSize": 15,
       "subtitleColor": "#4a5568",
       "subtitlePadding": 6,
-      "offset": 10,
-      "font": "Space Grotesk, Helvetica, Arial, sans-serif",
-      "subtitleFont": "Space Grotesk, Helvetica, Arial, sans-serif"
+      "lineHeight": 26,
+      "subtitleLineHeight": 19
     },
     "axis": {
-      "labelFontSize": 12,
-      "titleFontSize": 12,
-      "titleFontWeight": 500,
-      "labelColor": "#334155",
-      "titleColor": "#334155",
-      "domainColor": "#9aa5b8",
-      "tickColor": "#9aa5b8",
-      "gridColor": "#e6e9ef"
+      "labelFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "titleFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "titleFontWeight": "normal",
+      "labelColor": "#4a5568",
+      "titleColor": "#4a5568",
+      "domainColor": "#b8c0cc",
+      "tickColor": "#b8c0cc",
+      "gridColor": "#e3e7ee"
     },
     "legend": {
-      "labelFontSize": 12,
-      "titleFontSize": 12,
-      "titleFontWeight": 500,
-      "labelColor": "#334155",
-      "titleColor": "#334155"
+      "labelFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "titleFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "titleFontWeight": "normal",
+      "labelColor": "#4a5568",
+      "titleColor": "#14213d"
     },
     "text": {
-      "font": "Space Grotesk, Helvetica, Arial, sans-serif"
+      "font": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "fontSize": 13,
+      "color": "#14213d"
+    },
+    "header": {
+      "labelFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "titleFont": "'Source Serif 4', Georgia, serif"
     }
   }
 }

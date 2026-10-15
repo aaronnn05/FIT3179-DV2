@@ -1,13 +1,11 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "\"Stargazing\" took off after 2024; the other terms barely moved",
-    "subtitle": [
-      "Monthly search interest in Australia, 2016 to 2026 (100 = the busiest month of the four terms)."
-    ]
+    "text": "The jump in \"stargazing\" began in 2024 and has held",
+    "subtitle": "Monthly Google searches in Australia, 2016 to 2026 (100 = busiest month)."
   },
-  "width": 640,
-  "height": 300,
+  "width": 515,
+  "height": 280,
   "data": {
     "url": "data/stargazing_searches_monthly.csv",
     "format": {
@@ -31,11 +29,15 @@
       ]
     },
     {
-      "calculate": "datum.Term == 'StarMap' ? 'Star map' : (datum.Term == 'NightSky' ? 'Night sky' : (datum.Term == 'Astrophotography' ? 'Astrophotography' : 'Stargazing'))",
+      "calculate": "toNumber(datum.Interest)",
+      "as": "Interest"
+    },
+    {
+      "calculate": "datum.Term == 'StarMap' ? 'Star map' : (datum.Term == 'NightSky' ? 'Night sky' : datum.Term)",
       "as": "TermName"
     },
     {
-      "calculate": "datum.Term == 'Stargazing' ? toNumber(datum.Interest) + 2.5 : (datum.Term == 'StarMap' ? toNumber(datum.Interest) - 2.5 : toNumber(datum.Interest))",
+      "calculate": "datum.Term == 'Stargazing' ? datum.Interest + 2.5 : (datum.Term == 'StarMap' ? datum.Interest - 2.5 : datum.Interest)",
       "as": "LabelY"
     }
   ],
@@ -43,7 +45,7 @@
     {
       "mark": {
         "type": "line",
-        "strokeWidth": 2.2
+        "strokeWidth": 1.6
       },
       "encoding": {
         "x": {
@@ -59,10 +61,19 @@
         "y": {
           "field": "Interest",
           "type": "quantitative",
-          "title": "Search interest (0 to 100)",
+          "title": "Searches (100 = busiest month)",
           "scale": {
             "domain": [
               0,
+              100
+            ]
+          },
+          "axis": {
+            "values": [
+              0,
+              25,
+              50,
+              75,
               100
             ]
           }
@@ -79,12 +90,23 @@
               "Night sky"
             ],
             "range": [
-              "#e8a33d",
-              "#5b6f93",
-              "#8aa0c4",
-              "#26406e"
+              "#c2410c",
+              "#9aa3b2",
+              "#9aa3b2",
+              "#9aa3b2"
             ]
           }
+        },
+        "strokeWidth": {
+          "condition": {
+            "test": "datum.Term == 'Stargazing'",
+            "value": 2.6
+          },
+          "value": 1.4
+        },
+        "order": {
+          "field": "Term",
+          "sort": "descending"
         },
         "tooltip": [
           {
@@ -100,7 +122,7 @@
           {
             "field": "Interest",
             "type": "quantitative",
-            "title": "Search interest"
+            "title": "Searches"
           }
         ]
       }
@@ -114,8 +136,8 @@
       "mark": {
         "type": "text",
         "align": "left",
-        "dx": 6,
-        "fontSize": 12
+        "dx": 8,
+        "fontSize": 14
       },
       "encoding": {
         "x": {
@@ -130,66 +152,72 @@
           "field": "TermName"
         },
         "color": {
-          "field": "TermName",
-          "type": "nominal",
-          "legend": null,
-          "scale": {
-            "domain": [
-              "Stargazing",
-              "Astrophotography",
-              "Star map",
-              "Night sky"
-            ],
-            "range": [
-              "#e8a33d",
-              "#5b6f93",
-              "#8aa0c4",
-              "#26406e"
-            ]
-          }
+          "condition": {
+            "test": "datum.Term == 'Stargazing'",
+            "value": "#c2410c"
+          },
+          "value": "#4a5568"
         }
       }
     }
   ],
   "padding": {
-    "right": 140
+    "left": 0,
+    "top": 2,
+    "right": 100,
+    "bottom": 4
   },
+  "background": "transparent",
   "config": {
-    "font": "Space Grotesk, Helvetica, Arial, sans-serif",
+    "font": "'Source Sans 3', Helvetica, Arial, sans-serif",
+    "background": "transparent",
     "view": {
       "stroke": null
     },
     "title": {
-      "anchor": "start",
-      "fontSize": 17,
+      "font": "'Source Serif 4', Georgia, serif",
+      "fontSize": 21,
       "fontWeight": 600,
-      "color": "#10213f",
-      "subtitleFontSize": 13,
+      "color": "#14213d",
+      "anchor": "start",
+      "frame": "bounds",
+      "offset": 14,
+      "subtitleFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "subtitleFontSize": 15,
       "subtitleColor": "#4a5568",
       "subtitlePadding": 6,
-      "offset": 10,
-      "font": "Space Grotesk, Helvetica, Arial, sans-serif",
-      "subtitleFont": "Space Grotesk, Helvetica, Arial, sans-serif"
+      "lineHeight": 26,
+      "subtitleLineHeight": 19
     },
     "axis": {
-      "labelFontSize": 12,
-      "titleFontSize": 12,
-      "titleFontWeight": 500,
-      "labelColor": "#334155",
-      "titleColor": "#334155",
-      "domainColor": "#9aa5b8",
-      "tickColor": "#9aa5b8",
-      "gridColor": "#e6e9ef"
+      "labelFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "titleFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "titleFontWeight": "normal",
+      "labelColor": "#4a5568",
+      "titleColor": "#4a5568",
+      "domainColor": "#b8c0cc",
+      "tickColor": "#b8c0cc",
+      "gridColor": "#e3e7ee"
     },
     "legend": {
-      "labelFontSize": 12,
-      "titleFontSize": 12,
-      "titleFontWeight": 500,
-      "labelColor": "#334155",
-      "titleColor": "#334155"
+      "labelFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "titleFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "titleFontWeight": "normal",
+      "labelColor": "#4a5568",
+      "titleColor": "#14213d"
     },
     "text": {
-      "font": "Space Grotesk, Helvetica, Arial, sans-serif"
+      "font": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "fontSize": 13,
+      "color": "#14213d"
+    },
+    "header": {
+      "labelFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "titleFont": "'Source Serif 4', Georgia, serif"
     }
   }
 }

@@ -1,11 +1,11 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Aurora searches spike only when a big solar storm hits",
-    "subtitle": "Weekly search interest in Australia for \"aurora\" (100 = the busiest week), October 2021 to October 2026."
+    "text": "Aurora searches jump when a big solar storm hits",
+    "subtitle": "Weekly Google searches for \"aurora\" in Australia (100 = busiest week)."
   },
   "width": 640,
-  "height": 270,
+  "height": 260,
   "data": {
     "url": "data/aurora_searches_weekly.csv",
     "format": {
@@ -18,32 +18,18 @@
   "layer": [
     {
       "mark": {
+        "type": "area",
+        "color": "#c2410c",
+        "opacity": 0.12
+      }
+    },
+    {
+      "mark": {
         "type": "line",
-        "color": "#0b1f4a",
-        "strokeWidth": 1.6
+        "color": "#c2410c",
+        "strokeWidth": 1.8
       },
       "encoding": {
-        "x": {
-          "field": "Week",
-          "type": "temporal",
-          "title": null,
-          "axis": {
-            "format": "%Y",
-            "tickCount": "year",
-            "grid": false
-          }
-        },
-        "y": {
-          "field": "Interest",
-          "type": "quantitative",
-          "title": "Search interest (0 to 100)",
-          "scale": {
-            "domain": [
-              0,
-              105
-            ]
-          }
-        },
         "tooltip": [
           {
             "field": "Week",
@@ -54,7 +40,7 @@
           {
             "field": "Interest",
             "type": "quantitative",
-            "title": "Search interest"
+            "title": "Searches (100 = busiest)"
           }
         ]
       }
@@ -65,7 +51,7 @@
           {
             "Week": "2024-05-12",
             "Interest": 100,
-            "text": "May 2024: one of the strongest\nsolar storms of this century"
+            "text": "May 2024: the strongest solar\nstorm in more than 20 years"
           },
           {
             "Week": "2024-10-06",
@@ -84,21 +70,11 @@
         "type": "text",
         "align": "left",
         "dx": 10,
-        "dy": 4,
-        "fontSize": 12,
-        "color": "#10213f",
+        "dy": 6,
         "lineBreak": "\n",
-        "lineHeight": 14
+        "lineHeight": 16
       },
       "encoding": {
-        "x": {
-          "field": "Week",
-          "type": "temporal"
-        },
-        "y": {
-          "field": "Interest",
-          "type": "quantitative"
-        },
         "text": {
           "field": "text"
         }
@@ -126,57 +102,100 @@
       "mark": {
         "type": "point",
         "filled": true,
-        "color": "#e8a33d",
-        "size": 60
-      },
-      "encoding": {
-        "x": {
-          "field": "Week",
-          "type": "temporal"
-        },
-        "y": {
-          "field": "Interest",
-          "type": "quantitative"
-        }
+        "color": "#14213d",
+        "size": 40
       }
     }
   ],
+  "encoding": {
+    "x": {
+      "field": "Week",
+      "type": "temporal",
+      "title": null,
+      "axis": {
+        "format": "%Y",
+        "tickCount": "year",
+        "grid": false
+      }
+    },
+    "y": {
+      "field": "Interest",
+      "type": "quantitative",
+      "title": "Searches (100 = busiest week)",
+      "scale": {
+        "domain": [
+          0,
+          105
+        ]
+      },
+      "axis": {
+        "values": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ]
+      }
+    }
+  },
+  "padding": {
+    "left": 0,
+    "top": 2,
+    "right": 8,
+    "bottom": 4
+  },
+  "background": "transparent",
   "config": {
-    "font": "Space Grotesk, Helvetica, Arial, sans-serif",
+    "font": "'Source Sans 3', Helvetica, Arial, sans-serif",
+    "background": "transparent",
     "view": {
       "stroke": null
     },
     "title": {
-      "anchor": "start",
-      "fontSize": 17,
+      "font": "'Source Serif 4', Georgia, serif",
+      "fontSize": 21,
       "fontWeight": 600,
-      "color": "#10213f",
-      "subtitleFontSize": 13,
+      "color": "#14213d",
+      "anchor": "start",
+      "frame": "bounds",
+      "offset": 14,
+      "subtitleFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "subtitleFontSize": 15,
       "subtitleColor": "#4a5568",
       "subtitlePadding": 6,
-      "offset": 10,
-      "font": "Space Grotesk, Helvetica, Arial, sans-serif",
-      "subtitleFont": "Space Grotesk, Helvetica, Arial, sans-serif"
+      "lineHeight": 26,
+      "subtitleLineHeight": 19
     },
     "axis": {
-      "labelFontSize": 12,
-      "titleFontSize": 12,
-      "titleFontWeight": 500,
-      "labelColor": "#334155",
-      "titleColor": "#334155",
-      "domainColor": "#9aa5b8",
-      "tickColor": "#9aa5b8",
-      "gridColor": "#e6e9ef"
+      "labelFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "titleFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "titleFontWeight": "normal",
+      "labelColor": "#4a5568",
+      "titleColor": "#4a5568",
+      "domainColor": "#b8c0cc",
+      "tickColor": "#b8c0cc",
+      "gridColor": "#e3e7ee"
     },
     "legend": {
-      "labelFontSize": 12,
-      "titleFontSize": 12,
-      "titleFontWeight": 500,
-      "labelColor": "#334155",
-      "titleColor": "#334155"
+      "labelFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "titleFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "titleFontWeight": "normal",
+      "labelColor": "#4a5568",
+      "titleColor": "#14213d"
     },
     "text": {
-      "font": "Space Grotesk, Helvetica, Arial, sans-serif"
+      "font": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "fontSize": 13,
+      "color": "#14213d"
+    },
+    "header": {
+      "labelFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "titleFont": "'Source Serif 4', Georgia, serif"
     }
   }
 }

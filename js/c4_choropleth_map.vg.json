@@ -2,13 +2,10 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
     "text": "Per person, the Northern Territory has the most clubs",
-    "subtitle": [
-      "Astronomy clubs listed per million residents. The Northern Territory has one club for 269,000 people;",
-      "South Australia has one for 1.9 million."
-    ]
+    "subtitle": "Clubs per million people. Darker = more clubs for its population."
   },
-  "width": 640,
-  "height": 520,
+  "width": 620,
+  "height": 490,
   "projection": {
     "type": "conicEqualArea",
     "parallels": [
@@ -23,10 +20,10 @@
       0,
       -27
     ],
-    "scale": 780,
+    "scale": 760,
     "translate": [
-      320,
-      262
+      305,
+      248
     ]
   },
   "data": {
@@ -78,7 +75,7 @@
   "mark": {
     "type": "geoshape",
     "stroke": "white",
-    "strokeWidth": 0.8
+    "strokeWidth": 1
   },
   "encoding": {
     "shape": {
@@ -88,9 +85,15 @@
     "color": {
       "field": "ClubsPerMillion",
       "type": "quantitative",
-      "title": "Clubs per million residents",
+      "title": "Clubs per million people",
       "scale": {
-        "scheme": "blues",
+        "scheme": {
+          "name": "purples",
+          "extent": [
+            0.15,
+            1
+          ]
+        },
         "domain": [
           0,
           4
@@ -98,8 +101,15 @@
       },
       "legend": {
         "orient": "bottom-left",
-        "gradientLength": 140,
-        "format": ".1f"
+        "direction": "horizontal",
+        "gradientLength": 160,
+        "values": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
       }
     },
     "tooltip": [
@@ -110,58 +120,79 @@
       {
         "field": "Clubs",
         "type": "quantitative",
-        "title": "Clubs listed"
+        "title": "Clubs"
       },
       {
         "field": "Population",
         "type": "quantitative",
         "format": ",",
-        "title": "Residents (March 2026)"
+        "title": "People"
       },
       {
         "field": "ClubsPerMillion",
         "type": "quantitative",
         "format": ".1f",
-        "title": "Clubs per million residents"
+        "title": "Clubs per million people"
       }
     ]
   },
+  "padding": {
+    "left": 0,
+    "top": 2,
+    "right": 8,
+    "bottom": 4
+  },
+  "background": "transparent",
   "config": {
-    "font": "Space Grotesk, Helvetica, Arial, sans-serif",
+    "font": "'Source Sans 3', Helvetica, Arial, sans-serif",
+    "background": "transparent",
     "view": {
       "stroke": null
     },
     "title": {
-      "anchor": "start",
-      "fontSize": 17,
+      "font": "'Source Serif 4', Georgia, serif",
+      "fontSize": 21,
       "fontWeight": 600,
-      "color": "#10213f",
-      "subtitleFontSize": 13,
+      "color": "#14213d",
+      "anchor": "start",
+      "frame": "bounds",
+      "offset": 14,
+      "subtitleFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "subtitleFontSize": 15,
       "subtitleColor": "#4a5568",
       "subtitlePadding": 6,
-      "offset": 10,
-      "font": "Space Grotesk, Helvetica, Arial, sans-serif",
-      "subtitleFont": "Space Grotesk, Helvetica, Arial, sans-serif"
+      "lineHeight": 26,
+      "subtitleLineHeight": 19
     },
     "axis": {
-      "labelFontSize": 12,
-      "titleFontSize": 12,
-      "titleFontWeight": 500,
-      "labelColor": "#334155",
-      "titleColor": "#334155",
-      "domainColor": "#9aa5b8",
-      "tickColor": "#9aa5b8",
-      "gridColor": "#e6e9ef"
+      "labelFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "titleFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "titleFontWeight": "normal",
+      "labelColor": "#4a5568",
+      "titleColor": "#4a5568",
+      "domainColor": "#b8c0cc",
+      "tickColor": "#b8c0cc",
+      "gridColor": "#e3e7ee"
     },
     "legend": {
-      "labelFontSize": 12,
-      "titleFontSize": 12,
-      "titleFontWeight": 500,
-      "labelColor": "#334155",
-      "titleColor": "#334155"
+      "labelFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "titleFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "titleFontWeight": "normal",
+      "labelColor": "#4a5568",
+      "titleColor": "#14213d"
     },
     "text": {
-      "font": "Space Grotesk, Helvetica, Arial, sans-serif"
+      "font": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "fontSize": 13,
+      "color": "#14213d"
+    },
+    "header": {
+      "labelFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "titleFont": "'Source Serif 4', Georgia, serif"
     }
   }
 }

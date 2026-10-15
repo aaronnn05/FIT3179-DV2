@@ -1,11 +1,11 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Ranked: clubs per million residents",
-    "subtitle": "Astronomy clubs listed by IceInSpace, divided by each state's population (ABS, March 2026)."
+    "text": "Clubs per million people, ranked",
+    "subtitle": "Number of clubs in brackets."
   },
-  "width": 520,
-  "height": 260,
+  "width": 440,
+  "height": 250,
   "data": {
     "url": "data/astronomy_clubs.csv"
   },
@@ -38,46 +38,50 @@
       "as": "ClubsPerMillion"
     },
     {
-      "calculate": "format(datum.ClubsPerMillion, '.1f') + '  (' + datum.Clubs + (datum.Clubs == 1 ? ' club)' : ' clubs)')",
+      "calculate": "format(datum.ClubsPerMillion, '.1f') + '  (' + datum.Clubs + ')'",
       "as": "Label"
     }
   ],
+  "encoding": {
+    "y": {
+      "field": "State",
+      "type": "nominal",
+      "title": null,
+      "sort": {
+        "op": "max",
+        "field": "ClubsPerMillion",
+        "order": "descending"
+      },
+      "axis": {
+        "labelLimit": 230,
+        "ticks": false,
+        "domain": false,
+        "labelPadding": 8,
+        "labelFontSize": 14,
+        "labelColor": "#14213d"
+      }
+    },
+    "x": {
+      "field": "ClubsPerMillion",
+      "type": "quantitative",
+      "axis": null,
+      "scale": {
+        "domain": [
+          0,
+          4.4
+        ]
+      }
+    }
+  },
   "layer": [
     {
       "mark": {
         "type": "bar",
-        "color": "#0b1f4a",
-        "size": 22
+        "color": "#6a51a3",
+        "size": 20,
+        "cornerRadiusEnd": 2
       },
       "encoding": {
-        "y": {
-          "field": "State",
-          "type": "nominal",
-          "sort": {
-            "op": "max",
-            "field": "ClubsPerMillion",
-            "order": "descending"
-          },
-          "title": null,
-          "axis": {
-            "labelLimit": 220
-          }
-        },
-        "x": {
-          "field": "ClubsPerMillion",
-          "type": "quantitative",
-          "title": "Clubs per million residents",
-          "scale": {
-            "domain": [
-              0,
-              5
-            ]
-          },
-          "axis": {
-            "grid": true,
-            "tickCount": 5
-          }
-        },
         "tooltip": [
           {
             "field": "State",
@@ -86,13 +90,13 @@
           {
             "field": "Clubs",
             "type": "quantitative",
-            "title": "Clubs listed"
+            "title": "Clubs"
           },
           {
             "field": "ClubsPerMillion",
             "type": "quantitative",
             "format": ".1f",
-            "title": "Clubs per million residents"
+            "title": "Clubs per million people"
           }
         ]
       }
@@ -101,66 +105,72 @@
       "mark": {
         "type": "text",
         "align": "left",
-        "dx": 6,
-        "fontSize": 12,
-        "color": "#10213f"
+        "dx": 6
       },
       "encoding": {
-        "y": {
-          "field": "State",
-          "type": "nominal",
-          "sort": {
-            "op": "max",
-            "field": "ClubsPerMillion",
-            "order": "descending"
-          }
-        },
-        "x": {
-          "field": "ClubsPerMillion",
-          "type": "quantitative"
-        },
         "text": {
           "field": "Label"
         }
       }
     }
   ],
+  "padding": {
+    "left": 0,
+    "top": 2,
+    "right": 8,
+    "bottom": 4
+  },
+  "background": "transparent",
   "config": {
-    "font": "Space Grotesk, Helvetica, Arial, sans-serif",
+    "font": "'Source Sans 3', Helvetica, Arial, sans-serif",
+    "background": "transparent",
     "view": {
       "stroke": null
     },
     "title": {
-      "anchor": "start",
-      "fontSize": 17,
+      "font": "'Source Serif 4', Georgia, serif",
+      "fontSize": 21,
       "fontWeight": 600,
-      "color": "#10213f",
-      "subtitleFontSize": 13,
+      "color": "#14213d",
+      "anchor": "start",
+      "frame": "bounds",
+      "offset": 14,
+      "subtitleFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "subtitleFontSize": 15,
       "subtitleColor": "#4a5568",
       "subtitlePadding": 6,
-      "offset": 10,
-      "font": "Space Grotesk, Helvetica, Arial, sans-serif",
-      "subtitleFont": "Space Grotesk, Helvetica, Arial, sans-serif"
+      "lineHeight": 26,
+      "subtitleLineHeight": 19
     },
     "axis": {
-      "labelFontSize": 12,
-      "titleFontSize": 12,
-      "titleFontWeight": 500,
-      "labelColor": "#334155",
-      "titleColor": "#334155",
-      "domainColor": "#9aa5b8",
-      "tickColor": "#9aa5b8",
-      "gridColor": "#e6e9ef"
+      "labelFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "titleFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "titleFontWeight": "normal",
+      "labelColor": "#4a5568",
+      "titleColor": "#4a5568",
+      "domainColor": "#b8c0cc",
+      "tickColor": "#b8c0cc",
+      "gridColor": "#e3e7ee"
     },
     "legend": {
-      "labelFontSize": 12,
-      "titleFontSize": 12,
-      "titleFontWeight": 500,
-      "labelColor": "#334155",
-      "titleColor": "#334155"
+      "labelFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "titleFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "titleFontWeight": "normal",
+      "labelColor": "#4a5568",
+      "titleColor": "#14213d"
     },
     "text": {
-      "font": "Space Grotesk, Helvetica, Arial, sans-serif"
+      "font": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "fontSize": 13,
+      "color": "#14213d"
+    },
+    "header": {
+      "labelFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "titleFont": "'Source Serif 4', Georgia, serif"
     }
   }
 }

@@ -1,14 +1,11 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Fewer than 3 in 100 reports describe a truly dark sky",
-    "subtitle": [
-      "Number of Globe at Night reports for each sky darkness score, Australia, 2017 to 2025.",
-      "1 is a bright city sky; 7 is a sky with the Milky Way clearly visible."
-    ]
+    "text": "Truly dark skies are rare",
+    "subtitle": "Reports for each sky darkness score, 2017 to 2025. Only 184 of 6,432 scored 7."
   },
   "width": 560,
-  "height": 280,
+  "height": 250,
   "data": {
     "url": "data/globe_at_night_australia.csv"
   },
@@ -16,34 +13,44 @@
     {
       "mark": {
         "type": "bar",
-        "color": "#0b1f4a",
-        "size": 48
+        "size": 56,
+        "cornerRadiusEnd": 2
       },
       "encoding": {
         "x": {
           "field": "SkyDarkness",
           "type": "ordinal",
-          "title": "Sky darkness score (1 = bright sky, 7 = dark sky)",
+          "title": "Sky darkness (1 = bright city sky, 7 = Milky Way clearly visible)",
           "axis": {
             "labelAngle": 0,
-            "grid": false
+            "ticks": false,
+            "labelFontSize": 14,
+            "labelColor": "#14213d",
+            "titlePadding": 10
           }
         },
         "y": {
           "aggregate": "count",
           "type": "quantitative",
-          "title": "Reports",
-          "axis": {
-            "labelExpr": "format(datum.value, ',')",
-            "tickCount": 8
-          }
+          "axis": null
         },
         "color": {
-          "condition": {
-            "test": "datum.SkyDarkness == 7",
-            "value": "#e8a33d"
-          },
-          "value": "#0b1f4a"
+          "field": "SkyDarkness",
+          "type": "quantitative",
+          "legend": null,
+          "scale": {
+            "scheme": {
+              "name": "blues",
+              "extent": [
+                0.25,
+                1
+              ]
+            },
+            "domain": [
+              1,
+              7
+            ]
+          }
         },
         "tooltip": [
           {
@@ -54,7 +61,8 @@
           {
             "aggregate": "count",
             "type": "quantitative",
-            "title": "Reports"
+            "title": "Reports",
+            "format": ","
           }
         ]
       }
@@ -62,9 +70,8 @@
     {
       "mark": {
         "type": "text",
-        "dy": -6,
-        "fontSize": 12,
-        "color": "#10213f"
+        "dy": -8,
+        "fontSize": 13
       },
       "encoding": {
         "x": {
@@ -73,12 +80,7 @@
         },
         "y": {
           "aggregate": "count",
-          "type": "quantitative",
-          "title": "Reports",
-          "axis": {
-            "labelExpr": "format(datum.value, ',')",
-            "tickCount": 8
-          }
+          "type": "quantitative"
         },
         "text": {
           "aggregate": "count",
@@ -88,42 +90,63 @@
       }
     }
   ],
+  "padding": {
+    "left": 0,
+    "top": 2,
+    "right": 8,
+    "bottom": 4
+  },
+  "background": "transparent",
   "config": {
-    "font": "Space Grotesk, Helvetica, Arial, sans-serif",
+    "font": "'Source Sans 3', Helvetica, Arial, sans-serif",
+    "background": "transparent",
     "view": {
       "stroke": null
     },
     "title": {
-      "anchor": "start",
-      "fontSize": 17,
+      "font": "'Source Serif 4', Georgia, serif",
+      "fontSize": 21,
       "fontWeight": 600,
-      "color": "#10213f",
-      "subtitleFontSize": 13,
+      "color": "#14213d",
+      "anchor": "start",
+      "frame": "bounds",
+      "offset": 14,
+      "subtitleFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "subtitleFontSize": 15,
       "subtitleColor": "#4a5568",
       "subtitlePadding": 6,
-      "offset": 10,
-      "font": "Space Grotesk, Helvetica, Arial, sans-serif",
-      "subtitleFont": "Space Grotesk, Helvetica, Arial, sans-serif"
+      "lineHeight": 26,
+      "subtitleLineHeight": 19
     },
     "axis": {
-      "labelFontSize": 12,
-      "titleFontSize": 12,
-      "titleFontWeight": 500,
-      "labelColor": "#334155",
-      "titleColor": "#334155",
-      "domainColor": "#9aa5b8",
-      "tickColor": "#9aa5b8",
-      "gridColor": "#e6e9ef"
+      "labelFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "titleFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "titleFontWeight": "normal",
+      "labelColor": "#4a5568",
+      "titleColor": "#4a5568",
+      "domainColor": "#b8c0cc",
+      "tickColor": "#b8c0cc",
+      "gridColor": "#e3e7ee"
     },
     "legend": {
-      "labelFontSize": 12,
-      "titleFontSize": 12,
-      "titleFontWeight": 500,
-      "labelColor": "#334155",
-      "titleColor": "#334155"
+      "labelFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "titleFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "titleFontWeight": "normal",
+      "labelColor": "#4a5568",
+      "titleColor": "#14213d"
     },
     "text": {
-      "font": "Space Grotesk, Helvetica, Arial, sans-serif"
+      "font": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "fontSize": 13,
+      "color": "#14213d"
+    },
+    "header": {
+      "labelFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "titleFont": "'Source Serif 4', Georgia, serif"
     }
   }
 }

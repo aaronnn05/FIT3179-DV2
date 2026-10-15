@@ -3,14 +3,11 @@
   "vconcat": [
     {
       "title": {
-        "text": "Most reports come from a few places on the east coast",
-        "subtitle": [
-          "Each circle is a 3-degree grid cell. Its area shows how many reports came from it;",
-          "its colour shows the middle sky darkness score (1 = bright sky, 7 = dark sky)."
-        ]
+        "text": "Most sky reports come from the east coast",
+        "subtitle": "Bigger circle = more reports. Darker blue = darker sky."
       },
-      "width": 640,
-      "height": 520,
+      "width": 620,
+      "height": 530,
       "projection": {
         "type": "conicEqualArea",
         "parallels": [
@@ -25,10 +22,10 @@
           0,
           -27
         ],
-        "scale": 780,
+        "scale": 740,
         "translate": [
-          320,
-          262
+          300,
+          232
         ]
       },
       "layer": [
@@ -42,9 +39,9 @@
           },
           "mark": {
             "type": "geoshape",
-            "fill": "#e4e8ef",
+            "fill": "#e1e5ec",
             "stroke": "white",
-            "strokeWidth": 0.8
+            "strokeWidth": 1
           }
         },
         {
@@ -107,9 +104,9 @@
           ],
           "mark": {
             "type": "circle",
-            "opacity": 0.85,
+            "opacity": 0.9,
             "stroke": "white",
-            "strokeWidth": 0.8
+            "strokeWidth": 1
           },
           "encoding": {
             "longitude": {
@@ -123,7 +120,7 @@
             "size": {
               "field": "Reports",
               "type": "quantitative",
-              "title": "Number of reports",
+              "title": "Reports",
               "scale": {
                 "type": "linear",
                 "domain": [
@@ -131,36 +128,53 @@
                   1000
                 ],
                 "range": [
-                  8,
-                  2200
+                  10,
+                  2000
                 ]
               },
               "legend": {
-                "orient": "bottom-left",
+                "orient": "none",
+                "legendX": 290,
+                "legendY": 480,
+                "direction": "horizontal",
                 "values": [
                   10,
                   100,
                   500
                 ],
-                "symbolFillColor": "#9aa5b8",
-                "offset": 4
+                "symbolFillColor": "#b8c0cc",
+                "symbolStrokeColor": "white"
               }
             },
             "color": {
               "field": "MedianDarkness",
               "type": "quantitative",
-              "title": "Middle sky darkness",
+              "title": "Sky darkness (1 = bright, 7 = dark)",
               "scale": {
-                "scheme": "blues",
+                "scheme": {
+                  "name": "blues",
+                  "extent": [
+                    0.25,
+                    1
+                  ]
+                },
                 "domain": [
                   1,
                   7
                 ]
               },
               "legend": {
-                "orient": "bottom-left",
-                "gradientLength": 110,
-                "offset": 4
+                "orient": "none",
+                "legendX": 0,
+                "legendY": 480,
+                "gradientLength": 200,
+                "titleLimit": 300,
+                "values": [
+                  1,
+                  4,
+                  7
+                ],
+                "direction": "horizontal"
               }
             },
             "order": {
@@ -172,12 +186,12 @@
               {
                 "field": "Reports",
                 "type": "quantitative",
-                "title": "Reports in this cell"
+                "title": "Reports from this area"
               },
               {
                 "field": "MedianDarkness",
                 "type": "quantitative",
-                "title": "Middle sky darkness (1 to 7)"
+                "title": "Typical sky darkness (1 to 7)"
               }
             ]
           }
@@ -216,12 +230,12 @@
             "type": "text",
             "align": "right",
             "baseline": "middle",
-            "dx": -8,
-            "fontSize": 11,
-            "color": "#10213f",
-            "fontWeight": "normal",
+            "dx": -10,
+            "fontSize": 12,
+            "color": "#14213d",
+            "fontWeight": "bold",
             "lineBreak": "\n",
-            "lineHeight": 14
+            "lineHeight": 16
           },
           "encoding": {
             "longitude": {
@@ -241,11 +255,11 @@
     },
     {
       "title": {
-        "text": "One night in June 2020 dwarfs every other year",
-        "subtitle": "Reports per year. Drag across the bars to redraw the map for those years only."
+        "text": "One night in June 2020 brought in most reports",
+        "subtitle": "Reports each year. Drag across the bars to filter the map above."
       },
-      "width": 640,
-      "height": 120,
+      "width": 620,
+      "height": 110,
       "layer": [
         {
           "data": {
@@ -264,8 +278,9 @@
           ],
           "mark": {
             "type": "bar",
-            "size": 26,
-            "color": "#0b1f4a"
+            "size": 30,
+            "color": "#1f6f7a",
+            "cornerRadiusEnd": 2
           },
           "encoding": {
             "x": {
@@ -292,16 +307,15 @@
                   2024,
                   2025
                 ],
-                "grid": false
+                "grid": false,
+                "ticks": false,
+                "labelPadding": 6
               }
             },
             "y": {
               "aggregate": "count",
               "type": "quantitative",
-              "title": "Reports",
-              "axis": {
-                "tickCount": 3
-              }
+              "axis": null
             },
             "tooltip": [
               {
@@ -312,7 +326,8 @@
               {
                 "aggregate": "count",
                 "type": "quantitative",
-                "title": "Reports"
+                "title": "Reports",
+                "format": ","
               }
             ]
           }
@@ -323,9 +338,9 @@
           },
           "mark": {
             "type": "text",
-            "dy": -6,
-            "fontSize": 11,
-            "color": "#10213f"
+            "dy": -7,
+            "fontSize": 13,
+            "color": "#14213d"
           },
           "encoding": {
             "x": {
@@ -348,20 +363,20 @@
             "values": [
               {
                 "Year": 2020,
-                "y": 4400,
+                "y": 4300,
                 "text": "21 June 2020 alone:\n4,425 reports"
               }
             ]
           },
           "mark": {
             "type": "text",
-            "align": "right",
-            "dx": -20,
-            "fontSize": 12,
-            "color": "#10213f",
+            "align": "left",
+            "dx": 22,
+            "fontSize": 13,
+            "color": "#14213d",
             "fontWeight": "bold",
             "lineBreak": "\n",
-            "lineHeight": 14
+            "lineHeight": 16
           },
           "encoding": {
             "x": {
@@ -380,49 +395,70 @@
       ]
     }
   ],
-  "spacing": 14,
+  "spacing": 24,
   "resolve": {
     "legend": {
       "color": "independent",
       "size": "independent"
     }
   },
+  "padding": {
+    "left": 0,
+    "top": 2,
+    "right": 8,
+    "bottom": 4
+  },
+  "background": "transparent",
   "config": {
-    "font": "Space Grotesk, Helvetica, Arial, sans-serif",
+    "font": "'Source Sans 3', Helvetica, Arial, sans-serif",
+    "background": "transparent",
     "view": {
       "stroke": null
     },
     "title": {
-      "anchor": "start",
-      "fontSize": 17,
+      "font": "'Source Serif 4', Georgia, serif",
+      "fontSize": 21,
       "fontWeight": 600,
-      "color": "#10213f",
-      "subtitleFontSize": 13,
+      "color": "#14213d",
+      "anchor": "start",
+      "frame": "bounds",
+      "offset": 14,
+      "subtitleFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "subtitleFontSize": 15,
       "subtitleColor": "#4a5568",
       "subtitlePadding": 6,
-      "offset": 10,
-      "font": "Space Grotesk, Helvetica, Arial, sans-serif",
-      "subtitleFont": "Space Grotesk, Helvetica, Arial, sans-serif"
+      "lineHeight": 26,
+      "subtitleLineHeight": 19
     },
     "axis": {
-      "labelFontSize": 12,
-      "titleFontSize": 12,
-      "titleFontWeight": 500,
-      "labelColor": "#334155",
-      "titleColor": "#334155",
-      "domainColor": "#9aa5b8",
-      "tickColor": "#9aa5b8",
-      "gridColor": "#e6e9ef"
+      "labelFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "titleFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "titleFontWeight": "normal",
+      "labelColor": "#4a5568",
+      "titleColor": "#4a5568",
+      "domainColor": "#b8c0cc",
+      "tickColor": "#b8c0cc",
+      "gridColor": "#e3e7ee"
     },
     "legend": {
-      "labelFontSize": 12,
-      "titleFontSize": 12,
-      "titleFontWeight": 500,
-      "labelColor": "#334155",
-      "titleColor": "#334155"
+      "labelFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "titleFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "titleFontWeight": "normal",
+      "labelColor": "#4a5568",
+      "titleColor": "#14213d"
     },
     "text": {
-      "font": "Space Grotesk, Helvetica, Arial, sans-serif"
+      "font": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "fontSize": 13,
+      "color": "#14213d"
+    },
+    "header": {
+      "labelFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "titleFont": "'Source Serif 4', Georgia, serif"
     }
   }
 }

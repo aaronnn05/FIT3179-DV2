@@ -1,14 +1,11 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Per person, the Australian Capital Territory reports the most",
-    "subtitle": [
-      "Sky reports per million residents, 2017 to 2025. Every state and territory is drawn as an equal square,",
-      "placed roughly where it sits on the map, so small places are not lost."
-    ]
+    "text": "Per person, the Australian Capital Territory reports most",
+    "subtitle": "Sky reports per million people, 2017 to 2025. Every state is an equal square."
   },
-  "width": 480,
-  "height": 440,
+  "width": 600,
+  "height": 420,
   "data": {
     "url": "data/globe_at_night_australia.csv"
   },
@@ -79,7 +76,7 @@
           2,
           3
         ],
-        "paddingInner": 0.05,
+        "paddingInner": 0.06,
         "paddingOuter": 0
       }
     },
@@ -94,7 +91,7 @@
           2,
           3
         ],
-        "paddingInner": 0.05,
+        "paddingInner": 0.06,
         "paddingOuter": 0
       }
     }
@@ -103,15 +100,21 @@
     {
       "mark": {
         "type": "rect",
-        "stroke": "white"
+        "cornerRadius": 3
       },
       "encoding": {
         "color": {
           "field": "ReportsPerMillion",
           "type": "quantitative",
-          "title": "Reports per million residents",
+          "title": "Reports per million people",
           "scale": {
-            "scheme": "blues",
+            "scheme": {
+              "name": "teals",
+              "extent": [
+                0.1,
+                1
+              ]
+            },
             "domain": [
               0,
               600
@@ -121,7 +124,12 @@
             "orient": "bottom",
             "direction": "horizontal",
             "gradientLength": 200,
-            "format": "d"
+            "values": [
+              0,
+              200,
+              400,
+              600
+            ]
           }
         },
         "tooltip": [
@@ -132,30 +140,36 @@
           {
             "field": "Reports",
             "type": "quantitative",
-            "title": "Reports"
+            "title": "Reports",
+            "format": ","
           },
           {
             "field": "Population",
             "type": "quantitative",
             "format": ",",
-            "title": "Residents (March 2026)"
+            "title": "People"
           },
           {
             "field": "ReportsPerMillion",
             "type": "quantitative",
             "format": ",.0f",
-            "title": "Reports per million residents"
+            "title": "Reports per million people"
           }
         ]
       }
     },
     {
+      "transform": [
+        {
+          "filter": "length(datum.TileText) == 2"
+        }
+      ],
       "mark": {
         "type": "text",
         "baseline": "middle",
-        "fontSize": 12,
-        "lineHeight": 14,
-        "fontWeight": 500
+        "fontSize": 13,
+        "lineHeight": 16,
+        "dy": -8
       },
       "encoding": {
         "text": {
@@ -163,50 +177,123 @@
         },
         "color": {
           "condition": {
-            "test": "datum.ReportsPerMillion > 330",
+            "test": "datum.ReportsPerMillion > 300",
             "value": "white"
           },
-          "value": "#10213f"
+          "value": "#14213d"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "length(datum.TileText) == 3"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "baseline": "middle",
+        "fontSize": 13,
+        "lineHeight": 16,
+        "dy": -16
+      },
+      "encoding": {
+        "text": {
+          "field": "TileText"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.ReportsPerMillion > 300",
+            "value": "white"
+          },
+          "value": "#14213d"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "length(datum.TileText) == 4"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "baseline": "middle",
+        "fontSize": 13,
+        "lineHeight": 16,
+        "dy": -24
+      },
+      "encoding": {
+        "text": {
+          "field": "TileText"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.ReportsPerMillion > 300",
+            "value": "white"
+          },
+          "value": "#14213d"
         }
       }
     }
   ],
+  "padding": {
+    "left": 0,
+    "top": 2,
+    "right": 8,
+    "bottom": 4
+  },
+  "background": "transparent",
   "config": {
-    "font": "Space Grotesk, Helvetica, Arial, sans-serif",
+    "font": "'Source Sans 3', Helvetica, Arial, sans-serif",
+    "background": "transparent",
     "view": {
       "stroke": null
     },
     "title": {
-      "anchor": "start",
-      "fontSize": 17,
+      "font": "'Source Serif 4', Georgia, serif",
+      "fontSize": 21,
       "fontWeight": 600,
-      "color": "#10213f",
-      "subtitleFontSize": 13,
+      "color": "#14213d",
+      "anchor": "start",
+      "frame": "bounds",
+      "offset": 14,
+      "subtitleFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "subtitleFontSize": 15,
       "subtitleColor": "#4a5568",
       "subtitlePadding": 6,
-      "offset": 10,
-      "font": "Space Grotesk, Helvetica, Arial, sans-serif",
-      "subtitleFont": "Space Grotesk, Helvetica, Arial, sans-serif"
+      "lineHeight": 26,
+      "subtitleLineHeight": 19
     },
     "axis": {
-      "labelFontSize": 12,
-      "titleFontSize": 12,
-      "titleFontWeight": 500,
-      "labelColor": "#334155",
-      "titleColor": "#334155",
-      "domainColor": "#9aa5b8",
-      "tickColor": "#9aa5b8",
-      "gridColor": "#e6e9ef"
+      "labelFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "titleFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "titleFontWeight": "normal",
+      "labelColor": "#4a5568",
+      "titleColor": "#4a5568",
+      "domainColor": "#b8c0cc",
+      "tickColor": "#b8c0cc",
+      "gridColor": "#e3e7ee"
     },
     "legend": {
-      "labelFontSize": 12,
-      "titleFontSize": 12,
-      "titleFontWeight": 500,
-      "labelColor": "#334155",
-      "titleColor": "#334155"
+      "labelFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "titleFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "titleFontWeight": "normal",
+      "labelColor": "#4a5568",
+      "titleColor": "#14213d"
     },
     "text": {
-      "font": "Space Grotesk, Helvetica, Arial, sans-serif"
+      "font": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "fontSize": 13,
+      "color": "#14213d"
+    },
+    "header": {
+      "labelFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "titleFont": "'Source Serif 4', Georgia, serif"
     }
   }
 }

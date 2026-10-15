@@ -1,11 +1,11 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Clubs cluster along the east coast; the west and centre have almost none",
-    "subtitle": "One dot is one astronomy club listed by IceInSpace (42 of 45 shown; 3 list no location)."
+    "text": "Astronomy clubs hug the east coast",
+    "subtitle": "Each dot is one club. 42 of the 45 listed clubs give a location."
   },
-  "width": 640,
-  "height": 520,
+  "width": 620,
+  "height": 490,
   "projection": {
     "type": "conicEqualArea",
     "parallels": [
@@ -20,10 +20,10 @@
       0,
       -27
     ],
-    "scale": 780,
+    "scale": 760,
     "translate": [
-      320,
-      262
+      305,
+      248
     ]
   },
   "layer": [
@@ -37,9 +37,9 @@
       },
       "mark": {
         "type": "geoshape",
-        "fill": "#e4e8ef",
+        "fill": "#e1e5ec",
         "stroke": "white",
-        "strokeWidth": 0.8
+        "strokeWidth": 1
       }
     },
     {
@@ -53,11 +53,11 @@
       ],
       "mark": {
         "type": "circle",
-        "size": 70,
-        "opacity": 0.65,
-        "fill": "#0b1f4a",
+        "size": 90,
+        "opacity": 0.8,
+        "fill": "#6a51a3",
         "stroke": "white",
-        "strokeWidth": 0.8
+        "strokeWidth": 1
       },
       "encoding": {
         "longitude": {
@@ -80,11 +80,6 @@
           {
             "field": "State",
             "type": "nominal"
-          },
-          {
-            "field": "Placement",
-            "type": "nominal",
-            "title": "Location is a"
           }
         ]
       }
@@ -93,9 +88,9 @@
       "data": {
         "values": [
           {
-            "lon": 128,
-            "lat": -27,
-            "text": "The whole interior\nof Western Australia,\nSouth Australia and the\nNorthern Territory\nhas no listed club"
+            "lon": 127,
+            "lat": -26,
+            "text": "No clubs across\nthe whole centre"
           }
         ]
       },
@@ -104,11 +99,11 @@
         "align": "left",
         "baseline": "middle",
         "dx": 0,
-        "fontSize": 12,
+        "fontSize": 14,
         "color": "#4a5568",
         "fontWeight": "normal",
         "lineBreak": "\n",
-        "lineHeight": 14
+        "lineHeight": 16
       },
       "encoding": {
         "longitude": {
@@ -130,7 +125,7 @@
           {
             "lon": 136.8,
             "lat": -12.2,
-            "text": "Gove: the only club\nin the Northern Territory"
+            "text": "Gove: the only club in\nthe Northern Territory"
           }
         ]
       },
@@ -138,12 +133,12 @@
         "type": "text",
         "align": "right",
         "baseline": "middle",
-        "dx": -8,
-        "fontSize": 11,
-        "color": "#10213f",
+        "dx": -10,
+        "fontSize": 13,
+        "color": "#14213d",
         "fontWeight": "normal",
         "lineBreak": "\n",
-        "lineHeight": 14
+        "lineHeight": 16
       },
       "encoding": {
         "longitude": {
@@ -160,42 +155,63 @@
       }
     }
   ],
+  "padding": {
+    "left": 0,
+    "top": 2,
+    "right": 8,
+    "bottom": 4
+  },
+  "background": "transparent",
   "config": {
-    "font": "Space Grotesk, Helvetica, Arial, sans-serif",
+    "font": "'Source Sans 3', Helvetica, Arial, sans-serif",
+    "background": "transparent",
     "view": {
       "stroke": null
     },
     "title": {
-      "anchor": "start",
-      "fontSize": 17,
+      "font": "'Source Serif 4', Georgia, serif",
+      "fontSize": 21,
       "fontWeight": 600,
-      "color": "#10213f",
-      "subtitleFontSize": 13,
+      "color": "#14213d",
+      "anchor": "start",
+      "frame": "bounds",
+      "offset": 14,
+      "subtitleFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "subtitleFontSize": 15,
       "subtitleColor": "#4a5568",
       "subtitlePadding": 6,
-      "offset": 10,
-      "font": "Space Grotesk, Helvetica, Arial, sans-serif",
-      "subtitleFont": "Space Grotesk, Helvetica, Arial, sans-serif"
+      "lineHeight": 26,
+      "subtitleLineHeight": 19
     },
     "axis": {
-      "labelFontSize": 12,
-      "titleFontSize": 12,
-      "titleFontWeight": 500,
-      "labelColor": "#334155",
-      "titleColor": "#334155",
-      "domainColor": "#9aa5b8",
-      "tickColor": "#9aa5b8",
-      "gridColor": "#e6e9ef"
+      "labelFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "titleFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "titleFontWeight": "normal",
+      "labelColor": "#4a5568",
+      "titleColor": "#4a5568",
+      "domainColor": "#b8c0cc",
+      "tickColor": "#b8c0cc",
+      "gridColor": "#e3e7ee"
     },
     "legend": {
-      "labelFontSize": 12,
-      "titleFontSize": 12,
-      "titleFontWeight": 500,
-      "labelColor": "#334155",
-      "titleColor": "#334155"
+      "labelFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "titleFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "titleFontWeight": "normal",
+      "labelColor": "#4a5568",
+      "titleColor": "#14213d"
     },
     "text": {
-      "font": "Space Grotesk, Helvetica, Arial, sans-serif"
+      "font": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "fontSize": 13,
+      "color": "#14213d"
+    },
+    "header": {
+      "labelFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "titleFont": "'Source Serif 4', Georgia, serif"
     }
   }
 }
