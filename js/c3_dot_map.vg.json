@@ -1,0 +1,201 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Clubs cluster along the east coast; the west and centre have almost none",
+    "subtitle": "One dot is one astronomy club listed by IceInSpace (42 of 45 shown; 3 list no location)."
+  },
+  "width": 640,
+  "height": 520,
+  "projection": {
+    "type": "conicEqualArea",
+    "parallels": [
+      -18,
+      -36
+    ],
+    "rotate": [
+      -133,
+      0
+    ],
+    "center": [
+      0,
+      -27
+    ],
+    "scale": 780,
+    "translate": [
+      320,
+      262
+    ]
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "data/australia_states.topojson",
+        "format": {
+          "type": "topojson",
+          "feature": "states"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#e4e8ef",
+        "stroke": "white",
+        "strokeWidth": 0.8
+      }
+    },
+    {
+      "data": {
+        "url": "data/astronomy_clubs.csv"
+      },
+      "transform": [
+        {
+          "filter": "isValid(datum.Latitude) && isValid(datum.Longitude)"
+        }
+      ],
+      "mark": {
+        "type": "circle",
+        "size": 70,
+        "opacity": 0.65,
+        "fill": "#0b1f4a",
+        "stroke": "white",
+        "strokeWidth": 0.8
+      },
+      "encoding": {
+        "longitude": {
+          "field": "Longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "Latitude",
+          "type": "quantitative"
+        },
+        "tooltip": [
+          {
+            "field": "Club",
+            "type": "nominal"
+          },
+          {
+            "field": "Town",
+            "type": "nominal"
+          },
+          {
+            "field": "State",
+            "type": "nominal"
+          },
+          {
+            "field": "Placement",
+            "type": "nominal",
+            "title": "Location is a"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "lon": 128,
+            "lat": -27,
+            "text": "The whole interior\nof Western Australia,\nSouth Australia and the\nNorthern Territory\nhas no listed club"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 0,
+        "fontSize": 12,
+        "color": "#4a5568",
+        "fontWeight": "normal",
+        "lineBreak": "\n",
+        "lineHeight": 14
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "text"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "lon": 136.8,
+            "lat": -12.2,
+            "text": "Gove: the only club\nin the Northern Territory"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "middle",
+        "dx": -8,
+        "fontSize": 11,
+        "color": "#10213f",
+        "fontWeight": "normal",
+        "lineBreak": "\n",
+        "lineHeight": 14
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "text"
+        }
+      }
+    }
+  ],
+  "config": {
+    "font": "Space Grotesk, Helvetica, Arial, sans-serif",
+    "view": {
+      "stroke": null
+    },
+    "title": {
+      "anchor": "start",
+      "fontSize": 17,
+      "fontWeight": 600,
+      "color": "#10213f",
+      "subtitleFontSize": 13,
+      "subtitleColor": "#4a5568",
+      "subtitlePadding": 6,
+      "offset": 10,
+      "font": "Space Grotesk, Helvetica, Arial, sans-serif",
+      "subtitleFont": "Space Grotesk, Helvetica, Arial, sans-serif"
+    },
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": 500,
+      "labelColor": "#334155",
+      "titleColor": "#334155",
+      "domainColor": "#9aa5b8",
+      "tickColor": "#9aa5b8",
+      "gridColor": "#e6e9ef"
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": 500,
+      "labelColor": "#334155",
+      "titleColor": "#334155"
+    },
+    "text": {
+      "font": "Space Grotesk, Helvetica, Arial, sans-serif"
+    }
+  }
+}

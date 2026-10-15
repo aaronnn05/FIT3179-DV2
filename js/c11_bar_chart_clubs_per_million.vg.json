@@ -1,0 +1,166 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Ranked: clubs per million residents",
+    "subtitle": "Astronomy clubs listed by IceInSpace, divided by each state's population (ABS, March 2026)."
+  },
+  "width": 520,
+  "height": 260,
+  "data": {
+    "url": "data/astronomy_clubs.csv"
+  },
+  "transform": [
+    {
+      "aggregate": [
+        {
+          "op": "count",
+          "as": "Clubs"
+        }
+      ],
+      "groupby": [
+        "State"
+      ]
+    },
+    {
+      "lookup": "State",
+      "from": {
+        "data": {
+          "url": "data/state_population.csv"
+        },
+        "key": "State",
+        "fields": [
+          "Population"
+        ]
+      }
+    },
+    {
+      "calculate": "datum.Clubs / datum.Population * 1000000",
+      "as": "ClubsPerMillion"
+    },
+    {
+      "calculate": "format(datum.ClubsPerMillion, '.1f') + '  (' + datum.Clubs + (datum.Clubs == 1 ? ' club)' : ' clubs)')",
+      "as": "Label"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "color": "#0b1f4a",
+        "size": 22
+      },
+      "encoding": {
+        "y": {
+          "field": "State",
+          "type": "nominal",
+          "sort": {
+            "op": "max",
+            "field": "ClubsPerMillion",
+            "order": "descending"
+          },
+          "title": null,
+          "axis": {
+            "labelLimit": 220
+          }
+        },
+        "x": {
+          "field": "ClubsPerMillion",
+          "type": "quantitative",
+          "title": "Clubs per million residents",
+          "scale": {
+            "domain": [
+              0,
+              5
+            ]
+          },
+          "axis": {
+            "grid": true,
+            "tickCount": 5
+          }
+        },
+        "tooltip": [
+          {
+            "field": "State",
+            "type": "nominal"
+          },
+          {
+            "field": "Clubs",
+            "type": "quantitative",
+            "title": "Clubs listed"
+          },
+          {
+            "field": "ClubsPerMillion",
+            "type": "quantitative",
+            "format": ".1f",
+            "title": "Clubs per million residents"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 6,
+        "fontSize": 12,
+        "color": "#10213f"
+      },
+      "encoding": {
+        "y": {
+          "field": "State",
+          "type": "nominal",
+          "sort": {
+            "op": "max",
+            "field": "ClubsPerMillion",
+            "order": "descending"
+          }
+        },
+        "x": {
+          "field": "ClubsPerMillion",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "Label"
+        }
+      }
+    }
+  ],
+  "config": {
+    "font": "Space Grotesk, Helvetica, Arial, sans-serif",
+    "view": {
+      "stroke": null
+    },
+    "title": {
+      "anchor": "start",
+      "fontSize": 17,
+      "fontWeight": 600,
+      "color": "#10213f",
+      "subtitleFontSize": 13,
+      "subtitleColor": "#4a5568",
+      "subtitlePadding": 6,
+      "offset": 10,
+      "font": "Space Grotesk, Helvetica, Arial, sans-serif",
+      "subtitleFont": "Space Grotesk, Helvetica, Arial, sans-serif"
+    },
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": 500,
+      "labelColor": "#334155",
+      "titleColor": "#334155",
+      "domainColor": "#9aa5b8",
+      "tickColor": "#9aa5b8",
+      "gridColor": "#e6e9ef"
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": 500,
+      "labelColor": "#334155",
+      "titleColor": "#334155"
+    },
+    "text": {
+      "font": "Space Grotesk, Helvetica, Arial, sans-serif"
+    }
+  }
+}

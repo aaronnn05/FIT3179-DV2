@@ -1,0 +1,428 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "vconcat": [
+    {
+      "title": {
+        "text": "Most reports come from a few places on the east coast",
+        "subtitle": [
+          "Each circle is a 3-degree grid cell. Its area shows how many reports came from it;",
+          "its colour shows the middle sky darkness score (1 = bright sky, 7 = dark sky)."
+        ]
+      },
+      "width": 640,
+      "height": 520,
+      "projection": {
+        "type": "conicEqualArea",
+        "parallels": [
+          -18,
+          -36
+        ],
+        "rotate": [
+          -133,
+          0
+        ],
+        "center": [
+          0,
+          -27
+        ],
+        "scale": 780,
+        "translate": [
+          320,
+          262
+        ]
+      },
+      "layer": [
+        {
+          "data": {
+            "url": "data/australia_states.topojson",
+            "format": {
+              "type": "topojson",
+              "feature": "states"
+            }
+          },
+          "mark": {
+            "type": "geoshape",
+            "fill": "#e4e8ef",
+            "stroke": "white",
+            "strokeWidth": 0.8
+          }
+        },
+        {
+          "data": {
+            "url": "data/globe_at_night_australia.csv"
+          },
+          "transform": [
+            {
+              "filter": {
+                "param": "year_brush"
+              }
+            },
+            {
+              "bin": {
+                "step": 3
+              },
+              "field": "Latitude",
+              "as": [
+                "lat0",
+                "lat1"
+              ]
+            },
+            {
+              "bin": {
+                "step": 3
+              },
+              "field": "Longitude",
+              "as": [
+                "lon0",
+                "lon1"
+              ]
+            },
+            {
+              "aggregate": [
+                {
+                  "op": "count",
+                  "as": "Reports"
+                },
+                {
+                  "op": "median",
+                  "field": "SkyDarkness",
+                  "as": "MedianDarkness"
+                }
+              ],
+              "groupby": [
+                "lat0",
+                "lat1",
+                "lon0",
+                "lon1"
+              ]
+            },
+            {
+              "calculate": "(datum.lat0 + datum.lat1) / 2",
+              "as": "CentreLatitude"
+            },
+            {
+              "calculate": "(datum.lon0 + datum.lon1) / 2",
+              "as": "CentreLongitude"
+            }
+          ],
+          "mark": {
+            "type": "circle",
+            "opacity": 0.85,
+            "stroke": "white",
+            "strokeWidth": 0.8
+          },
+          "encoding": {
+            "longitude": {
+              "field": "CentreLongitude",
+              "type": "quantitative"
+            },
+            "latitude": {
+              "field": "CentreLatitude",
+              "type": "quantitative"
+            },
+            "size": {
+              "field": "Reports",
+              "type": "quantitative",
+              "title": "Number of reports",
+              "scale": {
+                "type": "linear",
+                "domain": [
+                  0,
+                  1000
+                ],
+                "range": [
+                  8,
+                  2200
+                ]
+              },
+              "legend": {
+                "orient": "bottom-left",
+                "values": [
+                  10,
+                  100,
+                  500
+                ],
+                "symbolFillColor": "#9aa5b8",
+                "offset": 4
+              }
+            },
+            "color": {
+              "field": "MedianDarkness",
+              "type": "quantitative",
+              "title": "Middle sky darkness",
+              "scale": {
+                "scheme": "blues",
+                "domain": [
+                  1,
+                  7
+                ]
+              },
+              "legend": {
+                "orient": "bottom-left",
+                "gradientLength": 110,
+                "offset": 4
+              }
+            },
+            "order": {
+              "field": "Reports",
+              "type": "quantitative",
+              "sort": "descending"
+            },
+            "tooltip": [
+              {
+                "field": "Reports",
+                "type": "quantitative",
+                "title": "Reports in this cell"
+              },
+              {
+                "field": "MedianDarkness",
+                "type": "quantitative",
+                "title": "Middle sky darkness (1 to 7)"
+              }
+            ]
+          }
+        },
+        {
+          "data": {
+            "values": [
+              {
+                "lon": 151.2,
+                "lat": -33.9,
+                "text": "Sydney"
+              },
+              {
+                "lon": 144.96,
+                "lat": -37.8,
+                "text": "Melbourne"
+              },
+              {
+                "lon": 153.0,
+                "lat": -27.5,
+                "text": "Brisbane"
+              },
+              {
+                "lon": 115.86,
+                "lat": -31.95,
+                "text": "Perth"
+              },
+              {
+                "lon": 138.6,
+                "lat": -34.9,
+                "text": "Adelaide"
+              }
+            ]
+          },
+          "mark": {
+            "type": "text",
+            "align": "right",
+            "baseline": "middle",
+            "dx": -8,
+            "fontSize": 11,
+            "color": "#10213f",
+            "fontWeight": "normal",
+            "lineBreak": "\n",
+            "lineHeight": 14
+          },
+          "encoding": {
+            "longitude": {
+              "field": "lon",
+              "type": "quantitative"
+            },
+            "latitude": {
+              "field": "lat",
+              "type": "quantitative"
+            },
+            "text": {
+              "field": "text"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "title": {
+        "text": "One night in June 2020 dwarfs every other year",
+        "subtitle": "Reports per year. Drag across the bars to redraw the map for those years only."
+      },
+      "width": 640,
+      "height": 120,
+      "layer": [
+        {
+          "data": {
+            "url": "data/globe_at_night_australia.csv"
+          },
+          "params": [
+            {
+              "name": "year_brush",
+              "select": {
+                "type": "interval",
+                "encodings": [
+                  "x"
+                ]
+              }
+            }
+          ],
+          "mark": {
+            "type": "bar",
+            "size": 26,
+            "color": "#0b1f4a"
+          },
+          "encoding": {
+            "x": {
+              "field": "Year",
+              "type": "quantitative",
+              "title": null,
+              "scale": {
+                "domain": [
+                  2016.4,
+                  2025.6
+                ],
+                "nice": false
+              },
+              "axis": {
+                "format": "d",
+                "values": [
+                  2017,
+                  2018,
+                  2019,
+                  2020,
+                  2021,
+                  2022,
+                  2023,
+                  2024,
+                  2025
+                ],
+                "grid": false
+              }
+            },
+            "y": {
+              "aggregate": "count",
+              "type": "quantitative",
+              "title": "Reports",
+              "axis": {
+                "tickCount": 3
+              }
+            },
+            "tooltip": [
+              {
+                "field": "Year",
+                "type": "quantitative",
+                "format": "d"
+              },
+              {
+                "aggregate": "count",
+                "type": "quantitative",
+                "title": "Reports"
+              }
+            ]
+          }
+        },
+        {
+          "data": {
+            "url": "data/globe_at_night_australia.csv"
+          },
+          "mark": {
+            "type": "text",
+            "dy": -6,
+            "fontSize": 11,
+            "color": "#10213f"
+          },
+          "encoding": {
+            "x": {
+              "field": "Year",
+              "type": "quantitative"
+            },
+            "y": {
+              "aggregate": "count",
+              "type": "quantitative"
+            },
+            "text": {
+              "aggregate": "count",
+              "type": "quantitative",
+              "format": ","
+            }
+          }
+        },
+        {
+          "data": {
+            "values": [
+              {
+                "Year": 2020,
+                "y": 4400,
+                "text": "21 June 2020 alone:\n4,425 reports"
+              }
+            ]
+          },
+          "mark": {
+            "type": "text",
+            "align": "right",
+            "dx": -20,
+            "fontSize": 12,
+            "color": "#10213f",
+            "fontWeight": "bold",
+            "lineBreak": "\n",
+            "lineHeight": 14
+          },
+          "encoding": {
+            "x": {
+              "field": "Year",
+              "type": "quantitative"
+            },
+            "y": {
+              "field": "y",
+              "type": "quantitative"
+            },
+            "text": {
+              "field": "text"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "spacing": 14,
+  "resolve": {
+    "legend": {
+      "color": "independent",
+      "size": "independent"
+    }
+  },
+  "config": {
+    "font": "Space Grotesk, Helvetica, Arial, sans-serif",
+    "view": {
+      "stroke": null
+    },
+    "title": {
+      "anchor": "start",
+      "fontSize": 17,
+      "fontWeight": 600,
+      "color": "#10213f",
+      "subtitleFontSize": 13,
+      "subtitleColor": "#4a5568",
+      "subtitlePadding": 6,
+      "offset": 10,
+      "font": "Space Grotesk, Helvetica, Arial, sans-serif",
+      "subtitleFont": "Space Grotesk, Helvetica, Arial, sans-serif"
+    },
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": 500,
+      "labelColor": "#334155",
+      "titleColor": "#334155",
+      "domainColor": "#9aa5b8",
+      "tickColor": "#9aa5b8",
+      "gridColor": "#e6e9ef"
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": 500,
+      "labelColor": "#334155",
+      "titleColor": "#334155"
+    },
+    "text": {
+      "font": "Space Grotesk, Helvetica, Arial, sans-serif"
+    }
+  }
+}

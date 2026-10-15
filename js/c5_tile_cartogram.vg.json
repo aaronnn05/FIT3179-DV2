@@ -1,0 +1,212 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Per person, the Australian Capital Territory reports the most",
+    "subtitle": [
+      "Sky reports per million residents, 2017 to 2025. Every state and territory is drawn as an equal square,",
+      "placed roughly where it sits on the map, so small places are not lost."
+    ]
+  },
+  "width": 480,
+  "height": 440,
+  "data": {
+    "url": "data/globe_at_night_australia.csv"
+  },
+  "transform": [
+    {
+      "aggregate": [
+        {
+          "op": "count",
+          "as": "Reports"
+        }
+      ],
+      "groupby": [
+        "State"
+      ]
+    },
+    {
+      "lookup": "State",
+      "from": {
+        "data": {
+          "url": "data/state_population.csv"
+        },
+        "key": "State",
+        "fields": [
+          "Population"
+        ]
+      }
+    },
+    {
+      "lookup": "State",
+      "from": {
+        "data": {
+          "url": "data/state_tiles.csv"
+        },
+        "key": "State",
+        "fields": [
+          "Column",
+          "Row",
+          "Label"
+        ]
+      }
+    },
+    {
+      "calculate": "toNumber(datum.Column)",
+      "as": "Col"
+    },
+    {
+      "calculate": "toNumber(datum.Row)",
+      "as": "Rw"
+    },
+    {
+      "calculate": "datum.Reports / datum.Population * 1000000",
+      "as": "ReportsPerMillion"
+    },
+    {
+      "calculate": "split(datum.Label + ';' + format(datum.ReportsPerMillion, ',.0f'), ';')",
+      "as": "TileText"
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "Col",
+      "type": "ordinal",
+      "axis": null,
+      "scale": {
+        "domain": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "paddingInner": 0.05,
+        "paddingOuter": 0
+      }
+    },
+    "y": {
+      "field": "Rw",
+      "type": "ordinal",
+      "axis": null,
+      "scale": {
+        "domain": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "paddingInner": 0.05,
+        "paddingOuter": 0
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "rect",
+        "stroke": "white"
+      },
+      "encoding": {
+        "color": {
+          "field": "ReportsPerMillion",
+          "type": "quantitative",
+          "title": "Reports per million residents",
+          "scale": {
+            "scheme": "blues",
+            "domain": [
+              0,
+              600
+            ]
+          },
+          "legend": {
+            "orient": "bottom",
+            "direction": "horizontal",
+            "gradientLength": 200,
+            "format": "d"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "State",
+            "type": "nominal"
+          },
+          {
+            "field": "Reports",
+            "type": "quantitative",
+            "title": "Reports"
+          },
+          {
+            "field": "Population",
+            "type": "quantitative",
+            "format": ",",
+            "title": "Residents (March 2026)"
+          },
+          {
+            "field": "ReportsPerMillion",
+            "type": "quantitative",
+            "format": ",.0f",
+            "title": "Reports per million residents"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "baseline": "middle",
+        "fontSize": 12,
+        "lineHeight": 14,
+        "fontWeight": 500
+      },
+      "encoding": {
+        "text": {
+          "field": "TileText"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.ReportsPerMillion > 330",
+            "value": "white"
+          },
+          "value": "#10213f"
+        }
+      }
+    }
+  ],
+  "config": {
+    "font": "Space Grotesk, Helvetica, Arial, sans-serif",
+    "view": {
+      "stroke": null
+    },
+    "title": {
+      "anchor": "start",
+      "fontSize": 17,
+      "fontWeight": 600,
+      "color": "#10213f",
+      "subtitleFontSize": 13,
+      "subtitleColor": "#4a5568",
+      "subtitlePadding": 6,
+      "offset": 10,
+      "font": "Space Grotesk, Helvetica, Arial, sans-serif",
+      "subtitleFont": "Space Grotesk, Helvetica, Arial, sans-serif"
+    },
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": 500,
+      "labelColor": "#334155",
+      "titleColor": "#334155",
+      "domainColor": "#9aa5b8",
+      "tickColor": "#9aa5b8",
+      "gridColor": "#e6e9ef"
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": 500,
+      "labelColor": "#334155",
+      "titleColor": "#334155"
+    },
+    "text": {
+      "font": "Space Grotesk, Helvetica, Arial, sans-serif"
+    }
+  }
+}

@@ -1,0 +1,129 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Fewer than 3 in 100 reports describe a truly dark sky",
+    "subtitle": [
+      "Number of Globe at Night reports for each sky darkness score, Australia, 2017 to 2025.",
+      "1 is a bright city sky; 7 is a sky with the Milky Way clearly visible."
+    ]
+  },
+  "width": 560,
+  "height": 280,
+  "data": {
+    "url": "data/globe_at_night_australia.csv"
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "color": "#0b1f4a",
+        "size": 48
+      },
+      "encoding": {
+        "x": {
+          "field": "SkyDarkness",
+          "type": "ordinal",
+          "title": "Sky darkness score (1 = bright sky, 7 = dark sky)",
+          "axis": {
+            "labelAngle": 0,
+            "grid": false
+          }
+        },
+        "y": {
+          "aggregate": "count",
+          "type": "quantitative",
+          "title": "Reports",
+          "axis": {
+            "labelExpr": "format(datum.value, ',')",
+            "tickCount": 8
+          }
+        },
+        "color": {
+          "condition": {
+            "test": "datum.SkyDarkness == 7",
+            "value": "#e8a33d"
+          },
+          "value": "#0b1f4a"
+        },
+        "tooltip": [
+          {
+            "field": "SkyDarkness",
+            "type": "ordinal",
+            "title": "Score"
+          },
+          {
+            "aggregate": "count",
+            "type": "quantitative",
+            "title": "Reports"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "dy": -6,
+        "fontSize": 12,
+        "color": "#10213f"
+      },
+      "encoding": {
+        "x": {
+          "field": "SkyDarkness",
+          "type": "ordinal"
+        },
+        "y": {
+          "aggregate": "count",
+          "type": "quantitative",
+          "title": "Reports",
+          "axis": {
+            "labelExpr": "format(datum.value, ',')",
+            "tickCount": 8
+          }
+        },
+        "text": {
+          "aggregate": "count",
+          "type": "quantitative",
+          "format": ","
+        }
+      }
+    }
+  ],
+  "config": {
+    "font": "Space Grotesk, Helvetica, Arial, sans-serif",
+    "view": {
+      "stroke": null
+    },
+    "title": {
+      "anchor": "start",
+      "fontSize": 17,
+      "fontWeight": 600,
+      "color": "#10213f",
+      "subtitleFontSize": 13,
+      "subtitleColor": "#4a5568",
+      "subtitlePadding": 6,
+      "offset": 10,
+      "font": "Space Grotesk, Helvetica, Arial, sans-serif",
+      "subtitleFont": "Space Grotesk, Helvetica, Arial, sans-serif"
+    },
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": 500,
+      "labelColor": "#334155",
+      "titleColor": "#334155",
+      "domainColor": "#9aa5b8",
+      "tickColor": "#9aa5b8",
+      "gridColor": "#e6e9ef"
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": 500,
+      "labelColor": "#334155",
+      "titleColor": "#334155"
+    },
+    "text": {
+      "font": "Space Grotesk, Helvetica, Arial, sans-serif"
+    }
+  }
+}

@@ -1,0 +1,201 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Telescope searches stay steady, with one spike in July 2022",
+    "subtitle": [
+      "Monthly search interest in Australia for \"telescope\" (100 = the busiest month). Colours stop at 30,",
+      "so the steady years stay readable; the July 2022 value is 100."
+    ]
+  },
+  "width": 470,
+  "height": 300,
+  "data": {
+    "url": "data/telescope_searches_monthly.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "Month": "date"
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "rect",
+        "stroke": "white",
+        "strokeWidth": 1
+      },
+      "encoding": {
+        "x": {
+          "field": "Month",
+          "timeUnit": "month",
+          "type": "ordinal",
+          "title": null,
+          "axis": {
+            "labelAngle": 0,
+            "format": "%b",
+            "orient": "top",
+            "domain": false,
+            "ticks": false
+          }
+        },
+        "y": {
+          "field": "Month",
+          "timeUnit": "year",
+          "type": "ordinal",
+          "title": null,
+          "axis": {
+            "domain": false,
+            "ticks": false
+          }
+        },
+        "color": {
+          "field": "Interest",
+          "type": "quantitative",
+          "title": "Search interest",
+          "scale": {
+            "scheme": "blues",
+            "domain": [
+              0,
+              30
+            ],
+            "clamp": true
+          },
+          "legend": {
+            "orient": "bottom",
+            "direction": "horizontal",
+            "gradientLength": 200,
+            "values": [
+              0,
+              10,
+              20,
+              30
+            ]
+          }
+        },
+        "tooltip": [
+          {
+            "field": "Month",
+            "type": "temporal",
+            "format": "%B %Y",
+            "title": "Month"
+          },
+          {
+            "field": "Interest",
+            "type": "quantitative",
+            "title": "Search interest"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "year(datum.Month) == 2022 && month(datum.Month) == 6"
+        }
+      ],
+      "mark": {
+        "type": "rect",
+        "fill": null,
+        "stroke": "#e8a33d",
+        "strokeWidth": 3
+      },
+      "encoding": {
+        "x": {
+          "field": "Month",
+          "timeUnit": "month",
+          "type": "ordinal"
+        },
+        "y": {
+          "field": "Month",
+          "timeUnit": "year",
+          "type": "ordinal"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "Month": "2022-12-01",
+            "Row": "2022-07-01",
+            "text": "July 2022: 100.\nThe James Webb Space\nTelescope released\nits first images."
+          }
+        ],
+        "format": {
+          "type": "json",
+          "parse": {
+            "Month": "date",
+            "Row": "date"
+          }
+        }
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 24,
+        "fontSize": 12,
+        "color": "#10213f",
+        "lineBreak": "\n",
+        "lineHeight": 14
+      },
+      "encoding": {
+        "x": {
+          "field": "Month",
+          "timeUnit": "month",
+          "type": "ordinal"
+        },
+        "y": {
+          "field": "Row",
+          "timeUnit": "year",
+          "type": "ordinal"
+        },
+        "text": {
+          "field": "text"
+        }
+      }
+    }
+  ],
+  "padding": {
+    "right": 180
+  },
+  "config": {
+    "font": "Space Grotesk, Helvetica, Arial, sans-serif",
+    "view": {
+      "stroke": null
+    },
+    "title": {
+      "anchor": "start",
+      "fontSize": 17,
+      "fontWeight": 600,
+      "color": "#10213f",
+      "subtitleFontSize": 13,
+      "subtitleColor": "#4a5568",
+      "subtitlePadding": 6,
+      "offset": 10,
+      "font": "Space Grotesk, Helvetica, Arial, sans-serif",
+      "subtitleFont": "Space Grotesk, Helvetica, Arial, sans-serif"
+    },
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": 500,
+      "labelColor": "#334155",
+      "titleColor": "#334155",
+      "domainColor": "#9aa5b8",
+      "tickColor": "#9aa5b8",
+      "gridColor": "#e6e9ef"
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": 500,
+      "labelColor": "#334155",
+      "titleColor": "#334155"
+    },
+    "text": {
+      "font": "Space Grotesk, Helvetica, Arial, sans-serif"
+    }
+  }
+}

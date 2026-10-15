@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Look Up, Australia | Astronomy as a hobby</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A data story about astronomy as a hobby in Australia: sky darkness reports, astronomy clubs, sky events and the tools people search for.">
+  <meta name="author" content="Alvin Chin">
+
+  <!-- Vega, Vega-Lite and Vega-Embed (same versions as the studios) -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.22.1"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.5.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.21.0"></script>
+
+  <!-- pure.css grid -->
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
+    integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+
+  <!-- Google fonts: sans-serif for titles, serif for body text -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Source+Serif+4:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- CSS file -->
+  <link rel="stylesheet" type="text/css" href="css/style.css" media="all">
+</head>
+
+<body>
+
+  <header class="masthead">
+    <div class="page">
+      <p class="kicker">Astronomy as a hobby in Australia</p>
+      <h1>Look up, Australia</h1>
+      <p class="standfirst">Sky reports, astronomy clubs, comets and telescopes: what Australians do when they look at the night sky, and where they do it.</p>
+    </div>
+  </header>
+
+  <main class="page">
+
+    <!-- ACT 1 -->
+    <section>
+      <h2 class="act"><span>1</span> Who is checking the sky?</h2>
+      <div class="pure-g">
+        <div class="pure-u-1-3">
+          <div class="description description-left">
+            <p class="lead">Globe at Night asks people to look up, compare their sky with a chart and report a score from 1 (bright) to 7 (dark).</p>
+            <p>Between 2017 and 2025, Australians sent in 6,432 usable reports. They come from the places where people live: the east coast, Perth and Adelaide. Most of the centre and the north has none.</p>
+            <p>One night makes the data lumpy. On 21 June 2020, 4,425 reports arrived, 69% of the whole set. Drag across the bars to see the map without that year.</p>
+          </div>
+        </div>
+        <div class="pure-u-2-3">
+          <div id="vis1" class="vis-container"></div>
+        </div>
+      </div>
+
+      <div class="pure-g">
+        <div class="pure-u-1-3">
+          <div class="description description-left">
+            <p>Counting reports per person changes the order. The Australian Capital Territory sends in 537 reports per million residents, the Northern Territory 372 and Queensland 349. Victoria sends in 137.</p>
+            <p>Small places would vanish on a normal map, so each state and territory is drawn as an equal tile.</p>
+          </div>
+        </div>
+        <div class="pure-u-2-3">
+          <div id="vis2" class="vis-container"></div>
+        </div>
+      </div>
+
+      <div class="pure-g">
+        <div class="pure-u-1-3">
+          <div class="description description-left">
+            <p>Few reports describe a truly dark sky. Only 184 of 6,432 score the maximum of 7, and the most common score is 4. Dim objects are hard to see under a bright sky.</p>
+          </div>
+        </div>
+        <div class="pure-u-2-3">
+          <div id="vis3" class="vis-container"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACT 2 -->
+    <section>
+      <h2 class="act"><span>2</span> Where do people join in?</h2>
+      <div class="pure-g">
+        <div class="pure-u-1-3">
+          <div class="description description-left">
+            <p class="lead">IceInSpace lists 45 astronomy clubs. 42 give a place, and most of those sit on the east coast.</p>
+            <p>New South Wales has 17 clubs and Victoria 12. Western Australia, the biggest state, has two.</p>
+          </div>
+        </div>
+        <div class="pure-u-2-3">
+          <div id="vis4" class="vis-container"></div>
+        </div>
+      </div>
+
+      <div class="pure-g">
+        <div class="pure-u-1-3">
+          <div class="description description-left">
+            <p>Divide by population and the Northern Territory comes first: one club for about 269,000 people. South Australia has one club for 1.9 million.</p>
+            <p>These are small numbers. One new club in the Northern Territory would nearly double its score.</p>
+          </div>
+        </div>
+        <div class="pure-u-2-3">
+          <div id="vis5" class="vis-container"></div>
+        </div>
+      </div>
+
+      <div class="pure-g">
+        <div class="pure-u-1-3">
+          <div class="description description-left">
+            <p>The same figures as a ranked bar chart, which is easier to read exactly. Nothing separates Queensland, Tasmania and Victoria at 1.7 clubs per million.</p>
+          </div>
+        </div>
+        <div class="pure-u-2-3">
+          <div id="vis6" class="vis-container"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACT 3 -->
+    <section>
+      <h2 class="act"><span>3</span> What makes them look up?</h2>
+      <div class="pure-g">
+        <div class="pure-u-1-3">
+          <div class="description description-left">
+            <p class="lead">Events pull people outside. We compared Google searches for four of them in each state over five years.</p>
+            <p>Aurora wins everywhere. In Tasmania, 91% of these searches are about aurora. Comets do best in Queensland and Western Australia, where they take 25%.</p>
+            <p>The four panels share one colour scale, so a darker shade always means a bigger share.</p>
+          </div>
+        </div>
+        <div class="pure-u-2-3">
+          <div id="vis7" class="vis-container"></div>
+        </div>
+      </div>
+
+      <div class="pure-g">
+        <div class="pure-u-1-3">
+          <div class="description description-left">
+            <p>Aurora interest is flat until the sun does something. In May 2024 one of the strongest solar storms of this century pushed searches to their five-year peak. A strong storm in October 2024 gave a smaller peak.</p>
+          </div>
+        </div>
+        <div class="pure-u-2-3">
+          <div id="vis8" class="vis-container"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACT 4 -->
+    <section>
+      <h2 class="act"><span>4</span> What do they look with?</h2>
+      <div class="pure-g">
+        <div class="pure-u-1-3">
+          <div class="description description-left">
+            <p class="lead">Nobody publishes how many telescopes Australians own. Searches show interest, not sales.</p>
+            <p>Searches for "telescope" barely move for ten years. One month stands out: July 2022, when the James Webb Space Telescope released its first images.</p>
+          </div>
+        </div>
+        <div class="pure-u-2-3">
+          <div id="vis9" class="vis-container"></div>
+        </div>
+      </div>
+
+      <div class="pure-g">
+        <div class="pure-u-1-3">
+          <div class="description description-left">
+            <p>People who want gear search for gear terms, and those stayed flat. "Astrophotography" went from 8 to 8. The broad term "stargazing" went from 7 to 20 between 2016 and 2025, nearly three times higher.</p>
+            <p>The growth is in people who just want to look.</p>
+          </div>
+        </div>
+        <div class="pure-u-2-3">
+          <div id="vis10" class="vis-container"></div>
+        </div>
+      </div>
+
+      <div class="pure-g">
+        <div class="pure-u-1-3">
+          <div class="description description-left">
+            <p>Month by month, "stargazing" rose through 2024 and has stayed around 15 to 25 since. Its two earlier spikes, in April 2017 and May 2018, lasted a single month each.</p>
+            <p>The latest month, October 2026, is incomplete.</p>
+          </div>
+        </div>
+        <div class="pure-u-2-3">
+          <div id="vis11" class="vis-container"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing">
+      <h2 class="act"><span>5</span> What this means</h2>
+      <div class="pure-g">
+        <div class="pure-u-2-3">
+          <div class="description description-left">
+            <p class="lead">Search interest points to growth among casual watchers, and clubs sit where the people are.</p>
+            <p>Clubs cluster on the east coast, and the rising searches are for the broad term "stargazing", not for gear. A new stargazer in Perth or Adelaide has far fewer clubs to join than one in Sydney or Melbourne.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="page">
+      <div class="pure-g">
+        <div class="pure-u-1-2">
+          <div class="description description-left">
+            <h3>Data sources</h3>
+            <ul>
+              <li><a href="https://globeatnight.org/">Globe at Night</a>: sky darkness reports, Australia, 2017 to 2025. Cleaned to valid scores of 1 to 7 and Australian locations.</li>
+              <li><a href="https://www.iceinspace.com.au/">IceInSpace</a>: list of astronomy clubs. Club locations are approximate town centres.</li>
+              <li><a href="https://trends.google.com/">Google Trends</a>: search interest for Australia and by state, downloaded October 2026. Values are relative, not counts.</li>
+              <li><a href="https://www.abs.gov.au/">Australian Bureau of Statistics</a>: state populations, March 2026.</li>
+              <li><a href="https://www.naturalearthdata.com/">Natural Earth</a>: state boundaries (public domain).</li>
+            </ul>
+          </div>
+        </div>
+        <div class="pure-u-1-2">
+          <div class="description description-right">
+            <h3>Notes</h3>
+            <ul>
+              <li>Globe at Night reports are volunteered, so they show who took part, not how many people look at the sky.</li>
+              <li>Search interest is a proxy. It does not measure telescope ownership or sales.</li>
+              <li>Charts built with Vega-Lite, laid out with pure.css, hosted on GitHub Pages.</li>
+              <li>AI acknowledgement: I used Claude (Anthropic) to help plan the story, clean the data and write the Vega-Lite specifications and page code. I checked the results against the sources.</li>
+            </ul>
+            <p class="byline">Alvin Chin &middot; FIT3179 Data Visualisation 2 &middot; Monash University &middot; 15 October 2026</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+
+</html>

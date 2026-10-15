@@ -1,0 +1,195 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "\"Stargazing\" took off after 2024; the other terms barely moved",
+    "subtitle": [
+      "Monthly search interest in Australia, 2016 to 2026 (100 = the busiest month of the four terms)."
+    ]
+  },
+  "width": 640,
+  "height": 300,
+  "data": {
+    "url": "data/stargazing_searches_monthly.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "Month": "date"
+      }
+    }
+  },
+  "transform": [
+    {
+      "fold": [
+        "Stargazing",
+        "Astrophotography",
+        "StarMap",
+        "NightSky"
+      ],
+      "as": [
+        "Term",
+        "Interest"
+      ]
+    },
+    {
+      "calculate": "datum.Term == 'StarMap' ? 'Star map' : (datum.Term == 'NightSky' ? 'Night sky' : (datum.Term == 'Astrophotography' ? 'Astrophotography' : 'Stargazing'))",
+      "as": "TermName"
+    },
+    {
+      "calculate": "datum.Term == 'Stargazing' ? toNumber(datum.Interest) + 2.5 : (datum.Term == 'StarMap' ? toNumber(datum.Interest) - 2.5 : toNumber(datum.Interest))",
+      "as": "LabelY"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "strokeWidth": 2.2
+      },
+      "encoding": {
+        "x": {
+          "field": "Month",
+          "type": "temporal",
+          "title": null,
+          "axis": {
+            "format": "%Y",
+            "tickCount": "year",
+            "grid": false
+          }
+        },
+        "y": {
+          "field": "Interest",
+          "type": "quantitative",
+          "title": "Search interest (0 to 100)",
+          "scale": {
+            "domain": [
+              0,
+              100
+            ]
+          }
+        },
+        "color": {
+          "field": "TermName",
+          "type": "nominal",
+          "legend": null,
+          "scale": {
+            "domain": [
+              "Stargazing",
+              "Astrophotography",
+              "Star map",
+              "Night sky"
+            ],
+            "range": [
+              "#e8a33d",
+              "#5b6f93",
+              "#8aa0c4",
+              "#26406e"
+            ]
+          }
+        },
+        "tooltip": [
+          {
+            "field": "Month",
+            "type": "temporal",
+            "format": "%B %Y",
+            "title": "Month"
+          },
+          {
+            "field": "TermName",
+            "title": "Search term"
+          },
+          {
+            "field": "Interest",
+            "type": "quantitative",
+            "title": "Search interest"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.Month >= toDate('2026-10-01')"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 6,
+        "fontSize": 12
+      },
+      "encoding": {
+        "x": {
+          "field": "Month",
+          "type": "temporal"
+        },
+        "y": {
+          "field": "LabelY",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "TermName"
+        },
+        "color": {
+          "field": "TermName",
+          "type": "nominal",
+          "legend": null,
+          "scale": {
+            "domain": [
+              "Stargazing",
+              "Astrophotography",
+              "Star map",
+              "Night sky"
+            ],
+            "range": [
+              "#e8a33d",
+              "#5b6f93",
+              "#8aa0c4",
+              "#26406e"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "padding": {
+    "right": 140
+  },
+  "config": {
+    "font": "Space Grotesk, Helvetica, Arial, sans-serif",
+    "view": {
+      "stroke": null
+    },
+    "title": {
+      "anchor": "start",
+      "fontSize": 17,
+      "fontWeight": 600,
+      "color": "#10213f",
+      "subtitleFontSize": 13,
+      "subtitleColor": "#4a5568",
+      "subtitlePadding": 6,
+      "offset": 10,
+      "font": "Space Grotesk, Helvetica, Arial, sans-serif",
+      "subtitleFont": "Space Grotesk, Helvetica, Arial, sans-serif"
+    },
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": 500,
+      "labelColor": "#334155",
+      "titleColor": "#334155",
+      "domainColor": "#9aa5b8",
+      "tickColor": "#9aa5b8",
+      "gridColor": "#e6e9ef"
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": 500,
+      "labelColor": "#334155",
+      "titleColor": "#334155"
+    },
+    "text": {
+      "font": "Space Grotesk, Helvetica, Arial, sans-serif"
+    }
+  }
+}

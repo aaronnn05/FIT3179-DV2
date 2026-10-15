@@ -1,0 +1,182 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Aurora searches spike only when a big solar storm hits",
+    "subtitle": "Weekly search interest in Australia for \"aurora\" (100 = the busiest week), October 2021 to October 2026."
+  },
+  "width": 640,
+  "height": 270,
+  "data": {
+    "url": "data/aurora_searches_weekly.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "Week": "date"
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "color": "#0b1f4a",
+        "strokeWidth": 1.6
+      },
+      "encoding": {
+        "x": {
+          "field": "Week",
+          "type": "temporal",
+          "title": null,
+          "axis": {
+            "format": "%Y",
+            "tickCount": "year",
+            "grid": false
+          }
+        },
+        "y": {
+          "field": "Interest",
+          "type": "quantitative",
+          "title": "Search interest (0 to 100)",
+          "scale": {
+            "domain": [
+              0,
+              105
+            ]
+          }
+        },
+        "tooltip": [
+          {
+            "field": "Week",
+            "type": "temporal",
+            "title": "Week starting",
+            "format": "%e %B %Y"
+          },
+          {
+            "field": "Interest",
+            "type": "quantitative",
+            "title": "Search interest"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "Week": "2024-05-12",
+            "Interest": 100,
+            "text": "May 2024: one of the strongest\nsolar storms of this century"
+          },
+          {
+            "Week": "2024-10-06",
+            "Interest": 38,
+            "text": "October 2024:\nanother strong storm"
+          }
+        ],
+        "format": {
+          "type": "json",
+          "parse": {
+            "Week": "date"
+          }
+        }
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 10,
+        "dy": 4,
+        "fontSize": 12,
+        "color": "#10213f",
+        "lineBreak": "\n",
+        "lineHeight": 14
+      },
+      "encoding": {
+        "x": {
+          "field": "Week",
+          "type": "temporal"
+        },
+        "y": {
+          "field": "Interest",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "text"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "Week": "2024-05-12",
+            "Interest": 100
+          },
+          {
+            "Week": "2024-10-06",
+            "Interest": 38
+          }
+        ],
+        "format": {
+          "type": "json",
+          "parse": {
+            "Week": "date"
+          }
+        }
+      },
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "color": "#e8a33d",
+        "size": 60
+      },
+      "encoding": {
+        "x": {
+          "field": "Week",
+          "type": "temporal"
+        },
+        "y": {
+          "field": "Interest",
+          "type": "quantitative"
+        }
+      }
+    }
+  ],
+  "config": {
+    "font": "Space Grotesk, Helvetica, Arial, sans-serif",
+    "view": {
+      "stroke": null
+    },
+    "title": {
+      "anchor": "start",
+      "fontSize": 17,
+      "fontWeight": 600,
+      "color": "#10213f",
+      "subtitleFontSize": 13,
+      "subtitleColor": "#4a5568",
+      "subtitlePadding": 6,
+      "offset": 10,
+      "font": "Space Grotesk, Helvetica, Arial, sans-serif",
+      "subtitleFont": "Space Grotesk, Helvetica, Arial, sans-serif"
+    },
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": 500,
+      "labelColor": "#334155",
+      "titleColor": "#334155",
+      "domainColor": "#9aa5b8",
+      "tickColor": "#9aa5b8",
+      "gridColor": "#e6e9ef"
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": 500,
+      "labelColor": "#334155",
+      "titleColor": "#334155"
+    },
+    "text": {
+      "font": "Space Grotesk, Helvetica, Arial, sans-serif"
+    }
+  }
+}

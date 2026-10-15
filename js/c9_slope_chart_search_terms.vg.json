@@ -1,0 +1,238 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Searches for \"stargazing\" nearly tripled; specialist terms stayed flat",
+    "subtitle": [
+      "Average monthly search interest in Australia, 2016 and 2025 (100 = the busiest month of the four terms)."
+    ]
+  },
+  "width": 420,
+  "height": 340,
+  "data": {
+    "url": "data/stargazing_searches_monthly.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "Month": "date"
+      }
+    }
+  },
+  "transform": [
+    {
+      "fold": [
+        "Stargazing",
+        "Astrophotography",
+        "StarMap",
+        "NightSky"
+      ],
+      "as": [
+        "Term",
+        "Interest"
+      ]
+    },
+    {
+      "calculate": "year(datum.Month)",
+      "as": "Year"
+    },
+    {
+      "filter": "datum.Year == 2016 || datum.Year == 2025"
+    },
+    {
+      "aggregate": [
+        {
+          "op": "mean",
+          "field": "Interest",
+          "as": "AverageInterest"
+        }
+      ],
+      "groupby": [
+        "Term",
+        "Year"
+      ]
+    },
+    {
+      "calculate": "datum.Term == 'StarMap' ? 'Star map' : (datum.Term == 'NightSky' ? 'Night sky' : (datum.Term == 'Astrophotography' ? 'Astrophotography' : 'Stargazing'))",
+      "as": "TermName"
+    },
+    {
+      "calculate": "datum.Year == 2025 ? (datum.Term == 'Stargazing' ? datum.AverageInterest + 1.8 : (datum.Term == 'StarMap' ? datum.AverageInterest - 1.8 : datum.AverageInterest)) : (datum.Term == 'Astrophotography' ? datum.AverageInterest + 1.8 : (datum.Term == 'Stargazing' ? datum.AverageInterest - 1.8 : datum.AverageInterest))",
+      "as": "LabelY"
+    },
+    {
+      "calculate": "datum.TermName + '  ' + format(datum.AverageInterest, '.0f')",
+      "as": "LabelRight"
+    },
+    {
+      "calculate": "format(datum.AverageInterest, '.0f') + '  ' + datum.TermName",
+      "as": "LabelLeft"
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "ordinal",
+      "title": null,
+      "axis": {
+        "labelFontSize": 13,
+        "labelAngle": 0,
+        "orient": "top",
+        "domain": false,
+        "ticks": false,
+        "labelPadding": 8
+      },
+      "scale": {
+        "padding": 0.55
+      }
+    },
+    "y": {
+      "field": "AverageInterest",
+      "type": "quantitative",
+      "title": null,
+      "axis": null,
+      "scale": {
+        "domain": [
+          0,
+          48
+        ]
+      }
+    },
+    "color": {
+      "field": "TermName",
+      "type": "nominal",
+      "legend": null,
+      "scale": {
+        "domain": [
+          "Stargazing",
+          "Astrophotography",
+          "Star map",
+          "Night sky"
+        ],
+        "range": [
+          "#e8a33d",
+          "#5b6f93",
+          "#8aa0c4",
+          "#26406e"
+        ]
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "strokeWidth": 3
+      },
+      "encoding": {
+        "detail": {
+          "field": "TermName"
+        },
+        "tooltip": [
+          {
+            "field": "TermName",
+            "title": "Search term"
+          },
+          {
+            "field": "Year",
+            "type": "ordinal"
+          },
+          {
+            "field": "AverageInterest",
+            "type": "quantitative",
+            "format": ".1f",
+            "title": "Average interest"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 70,
+        "opacity": 1
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.Year == 2025"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 10,
+        "fontSize": 13
+      },
+      "encoding": {
+        "y": {
+          "field": "LabelY",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "LabelRight"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.Year == 2016"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dx": -10,
+        "fontSize": 13
+      },
+      "encoding": {
+        "y": {
+          "field": "LabelY",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "LabelLeft"
+        }
+      }
+    }
+  ],
+  "config": {
+    "font": "Space Grotesk, Helvetica, Arial, sans-serif",
+    "view": {
+      "stroke": null
+    },
+    "title": {
+      "anchor": "start",
+      "fontSize": 17,
+      "fontWeight": 600,
+      "color": "#10213f",
+      "subtitleFontSize": 13,
+      "subtitleColor": "#4a5568",
+      "subtitlePadding": 6,
+      "offset": 10,
+      "font": "Space Grotesk, Helvetica, Arial, sans-serif",
+      "subtitleFont": "Space Grotesk, Helvetica, Arial, sans-serif"
+    },
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": 500,
+      "labelColor": "#334155",
+      "titleColor": "#334155",
+      "domainColor": "#9aa5b8",
+      "tickColor": "#9aa5b8",
+      "gridColor": "#e6e9ef"
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": 500,
+      "labelColor": "#334155",
+      "titleColor": "#334155"
+    },
+    "text": {
+      "font": "Space Grotesk, Helvetica, Arial, sans-serif"
+    }
+  }
+}

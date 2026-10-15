@@ -1,0 +1,167 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Per person, the Northern Territory has the most clubs",
+    "subtitle": [
+      "Astronomy clubs listed per million residents. The Northern Territory has one club for 269,000 people;",
+      "South Australia has one for 1.9 million."
+    ]
+  },
+  "width": 640,
+  "height": 520,
+  "projection": {
+    "type": "conicEqualArea",
+    "parallels": [
+      -18,
+      -36
+    ],
+    "rotate": [
+      -133,
+      0
+    ],
+    "center": [
+      0,
+      -27
+    ],
+    "scale": 780,
+    "translate": [
+      320,
+      262
+    ]
+  },
+  "data": {
+    "url": "data/astronomy_clubs.csv"
+  },
+  "transform": [
+    {
+      "aggregate": [
+        {
+          "op": "count",
+          "as": "Clubs"
+        }
+      ],
+      "groupby": [
+        "State"
+      ]
+    },
+    {
+      "lookup": "State",
+      "from": {
+        "data": {
+          "url": "data/state_population.csv"
+        },
+        "key": "State",
+        "fields": [
+          "Population"
+        ]
+      }
+    },
+    {
+      "calculate": "datum.Clubs / datum.Population * 1000000",
+      "as": "ClubsPerMillion"
+    },
+    {
+      "lookup": "State",
+      "from": {
+        "data": {
+          "url": "data/australia_states.topojson",
+          "format": {
+            "type": "topojson",
+            "feature": "states"
+          }
+        },
+        "key": "properties.name"
+      },
+      "as": "geo"
+    }
+  ],
+  "mark": {
+    "type": "geoshape",
+    "stroke": "white",
+    "strokeWidth": 0.8
+  },
+  "encoding": {
+    "shape": {
+      "field": "geo",
+      "type": "geojson"
+    },
+    "color": {
+      "field": "ClubsPerMillion",
+      "type": "quantitative",
+      "title": "Clubs per million residents",
+      "scale": {
+        "scheme": "blues",
+        "domain": [
+          0,
+          4
+        ]
+      },
+      "legend": {
+        "orient": "bottom-left",
+        "gradientLength": 140,
+        "format": ".1f"
+      }
+    },
+    "tooltip": [
+      {
+        "field": "State",
+        "type": "nominal"
+      },
+      {
+        "field": "Clubs",
+        "type": "quantitative",
+        "title": "Clubs listed"
+      },
+      {
+        "field": "Population",
+        "type": "quantitative",
+        "format": ",",
+        "title": "Residents (March 2026)"
+      },
+      {
+        "field": "ClubsPerMillion",
+        "type": "quantitative",
+        "format": ".1f",
+        "title": "Clubs per million residents"
+      }
+    ]
+  },
+  "config": {
+    "font": "Space Grotesk, Helvetica, Arial, sans-serif",
+    "view": {
+      "stroke": null
+    },
+    "title": {
+      "anchor": "start",
+      "fontSize": 17,
+      "fontWeight": 600,
+      "color": "#10213f",
+      "subtitleFontSize": 13,
+      "subtitleColor": "#4a5568",
+      "subtitlePadding": 6,
+      "offset": 10,
+      "font": "Space Grotesk, Helvetica, Arial, sans-serif",
+      "subtitleFont": "Space Grotesk, Helvetica, Arial, sans-serif"
+    },
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": 500,
+      "labelColor": "#334155",
+      "titleColor": "#334155",
+      "domainColor": "#9aa5b8",
+      "tickColor": "#9aa5b8",
+      "gridColor": "#e6e9ef"
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": 500,
+      "labelColor": "#334155",
+      "titleColor": "#334155"
+    },
+    "text": {
+      "font": "Space Grotesk, Helvetica, Arial, sans-serif"
+    }
+  }
+}
