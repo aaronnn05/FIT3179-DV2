@@ -160,7 +160,7 @@ h2.act span {
 .vis-container {
   width: 100%;
   background: transparent;
-  overflow-x: auto;
+  overflow: visible;      /* charts are sized to fit, so no scroll bars */
 }
 
 .takeaway p { max-width: 28em; }
@@ -185,11 +185,17 @@ h2.act span {
 .byline { font-size: 14px; color: #aab6cf; margin-top: 16px; }
 
 /* =========================================================
-   Narrow screens: stack the columns
+   Narrower screens: stack text above the chart.
+   Charts get the full width; scrolling is only a last resort.
    ========================================================= */
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
   .pure-u-1-3, .pure-u-2-3, .pure-u-1-2 { width: 100%; }
   .pure-u-1-4 { width: 50%; margin-bottom: 16px; }
-  .description, .footer-col { padding-right: 0; }
+  .description, .footer-col { padding-right: 0; max-width: 34em; }
+  .row { margin-bottom: 40px; }
+}
+
+@media (max-width: 800px) {
+  .vis-container { overflow-x: auto; }
   .masthead h1 { font-size: 40px; }
 }

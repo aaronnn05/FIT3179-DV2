@@ -4,7 +4,7 @@
     "text": "Aurora searches jump when a big solar storm hits",
     "subtitle": "Weekly Google searches for \"aurora\" in Australia (100 = busiest week)."
   },
-  "width": 640,
+  "width": 600,
   "height": 260,
   "data": {
     "url": "data/aurora_searches_weekly.csv",

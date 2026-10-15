@@ -7,7 +7,7 @@
       "Every month above 30 gets the darkest colour, so small changes stay visible."
     ]
   },
-  "width": 440,
+  "width": 400,
   "height": 300,
   "data": {
     "url": "data/telescope_searches_monthly.csv",
@@ -71,7 +71,7 @@
           "legend": {
             "orient": "bottom",
             "direction": "horizontal",
-            "gradientLength": 200,
+            "gradientLength": 240,
             "values": [
               0,
               10,
@@ -128,7 +128,7 @@
           {
             "Month": "2022-12-01",
             "Row": "2022-07-01",
-            "text": "July 2022: the James Webb\nSpace Telescope shared\nits first pictures"
+            "text": "July 2022: the James\nWebb Space Telescope\nshared its first\npictures"
           }
         ],
         "format": {
@@ -167,7 +167,7 @@
   "padding": {
     "left": 0,
     "top": 2,
-    "right": 150,
+    "right": 120,
     "bottom": 4
   },
   "background": "transparent",
