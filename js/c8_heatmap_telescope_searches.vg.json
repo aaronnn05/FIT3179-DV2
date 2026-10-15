@@ -4,7 +4,7 @@
     "text": "Telescope searches barely change, with one exception",
     "subtitle": [
       "Monthly Google searches for \"telescope\" in Australia. Darker = more searches.",
-      "Colours stop at 30 so small changes show; July 2022 reached 100."
+      "Every month above 30 gets the darkest colour, so small changes stay visible."
     ]
   },
   "width": 440,
@@ -22,7 +22,7 @@
     {
       "mark": {
         "type": "rect",
-        "stroke": "#f7f8fa",
+        "stroke": "#e9edf7",
         "strokeWidth": 1.5,
         "cornerRadius": 2
       },
@@ -77,7 +77,8 @@
               10,
               20,
               30
-            ]
+            ],
+            "labelExpr": "datum.value == 30 ? '30 or more' : datum.value"
           }
         },
         "tooltip": [
@@ -199,9 +200,9 @@
       "titleFontWeight": "normal",
       "labelColor": "#4a5568",
       "titleColor": "#4a5568",
-      "domainColor": "#b8c0cc",
-      "tickColor": "#b8c0cc",
-      "gridColor": "#e3e7ee"
+      "domainColor": "#a9b2c6",
+      "tickColor": "#a9b2c6",
+      "gridColor": "#d3d9e8"
     },
     "legend": {
       "labelFont": "'Source Sans 3', Helvetica, Arial, sans-serif",

@@ -39,7 +39,7 @@
           },
           "mark": {
             "type": "geoshape",
-            "fill": "#e1e5ec",
+            "fill": "#cdd4e6",
             "stroke": "white",
             "strokeWidth": 1
           }
@@ -154,7 +154,7 @@
                 "scheme": {
                   "name": "blues",
                   "extent": [
-                    0.25,
+                    0.3,
                     1
                   ]
                 },
@@ -256,7 +256,10 @@
     {
       "title": {
         "text": "One night in June 2020 brought in most reports",
-        "subtitle": "Reports each year. Drag across the bars to filter the map above."
+        "subtitle": [
+          "Reports each year. A national sky survey on 21 June 2020 explains the spike.",
+          "Drag across the bars to filter the map above."
+        ]
       },
       "width": 620,
       "height": 110,
@@ -438,9 +441,9 @@
       "titleFontWeight": "normal",
       "labelColor": "#4a5568",
       "titleColor": "#4a5568",
-      "domainColor": "#b8c0cc",
-      "tickColor": "#b8c0cc",
-      "gridColor": "#e3e7ee"
+      "domainColor": "#a9b2c6",
+      "tickColor": "#a9b2c6",
+      "gridColor": "#d3d9e8"
     },
     "legend": {
       "labelFont": "'Source Sans 3', Helvetica, Arial, sans-serif",

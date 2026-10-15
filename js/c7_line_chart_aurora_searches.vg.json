@@ -175,9 +175,9 @@
       "titleFontWeight": "normal",
       "labelColor": "#4a5568",
       "titleColor": "#4a5568",
-      "domainColor": "#b8c0cc",
-      "tickColor": "#b8c0cc",
-      "gridColor": "#e3e7ee"
+      "domainColor": "#a9b2c6",
+      "tickColor": "#a9b2c6",
+      "gridColor": "#d3d9e8"
     },
     "legend": {
       "labelFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
