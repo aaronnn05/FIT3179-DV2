@@ -4,8 +4,8 @@
     "text": "Searches for \"stargazing\" almost tripled",
     "subtitle": "Average monthly Google searches in Australia (100 = busiest month)."
   },
-  "width": 440,
-  "height": 330,
+  "width": 520,
+  "height": 420,
   "data": {
     "url": "data/stargazing_searches_monthly.csv",
     "format": {
@@ -53,7 +53,7 @@
       "as": "TermName"
     },
     {
-      "calculate": "datum.Year == 2025 ? (datum.Term == 'Stargazing' ? datum.AverageInterest + 1.8 : (datum.Term == 'StarMap' ? datum.AverageInterest - 1.8 : datum.AverageInterest)) : (datum.Term == 'Astrophotography' ? datum.AverageInterest + 1.8 : (datum.Term == 'Stargazing' ? datum.AverageInterest - 1.8 : datum.AverageInterest))",
+      "calculate": "datum.Year == 2025 ? (datum.Term == 'Stargazing' ? datum.AverageInterest + 1.6 : (datum.Term == 'StarMap' ? datum.AverageInterest - 1.6 : datum.AverageInterest)) : (datum.Term == 'Astrophotography' ? datum.AverageInterest + 1.8 : (datum.Term == 'Stargazing' ? datum.AverageInterest - 1.8 : datum.AverageInterest))",
       "as": "LabelY"
     },
     {
@@ -86,12 +86,37 @@
     "y": {
       "field": "AverageInterest",
       "type": "quantitative",
-      "title": null,
-      "axis": null,
+      "title": "Average searches (100 = busiest month)",
+      "axis": {
+        "values": [
+          0,
+          10,
+          20,
+          30,
+          40
+        ],
+        "grid": true,
+        "gridColor": {
+          "condition": {
+            "test": "datum.value == 0",
+            "value": "#14213d"
+          },
+          "value": "#cfd6e6"
+        },
+        "gridWidth": {
+          "condition": {
+            "test": "datum.value == 0",
+            "value": 1.5
+          },
+          "value": 1
+        },
+        "domain": false,
+        "ticks": false
+      },
       "scale": {
         "domain": [
           0,
-          46
+          45
         ]
       }
     },
@@ -147,7 +172,7 @@
       "mark": {
         "type": "point",
         "filled": true,
-        "size": 70,
+        "size": 45,
         "opacity": 1
       }
     },
@@ -161,7 +186,7 @@
         "type": "text",
         "align": "left",
         "dx": 10,
-        "fontSize": 14
+        "fontSize": 15
       },
       "encoding": {
         "y": {
@@ -190,7 +215,7 @@
         "type": "text",
         "align": "right",
         "dx": -10,
-        "fontSize": 14
+        "fontSize": 15
       },
       "encoding": {
         "y": {
@@ -225,14 +250,14 @@
     },
     "title": {
       "font": "'Source Serif 4', Georgia, serif",
-      "fontSize": 21,
+      "fontSize": 23,
       "fontWeight": 600,
       "color": "#14213d",
       "anchor": "start",
       "frame": "bounds",
       "offset": 14,
       "subtitleFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
-      "subtitleFontSize": 15,
+      "subtitleFontSize": 16,
       "subtitleColor": "#4a5568",
       "subtitlePadding": 6,
       "lineHeight": 26,
@@ -241,8 +266,8 @@
     "axis": {
       "labelFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
       "titleFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
-      "labelFontSize": 13,
-      "titleFontSize": 13,
+      "labelFontSize": 14,
+      "titleFontSize": 14,
       "titleFontWeight": "normal",
       "labelColor": "#4a5568",
       "titleColor": "#4a5568",
@@ -253,15 +278,15 @@
     "legend": {
       "labelFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
       "titleFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
-      "labelFontSize": 13,
-      "titleFontSize": 13,
+      "labelFontSize": 14,
+      "titleFontSize": 14,
       "titleFontWeight": "normal",
       "labelColor": "#4a5568",
       "titleColor": "#14213d"
     },
     "text": {
       "font": "'Source Sans 3', Helvetica, Arial, sans-serif",
-      "fontSize": 13,
+      "fontSize": 14,
       "color": "#14213d"
     },
     "header": {

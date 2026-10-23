@@ -4,8 +4,8 @@
     "text": "The jump in \"stargazing\" began in 2024 and has held",
     "subtitle": "Monthly Google searches in Australia, 2016 to 2026 (100 = busiest month)."
   },
-  "width": 415,
-  "height": 280,
+  "width": 500,
+  "height": 330,
   "data": {
     "url": "data/stargazing_searches_monthly.csv",
     "format": {
@@ -137,7 +137,7 @@
         "type": "text",
         "align": "left",
         "dx": 8,
-        "fontSize": 14
+        "fontSize": 15
       },
       "encoding": {
         "x": {
@@ -176,14 +176,14 @@
     },
     "title": {
       "font": "'Source Serif 4', Georgia, serif",
-      "fontSize": 21,
+      "fontSize": 23,
       "fontWeight": 600,
       "color": "#14213d",
       "anchor": "start",
       "frame": "bounds",
       "offset": 14,
       "subtitleFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
-      "subtitleFontSize": 15,
+      "subtitleFontSize": 16,
       "subtitleColor": "#4a5568",
       "subtitlePadding": 6,
       "lineHeight": 26,
@@ -192,8 +192,8 @@
     "axis": {
       "labelFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
       "titleFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
-      "labelFontSize": 13,
-      "titleFontSize": 13,
+      "labelFontSize": 14,
+      "titleFontSize": 14,
       "titleFontWeight": "normal",
       "labelColor": "#4a5568",
       "titleColor": "#4a5568",
@@ -204,15 +204,15 @@
     "legend": {
       "labelFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
       "titleFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
-      "labelFontSize": 13,
-      "titleFontSize": 13,
+      "labelFontSize": 14,
+      "titleFontSize": 14,
       "titleFontWeight": "normal",
       "labelColor": "#4a5568",
       "titleColor": "#14213d"
     },
     "text": {
       "font": "'Source Sans 3', Helvetica, Arial, sans-serif",
-      "fontSize": 13,
+      "fontSize": 14,
       "color": "#14213d"
     },
     "header": {

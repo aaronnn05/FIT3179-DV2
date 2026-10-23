@@ -1,0 +1,238 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Most states reported far more on the survey night",
+    "subtitle": [
+      "Sky reports for every million residents, 21 June 2020 compared with all other nights.",
+      "Where only one dot shows, the two numbers match."
+    ]
+  },
+  "width": 560,
+  "height": 330,
+  "data": {
+    "url": "data/globe_at_night_australia.csv"
+  },
+  "transform": [
+    {
+      "calculate": "datum.Date == '2020-06-21' ? 'Survey night, 21 June 2020' : 'All other nights'",
+      "as": "Night"
+    },
+    {
+      "aggregate": [
+        {
+          "op": "count",
+          "as": "Reports"
+        }
+      ],
+      "groupby": [
+        "State",
+        "Night"
+      ]
+    },
+    {
+      "lookup": "State",
+      "from": {
+        "data": {
+          "url": "data/state_population.csv"
+        },
+        "key": "State",
+        "fields": [
+          "Population"
+        ]
+      }
+    },
+    {
+      "calculate": "datum.Reports / datum.Population * 1000000",
+      "as": "PerMillion"
+    },
+    {
+      "joinaggregate": [
+        {
+          "op": "max",
+          "field": "PerMillion",
+          "as": "Top"
+        }
+      ],
+      "groupby": [
+        "State"
+      ]
+    }
+  ],
+  "encoding": {
+    "y": {
+      "field": "State",
+      "type": "nominal",
+      "title": null,
+      "sort": {
+        "op": "max",
+        "field": "PerMillion",
+        "order": "descending"
+      },
+      "axis": {
+        "labelLimit": 230,
+        "ticks": false,
+        "domain": false,
+        "labelPadding": 8,
+        "labelFontSize": 14,
+        "labelColor": "#14213d"
+      }
+    },
+    "x": {
+      "field": "PerMillion",
+      "type": "quantitative",
+      "title": "Reports per million residents",
+      "scale": {
+        "domain": [
+          0,
+          500
+        ]
+      },
+      "axis": {
+        "values": [
+          0,
+          100,
+          200,
+          300,
+          400,
+          500
+        ],
+        "grid": true,
+        "domain": false,
+        "ticks": false
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "strokeWidth": 3,
+        "color": "#9fb0bd"
+      },
+      "encoding": {
+        "x": {
+          "field": "Top",
+          "type": "quantitative"
+        },
+        "x2": {
+          "field": "PerMillion",
+          "aggregate": "min"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "circle",
+        "size": 170,
+        "opacity": 1,
+        "stroke": "white",
+        "strokeWidth": 1.2
+      },
+      "encoding": {
+        "color": {
+          "field": "Night",
+          "type": "nominal",
+          "title": null,
+          "scale": {
+            "domain": [
+              "All other nights",
+              "Survey night, 21 June 2020"
+            ],
+            "range": [
+              "#9bd0d4",
+              "#1f6f7a"
+            ]
+          },
+          "legend": {
+            "orient": "top",
+            "direction": "horizontal",
+            "symbolType": "circle",
+            "symbolSize": 170,
+            "labelFontSize": 14
+          }
+        },
+        "tooltip": [
+          {
+            "field": "State",
+            "type": "nominal"
+          },
+          {
+            "field": "Night",
+            "type": "nominal",
+            "title": "When"
+          },
+          {
+            "field": "Reports",
+            "type": "quantitative",
+            "title": "Reports"
+          },
+          {
+            "field": "PerMillion",
+            "type": "quantitative",
+            "format": ",.0f",
+            "title": "Reports per million residents"
+          }
+        ]
+      }
+    }
+  ],
+  "padding": {
+    "left": 0,
+    "top": 2,
+    "right": 8,
+    "bottom": 4
+  },
+  "background": "transparent",
+  "config": {
+    "font": "'Source Sans 3', Helvetica, Arial, sans-serif",
+    "background": "transparent",
+    "view": {
+      "stroke": null
+    },
+    "title": {
+      "font": "'Source Serif 4', Georgia, serif",
+      "fontSize": 23,
+      "fontWeight": 600,
+      "color": "#14213d",
+      "anchor": "start",
+      "frame": "bounds",
+      "offset": 14,
+      "subtitleFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "subtitleFontSize": 16,
+      "subtitleColor": "#4a5568",
+      "subtitlePadding": 6,
+      "lineHeight": 26,
+      "subtitleLineHeight": 19
+    },
+    "axis": {
+      "labelFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "titleFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "labelFontSize": 14,
+      "titleFontSize": 14,
+      "titleFontWeight": "normal",
+      "labelColor": "#4a5568",
+      "titleColor": "#4a5568",
+      "domainColor": "#a9b2c6",
+      "tickColor": "#a9b2c6",
+      "gridColor": "#d3d9e8"
+    },
+    "legend": {
+      "labelFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "titleFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "labelFontSize": 14,
+      "titleFontSize": 14,
+      "titleFontWeight": "normal",
+      "labelColor": "#4a5568",
+      "titleColor": "#14213d"
+    },
+    "text": {
+      "font": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "fontSize": 14,
+      "color": "#14213d"
+    },
+    "header": {
+      "labelFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "titleFont": "'Source Serif 4', Georgia, serif"
+    }
+  }
+}

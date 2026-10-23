@@ -2,10 +2,10 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
     "text": "Astronomy clubs hug the east coast",
-    "subtitle": "Each dot is one club. 42 of the 45 listed clubs give a location."
+    "subtitle": "Dot map: one dot = one club (42 of the 45 listed clubs have a known town)."
   },
-  "width": 620,
-  "height": 490,
+  "width": 700,
+  "height": 560,
   "projection": {
     "type": "conicEqualArea",
     "parallels": [
@@ -20,10 +20,10 @@
       0,
       -27
     ],
-    "scale": 760,
+    "scale": 840,
     "translate": [
-      305,
-      248
+      326,
+      276
     ]
   },
   "layer": [
@@ -53,7 +53,7 @@
       ],
       "mark": {
         "type": "circle",
-        "size": 90,
+        "size": 110,
         "opacity": 0.8,
         "fill": "#6a51a3",
         "stroke": "white",
@@ -88,7 +88,7 @@
       "data": {
         "values": [
           {
-            "lon": 127,
+            "lon": 124,
             "lat": -26,
             "text": "No clubs across\nthe whole centre"
           }
@@ -99,7 +99,7 @@
         "align": "left",
         "baseline": "middle",
         "dx": 0,
-        "fontSize": 14,
+        "fontSize": 15,
         "color": "#4a5568",
         "fontWeight": "normal",
         "lineBreak": "\n",
@@ -123,22 +123,38 @@
       "data": {
         "values": [
           {
-            "lon": 136.8,
-            "lat": -12.2,
-            "text": "Gove: the only club in\nthe Northern Territory"
+            "lon": 136.7,
+            "lat": -12.3,
+            "lx": 129.5,
+            "ly": -8.6,
+            "text": "Gove: the only club\nin the Northern Territory",
+            "align": "right",
+            "dx": -8
+          },
+          {
+            "lon": 151.2,
+            "lat": -33.9,
+            "lx": 158.0,
+            "ly": -33.0,
+            "text": "Sydney",
+            "align": "left",
+            "dx": 8
+          },
+          {
+            "lon": 144.96,
+            "lat": -37.8,
+            "lx": 139.5,
+            "ly": -41.5,
+            "text": "Melbourne",
+            "align": "right",
+            "dx": -8
           }
         ]
       },
       "mark": {
-        "type": "text",
-        "align": "right",
-        "baseline": "middle",
-        "dx": -10,
-        "fontSize": 13,
+        "type": "rule",
         "color": "#14213d",
-        "fontWeight": "normal",
-        "lineBreak": "\n",
-        "lineHeight": 16
+        "strokeWidth": 1
       },
       "encoding": {
         "longitude": {
@@ -149,6 +165,144 @@
           "field": "lat",
           "type": "quantitative"
         },
+        "longitude2": {
+          "field": "lx"
+        },
+        "latitude2": {
+          "field": "ly"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "lon": 136.7,
+            "lat": -12.3,
+            "lx": 129.5,
+            "ly": -8.6,
+            "text": "Gove: the only club\nin the Northern Territory",
+            "align": "right",
+            "dx": -8
+          },
+          {
+            "lon": 151.2,
+            "lat": -33.9,
+            "lx": 158.0,
+            "ly": -33.0,
+            "text": "Sydney",
+            "align": "left",
+            "dx": 8
+          },
+          {
+            "lon": 144.96,
+            "lat": -37.8,
+            "lx": 139.5,
+            "ly": -41.5,
+            "text": "Melbourne",
+            "align": "right",
+            "dx": -8
+          }
+        ]
+      },
+      "mark": {
+        "type": "circle",
+        "color": "#14213d",
+        "size": 22
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "lon": 151.2,
+            "lat": -33.9,
+            "lx": 158.0,
+            "ly": -33.0,
+            "text": "Sydney",
+            "align": "left",
+            "dx": 8
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "fontSize": 14,
+        "fontWeight": "bold",
+        "color": "#14213d",
+        "lineBreak": "\n",
+        "lineHeight": 16,
+        "dx": 8
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lx",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "ly",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "text"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "lon": 136.7,
+            "lat": -12.3,
+            "lx": 129.5,
+            "ly": -8.6,
+            "text": "Gove: the only club\nin the Northern Territory",
+            "align": "right",
+            "dx": -8
+          },
+          {
+            "lon": 144.96,
+            "lat": -37.8,
+            "lx": 139.5,
+            "ly": -41.5,
+            "text": "Melbourne",
+            "align": "right",
+            "dx": -8
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "middle",
+        "fontSize": 14,
+        "fontWeight": "bold",
+        "color": "#14213d",
+        "lineBreak": "\n",
+        "lineHeight": 16,
+        "dx": -8
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lx",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "ly",
+          "type": "quantitative"
+        },
         "text": {
           "field": "text"
         }
@@ -156,9 +310,9 @@
     }
   ],
   "padding": {
-    "left": 0,
+    "left": 10,
     "top": 2,
-    "right": 8,
+    "right": 30,
     "bottom": 4
   },
   "background": "transparent",
@@ -170,14 +324,14 @@
     },
     "title": {
       "font": "'Source Serif 4', Georgia, serif",
-      "fontSize": 21,
+      "fontSize": 23,
       "fontWeight": 600,
       "color": "#14213d",
       "anchor": "start",
       "frame": "bounds",
       "offset": 14,
       "subtitleFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
-      "subtitleFontSize": 15,
+      "subtitleFontSize": 16,
       "subtitleColor": "#4a5568",
       "subtitlePadding": 6,
       "lineHeight": 26,
@@ -186,8 +340,8 @@
     "axis": {
       "labelFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
       "titleFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
-      "labelFontSize": 13,
-      "titleFontSize": 13,
+      "labelFontSize": 14,
+      "titleFontSize": 14,
       "titleFontWeight": "normal",
       "labelColor": "#4a5568",
       "titleColor": "#4a5568",
@@ -198,15 +352,15 @@
     "legend": {
       "labelFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
       "titleFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
-      "labelFontSize": 13,
-      "titleFontSize": 13,
+      "labelFontSize": 14,
+      "titleFontSize": 14,
       "titleFontWeight": "normal",
       "labelColor": "#4a5568",
       "titleColor": "#14213d"
     },
     "text": {
       "font": "'Source Sans 3', Helvetica, Arial, sans-serif",
-      "fontSize": 13,
+      "fontSize": 14,
       "color": "#14213d"
     },
     "header": {

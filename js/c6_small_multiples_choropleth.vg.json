@@ -19,8 +19,8 @@
     "column": 24
   },
   "spec": {
-    "width": 300,
-    "height": 275,
+    "width": 340,
+    "height": 310,
     "projection": {
       "type": "conicEqualArea",
       "parallels": [
@@ -35,10 +35,10 @@
         0,
         -27
       ],
-      "scale": 380,
+      "scale": 428,
       "translate": [
-        150,
-        158
+        170,
+        178
       ]
     },
     "layer": [
@@ -181,8 +181,8 @@
           "align": "left",
           "baseline": "top",
           "x": 0,
-          "y": 24,
-          "fontSize": 13,
+          "y": 26,
+          "fontSize": 14,
           "color": "#4a5568"
         },
         "encoding": {
@@ -215,14 +215,14 @@
     },
     "title": {
       "font": "'Source Serif 4', Georgia, serif",
-      "fontSize": 21,
+      "fontSize": 23,
       "fontWeight": 600,
       "color": "#14213d",
       "anchor": "start",
       "frame": "bounds",
       "offset": 14,
       "subtitleFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
-      "subtitleFontSize": 15,
+      "subtitleFontSize": 16,
       "subtitleColor": "#4a5568",
       "subtitlePadding": 6,
       "lineHeight": 26,
@@ -231,8 +231,8 @@
     "axis": {
       "labelFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
       "titleFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
-      "labelFontSize": 13,
-      "titleFontSize": 13,
+      "labelFontSize": 14,
+      "titleFontSize": 14,
       "titleFontWeight": "normal",
       "labelColor": "#4a5568",
       "titleColor": "#4a5568",
@@ -243,15 +243,15 @@
     "legend": {
       "labelFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
       "titleFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
-      "labelFontSize": 13,
-      "titleFontSize": 13,
+      "labelFontSize": 14,
+      "titleFontSize": 14,
       "titleFontWeight": "normal",
       "labelColor": "#4a5568",
       "titleColor": "#14213d"
     },
     "text": {
       "font": "'Source Sans 3', Helvetica, Arial, sans-serif",
-      "fontSize": 13,
+      "fontSize": 14,
       "color": "#14213d"
     },
     "header": {

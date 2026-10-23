@@ -2,10 +2,10 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
     "text": "Clubs per million people, ranked",
-    "subtitle": "Number of clubs in brackets."
+    "subtitle": "Highest and lowest in dark purple, with their number of clubs."
   },
-  "width": 440,
-  "height": 250,
+  "width": 560,
+  "height": 300,
   "data": {
     "url": "data/astronomy_clubs.csv"
   },
@@ -38,7 +38,33 @@
       "as": "ClubsPerMillion"
     },
     {
-      "calculate": "format(datum.ClubsPerMillion, '.1f') + '  (' + datum.Clubs + ')'",
+      "window": [
+        {
+          "op": "rank",
+          "as": "Rank"
+        }
+      ],
+      "sort": [
+        {
+          "field": "ClubsPerMillion",
+          "order": "descending"
+        }
+      ]
+    },
+    {
+      "joinaggregate": [
+        {
+          "op": "count",
+          "as": "N"
+        }
+      ]
+    },
+    {
+      "calculate": "datum.Rank == 1 || datum.Rank == datum.N",
+      "as": "Key"
+    },
+    {
+      "calculate": "format(datum.ClubsPerMillion, '.1f') + '  (' + datum.Clubs + (datum.Clubs == 1 ? ' club)' : ' clubs)')",
       "as": "Label"
     }
   ],
@@ -68,7 +94,7 @@
       "scale": {
         "domain": [
           0,
-          4.4
+          5.2
         ]
       }
     }
@@ -76,12 +102,41 @@
   "layer": [
     {
       "mark": {
-        "type": "bar",
-        "color": "#6a51a3",
-        "size": 20,
-        "cornerRadiusEnd": 2
+        "type": "rule",
+        "strokeWidth": 3
       },
       "encoding": {
+        "x": {
+          "datum": 0
+        },
+        "x2": {
+          "field": "ClubsPerMillion"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.Key",
+            "value": "#6a51a3"
+          },
+          "value": "#c9bfe0"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "circle",
+        "size": 190,
+        "opacity": 1,
+        "stroke": "white",
+        "strokeWidth": 1.2
+      },
+      "encoding": {
+        "color": {
+          "condition": {
+            "test": "datum.Key",
+            "value": "#6a51a3"
+          },
+          "value": "#c9bfe0"
+        },
         "tooltip": [
           {
             "field": "State",
@@ -102,10 +157,17 @@
       }
     },
     {
+      "transform": [
+        {
+          "filter": "datum.Key"
+        }
+      ],
       "mark": {
         "type": "text",
         "align": "left",
-        "dx": 6
+        "dx": 12,
+        "fontSize": 15,
+        "fontWeight": "bold"
       },
       "encoding": {
         "text": {
@@ -129,14 +191,14 @@
     },
     "title": {
       "font": "'Source Serif 4', Georgia, serif",
-      "fontSize": 21,
+      "fontSize": 23,
       "fontWeight": 600,
       "color": "#14213d",
       "anchor": "start",
       "frame": "bounds",
       "offset": 14,
       "subtitleFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
-      "subtitleFontSize": 15,
+      "subtitleFontSize": 16,
       "subtitleColor": "#4a5568",
       "subtitlePadding": 6,
       "lineHeight": 26,
@@ -145,8 +207,8 @@
     "axis": {
       "labelFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
       "titleFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
-      "labelFontSize": 13,
-      "titleFontSize": 13,
+      "labelFontSize": 14,
+      "titleFontSize": 14,
       "titleFontWeight": "normal",
       "labelColor": "#4a5568",
       "titleColor": "#4a5568",
@@ -157,15 +219,15 @@
     "legend": {
       "labelFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
       "titleFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
-      "labelFontSize": 13,
-      "titleFontSize": 13,
+      "labelFontSize": 14,
+      "titleFontSize": 14,
       "titleFontWeight": "normal",
       "labelColor": "#4a5568",
       "titleColor": "#14213d"
     },
     "text": {
       "font": "'Source Sans 3', Helvetica, Arial, sans-serif",
-      "fontSize": 13,
+      "fontSize": 14,
       "color": "#14213d"
     },
     "header": {

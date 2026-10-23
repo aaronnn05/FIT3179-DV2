@@ -4,10 +4,10 @@
     {
       "title": {
         "text": "Most sky reports come from the east coast",
-        "subtitle": "Bigger circle = more reports. Darker blue = darker sky."
+        "subtitle": "Proportional symbol map: circle area shows the reports from each 3-degree square."
       },
-      "width": 620,
-      "height": 530,
+      "width": 700,
+      "height": 600,
       "projection": {
         "type": "conicEqualArea",
         "parallels": [
@@ -22,10 +22,10 @@
           0,
           -27
         ],
-        "scale": 740,
+        "scale": 810,
         "translate": [
-          300,
-          232
+          318,
+          258
         ]
       },
       "layer": [
@@ -79,11 +79,6 @@
                 {
                   "op": "count",
                   "as": "Reports"
-                },
-                {
-                  "op": "median",
-                  "field": "SkyDarkness",
-                  "as": "MedianDarkness"
                 }
               ],
               "groupby": [
@@ -104,7 +99,8 @@
           ],
           "mark": {
             "type": "circle",
-            "opacity": 0.9,
+            "fill": "#1f6f7a",
+            "opacity": 0.75,
             "stroke": "white",
             "strokeWidth": 1
           },
@@ -134,8 +130,8 @@
               },
               "legend": {
                 "orient": "none",
-                "legendX": 290,
-                "legendY": 480,
+                "legendX": 0,
+                "legendY": 545,
                 "direction": "horizontal",
                 "values": [
                   10,
@@ -144,37 +140,6 @@
                 ],
                 "symbolFillColor": "#b8c0cc",
                 "symbolStrokeColor": "white"
-              }
-            },
-            "color": {
-              "field": "MedianDarkness",
-              "type": "quantitative",
-              "title": "Sky darkness (1 = bright, 7 = dark)",
-              "scale": {
-                "scheme": {
-                  "name": "blues",
-                  "extent": [
-                    0.3,
-                    1
-                  ]
-                },
-                "domain": [
-                  1,
-                  7
-                ]
-              },
-              "legend": {
-                "orient": "none",
-                "legendX": 0,
-                "legendY": 480,
-                "gradientLength": 200,
-                "titleLimit": 300,
-                "values": [
-                  1,
-                  4,
-                  7
-                ],
-                "direction": "horizontal"
               }
             },
             "order": {
@@ -187,11 +152,6 @@
                 "field": "Reports",
                 "type": "quantitative",
                 "title": "Reports from this area"
-              },
-              {
-                "field": "MedianDarkness",
-                "type": "quantitative",
-                "title": "Typical sky darkness (1 to 7)"
               }
             ]
           }
@@ -202,40 +162,54 @@
               {
                 "lon": 151.2,
                 "lat": -33.9,
-                "text": "Sydney"
-              },
-              {
-                "lon": 144.96,
-                "lat": -37.8,
-                "text": "Melbourne"
+                "lx": 156.5,
+                "ly": -35.5,
+                "text": "Sydney",
+                "align": "left",
+                "dx": 8
               },
               {
                 "lon": 153.0,
                 "lat": -27.5,
-                "text": "Brisbane"
+                "lx": 157.0,
+                "ly": -24.5,
+                "text": "Brisbane",
+                "align": "left",
+                "dx": 8
               },
               {
-                "lon": 115.86,
-                "lat": -31.95,
-                "text": "Perth"
+                "lon": 144.96,
+                "lat": -37.8,
+                "lx": 139.5,
+                "ly": -41.2,
+                "text": "Melbourne",
+                "align": "right",
+                "dx": -8
               },
               {
                 "lon": 138.6,
                 "lat": -34.9,
-                "text": "Adelaide"
+                "lx": 132.0,
+                "ly": -38.6,
+                "text": "Adelaide",
+                "align": "right",
+                "dx": -8
+              },
+              {
+                "lon": 115.86,
+                "lat": -31.95,
+                "lx": 111.5,
+                "ly": -34.5,
+                "text": "Perth",
+                "align": "right",
+                "dx": -8
               }
             ]
           },
           "mark": {
-            "type": "text",
-            "align": "right",
-            "baseline": "middle",
-            "dx": -10,
-            "fontSize": 12,
+            "type": "rule",
             "color": "#14213d",
-            "fontWeight": "bold",
-            "lineBreak": "\n",
-            "lineHeight": 16
+            "strokeWidth": 1
           },
           "encoding": {
             "longitude": {
@@ -244,6 +218,180 @@
             },
             "latitude": {
               "field": "lat",
+              "type": "quantitative"
+            },
+            "longitude2": {
+              "field": "lx"
+            },
+            "latitude2": {
+              "field": "ly"
+            }
+          }
+        },
+        {
+          "data": {
+            "values": [
+              {
+                "lon": 151.2,
+                "lat": -33.9,
+                "lx": 156.5,
+                "ly": -35.5,
+                "text": "Sydney",
+                "align": "left",
+                "dx": 8
+              },
+              {
+                "lon": 153.0,
+                "lat": -27.5,
+                "lx": 157.0,
+                "ly": -24.5,
+                "text": "Brisbane",
+                "align": "left",
+                "dx": 8
+              },
+              {
+                "lon": 144.96,
+                "lat": -37.8,
+                "lx": 139.5,
+                "ly": -41.2,
+                "text": "Melbourne",
+                "align": "right",
+                "dx": -8
+              },
+              {
+                "lon": 138.6,
+                "lat": -34.9,
+                "lx": 132.0,
+                "ly": -38.6,
+                "text": "Adelaide",
+                "align": "right",
+                "dx": -8
+              },
+              {
+                "lon": 115.86,
+                "lat": -31.95,
+                "lx": 111.5,
+                "ly": -34.5,
+                "text": "Perth",
+                "align": "right",
+                "dx": -8
+              }
+            ]
+          },
+          "mark": {
+            "type": "circle",
+            "color": "#14213d",
+            "size": 22
+          },
+          "encoding": {
+            "longitude": {
+              "field": "lon",
+              "type": "quantitative"
+            },
+            "latitude": {
+              "field": "lat",
+              "type": "quantitative"
+            }
+          }
+        },
+        {
+          "data": {
+            "values": [
+              {
+                "lon": 151.2,
+                "lat": -33.9,
+                "lx": 156.5,
+                "ly": -35.5,
+                "text": "Sydney",
+                "align": "left",
+                "dx": 8
+              },
+              {
+                "lon": 153.0,
+                "lat": -27.5,
+                "lx": 157.0,
+                "ly": -24.5,
+                "text": "Brisbane",
+                "align": "left",
+                "dx": 8
+              }
+            ]
+          },
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "baseline": "middle",
+            "fontSize": 14,
+            "fontWeight": "bold",
+            "color": "#14213d",
+            "lineBreak": "\n",
+            "lineHeight": 16,
+            "dx": 8
+          },
+          "encoding": {
+            "longitude": {
+              "field": "lx",
+              "type": "quantitative"
+            },
+            "latitude": {
+              "field": "ly",
+              "type": "quantitative"
+            },
+            "text": {
+              "field": "text"
+            }
+          }
+        },
+        {
+          "data": {
+            "values": [
+              {
+                "lon": 144.96,
+                "lat": -37.8,
+                "lx": 139.5,
+                "ly": -41.2,
+                "text": "Melbourne",
+                "align": "right",
+                "dx": -8
+              },
+              {
+                "lon": 138.6,
+                "lat": -34.9,
+                "lx": 132.0,
+                "ly": -38.6,
+                "text": "Adelaide",
+                "align": "right",
+                "dx": -8
+              },
+              {
+                "lon": 115.86,
+                "lat": -31.95,
+                "lx": 111.5,
+                "ly": -34.5,
+                "text": "Perth",
+                "align": "right",
+                "dx": -8
+              }
+            ]
+          },
+          "mark": {
+            "type": "text",
+            "align": "right",
+            "baseline": "middle",
+            "fontSize": 14,
+            "fontWeight": "bold",
+            "color": "#14213d",
+            "lineBreak": "\n",
+            "lineHeight": 16,
+            "dx": -8
+          },
+          "encoding": {
+            "longitude": {
+              "field": "lx",
+              "type": "quantitative"
+            },
+            "latitude": {
+              "field": "ly",
               "type": "quantitative"
             },
             "text": {
@@ -261,8 +409,8 @@
           "Drag across the bars to filter the map above."
         ]
       },
-      "width": 620,
-      "height": 110,
+      "width": 700,
+      "height": 120,
       "layer": [
         {
           "data": {
@@ -281,8 +429,7 @@
           ],
           "mark": {
             "type": "bar",
-            "size": 30,
-            "color": "#1f6f7a",
+            "size": 34,
             "cornerRadiusEnd": 2
           },
           "encoding": {
@@ -320,6 +467,13 @@
               "type": "quantitative",
               "axis": null
             },
+            "color": {
+              "condition": {
+                "test": "datum.Year == 2020",
+                "value": "#1f6f7a"
+              },
+              "value": "#9bd0d4"
+            },
             "tooltip": [
               {
                 "field": "Year",
@@ -337,32 +491,6 @@
         },
         {
           "data": {
-            "url": "data/globe_at_night_australia.csv"
-          },
-          "mark": {
-            "type": "text",
-            "dy": -7,
-            "fontSize": 13,
-            "color": "#14213d"
-          },
-          "encoding": {
-            "x": {
-              "field": "Year",
-              "type": "quantitative"
-            },
-            "y": {
-              "aggregate": "count",
-              "type": "quantitative"
-            },
-            "text": {
-              "aggregate": "count",
-              "type": "quantitative",
-              "format": ","
-            }
-          }
-        },
-        {
-          "data": {
             "values": [
               {
                 "Year": 2020,
@@ -375,7 +503,7 @@
             "type": "text",
             "align": "left",
             "dx": 22,
-            "fontSize": 13,
+            "fontSize": 14,
             "color": "#14213d",
             "fontWeight": "bold",
             "lineBreak": "\n",
@@ -406,9 +534,9 @@
     }
   },
   "padding": {
-    "left": 0,
+    "left": 24,
     "top": 2,
-    "right": 8,
+    "right": 34,
     "bottom": 4
   },
   "background": "transparent",
@@ -420,14 +548,14 @@
     },
     "title": {
       "font": "'Source Serif 4', Georgia, serif",
-      "fontSize": 21,
+      "fontSize": 23,
       "fontWeight": 600,
       "color": "#14213d",
       "anchor": "start",
       "frame": "bounds",
       "offset": 14,
       "subtitleFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
-      "subtitleFontSize": 15,
+      "subtitleFontSize": 16,
       "subtitleColor": "#4a5568",
       "subtitlePadding": 6,
       "lineHeight": 26,
@@ -436,8 +564,8 @@
     "axis": {
       "labelFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
       "titleFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
-      "labelFontSize": 13,
-      "titleFontSize": 13,
+      "labelFontSize": 14,
+      "titleFontSize": 14,
       "titleFontWeight": "normal",
       "labelColor": "#4a5568",
       "titleColor": "#4a5568",
@@ -448,15 +576,15 @@
     "legend": {
       "labelFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
       "titleFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
-      "labelFontSize": 13,
-      "titleFontSize": 13,
+      "labelFontSize": 14,
+      "titleFontSize": 14,
       "titleFontWeight": "normal",
       "labelColor": "#4a5568",
       "titleColor": "#14213d"
     },
     "text": {
       "font": "'Source Sans 3', Helvetica, Arial, sans-serif",
-      "fontSize": 13,
+      "fontSize": 14,
       "color": "#14213d"
     },
     "header": {

@@ -4,8 +4,8 @@
     "text": "Per million people, the Australian Capital Territory reports most",
     "subtitle": "Sky reports for every million residents, 2017 to 2025. Every state is an equal square."
   },
-  "width": 560,
-  "height": 420,
+  "width": 640,
+  "height": 470,
   "data": {
     "url": "data/globe_at_night_australia.csv"
   },
@@ -123,7 +123,7 @@
           "legend": {
             "orient": "bottom",
             "direction": "horizontal",
-            "gradientLength": 200,
+            "gradientLength": 240,
             "values": [
               0,
               200,
@@ -167,9 +167,9 @@
       "mark": {
         "type": "text",
         "baseline": "middle",
-        "fontSize": 13,
-        "lineHeight": 16,
-        "dy": -8
+        "fontSize": 15,
+        "lineHeight": 18,
+        "dy": -9
       },
       "encoding": {
         "text": {
@@ -193,9 +193,9 @@
       "mark": {
         "type": "text",
         "baseline": "middle",
-        "fontSize": 13,
-        "lineHeight": 16,
-        "dy": -16
+        "fontSize": 15,
+        "lineHeight": 18,
+        "dy": -18
       },
       "encoding": {
         "text": {
@@ -219,9 +219,9 @@
       "mark": {
         "type": "text",
         "baseline": "middle",
-        "fontSize": 13,
-        "lineHeight": 16,
-        "dy": -24
+        "fontSize": 15,
+        "lineHeight": 18,
+        "dy": -27
       },
       "encoding": {
         "text": {
@@ -252,14 +252,14 @@
     },
     "title": {
       "font": "'Source Serif 4', Georgia, serif",
-      "fontSize": 21,
+      "fontSize": 23,
       "fontWeight": 600,
       "color": "#14213d",
       "anchor": "start",
       "frame": "bounds",
       "offset": 14,
       "subtitleFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
-      "subtitleFontSize": 15,
+      "subtitleFontSize": 16,
       "subtitleColor": "#4a5568",
       "subtitlePadding": 6,
       "lineHeight": 26,
@@ -268,8 +268,8 @@
     "axis": {
       "labelFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
       "titleFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
-      "labelFontSize": 13,
-      "titleFontSize": 13,
+      "labelFontSize": 14,
+      "titleFontSize": 14,
       "titleFontWeight": "normal",
       "labelColor": "#4a5568",
       "titleColor": "#4a5568",
@@ -280,15 +280,15 @@
     "legend": {
       "labelFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
       "titleFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
-      "labelFontSize": 13,
-      "titleFontSize": 13,
+      "labelFontSize": 14,
+      "titleFontSize": 14,
       "titleFontWeight": "normal",
       "labelColor": "#4a5568",
       "titleColor": "#14213d"
     },
     "text": {
       "font": "'Source Sans 3', Helvetica, Arial, sans-serif",
-      "fontSize": 13,
+      "fontSize": 14,
       "color": "#14213d"
     },
     "header": {
