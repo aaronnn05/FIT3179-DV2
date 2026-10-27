@@ -54,14 +54,14 @@
             "text": "May 2024: the strongest solar\nstorm in more than 20 years"
           },
           {
-            "Week": "2024-10-06",
+            "Week": "2024-11-24",
             "Interest": 38,
             "text": "October 2024:\nanother strong storm"
           },
           {
-            "Week": "2026-01-18",
-            "Interest": 38,
-            "text": "November 2025 and\nJanuary 2026: more\nstrong storms"
+            "Week": "2025-12-14",
+            "Interest": 58,
+            "text": "November 2025, January 2026:\nmore strong storms"
           }
         ],
         "format": {
@@ -73,9 +73,9 @@
       },
       "mark": {
         "type": "text",
-        "align": "left",
-        "dx": 10,
-        "dy": 6,
+        "align": "center",
+        "baseline": "top",
+        "dy": -46,
         "lineBreak": "\n",
         "lineHeight": 16
       },
@@ -138,7 +138,7 @@
       "scale": {
         "domain": [
           0,
-          105
+          128
         ]
       },
       "axis": {
@@ -155,7 +155,7 @@
   "padding": {
     "left": 0,
     "top": 2,
-    "right": 8,
+    "right": 30,
     "bottom": 4
   },
   "background": "transparent",
