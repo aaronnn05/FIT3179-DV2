@@ -4,7 +4,7 @@
     "text": "Big cities have the brightest skies",
     "subtitle": [
       "Typical sky darkness in each 2-degree square (about 200 km wide).",
-      "Only squares with 5 or more reports are shown."
+      "Grey squares have fewer than 5 reports."
     ]
   },
   "width": 700,
@@ -90,32 +90,106 @@
           ]
         },
         {
-          "filter": "datum.Reports >= 5"
-        },
-        {
-          "calculate": "(datum.lat0 + datum.lat1) / 2",
-          "as": "CentreLatitude"
-        },
-        {
-          "calculate": "(datum.lon0 + datum.lon1) / 2",
-          "as": "CentreLongitude"
+          "filter": "datum.Reports < 5"
         }
       ],
       "mark": {
-        "type": "square",
-        "size": 700,
+        "type": "rect",
+        "fill": "#bfc8de",
         "stroke": "white",
-        "strokeWidth": 0.8,
-        "opacity": 0.95
+        "strokeWidth": 0.8
       },
       "encoding": {
         "longitude": {
-          "field": "CentreLongitude",
+          "field": "lon0",
           "type": "quantitative"
         },
+        "longitude2": {
+          "field": "lon1"
+        },
         "latitude": {
-          "field": "CentreLatitude",
+          "field": "lat0",
           "type": "quantitative"
+        },
+        "latitude2": {
+          "field": "lat1"
+        },
+        "tooltip": [
+          {
+            "field": "Reports",
+            "type": "quantitative",
+            "title": "Reports in this square (fewer than 5)"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "data/globe_at_night_australia.csv"
+      },
+      "transform": [
+        {
+          "bin": {
+            "step": 2
+          },
+          "field": "Latitude",
+          "as": [
+            "lat0",
+            "lat1"
+          ]
+        },
+        {
+          "bin": {
+            "step": 2
+          },
+          "field": "Longitude",
+          "as": [
+            "lon0",
+            "lon1"
+          ]
+        },
+        {
+          "aggregate": [
+            {
+              "op": "count",
+              "as": "Reports"
+            },
+            {
+              "op": "median",
+              "field": "SkyDarkness",
+              "as": "MedianDarkness"
+            }
+          ],
+          "groupby": [
+            "lat0",
+            "lat1",
+            "lon0",
+            "lon1"
+          ]
+        },
+        {
+          "filter": "datum.Reports >= 5"
+        }
+      ],
+      "mark": {
+        "type": "rect",
+        "stroke": "white",
+        "strokeWidth": 0.8
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon0",
+          "type": "quantitative"
+        },
+        "longitude2": {
+          "field": "lon1"
+        },
+        "latitude": {
+          "field": "lat0",
+          "type": "quantitative"
+        },
+        "latitude2": {
+          "field": "lat1"
         },
         "color": {
           "field": "MedianDarkness",
