@@ -4,7 +4,7 @@
     "text": "The jump in \"stargazing\" began in 2024 and has held",
     "subtitle": "Monthly Google searches in Australia, 2016 to 2026 (100 = busiest month)."
   },
-  "width": 512,
+  "width": 600,
   "height": 360,
   "data": {
     "url": "data/stargazing_searches_monthly.csv",
@@ -202,7 +202,7 @@
   "padding": {
     "left": 0,
     "top": 2,
-    "right": 100,
+    "right": 8,
     "bottom": 4
   },
   "background": "transparent",
