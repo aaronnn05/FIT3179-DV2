@@ -5,7 +5,7 @@
       "title": {
         "text": "Most sky reports come from the east coast",
         "subtitle": [
-          "Proportional symbol map: each circle shows the reports from an area about 300 km wide.",
+          "Each circle shows the reports from an area about 300 km wide.",
           "Areas with fewer than 5 reports are not drawn."
         ]
       },
@@ -409,9 +409,8 @@
     },
     {
       "title": {
-        "text": "One night in June 2020 brought in most reports",
+        "text": "Reports each year",
         "subtitle": [
-          "Reports each year. A national sky survey on 21 June 2020 explains the spike.",
           "Drag across the bars to filter the map above. Double-click to reset."
         ]
       },

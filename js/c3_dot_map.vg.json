@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
     "text": "Astronomy clubs hug the east coast",
-    "subtitle": "Dot map: one dot = one club (42 of the 45 listed clubs have a known town)."
+    "subtitle": "One dot = one club"
   },
   "width": 700,
   "height": 560,

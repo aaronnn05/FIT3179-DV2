@@ -124,8 +124,7 @@
         "values": [
           {
             "Column": "10",
-            "Row": "10",
-            "text": "These 3 squares: score 7,\na truly dark sky"
+            "Row": "10"
           }
         ]
       },
