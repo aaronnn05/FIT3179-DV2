@@ -57,6 +57,11 @@
             "Week": "2024-10-06",
             "Interest": 38,
             "text": "October 2024:\nanother strong storm"
+          },
+          {
+            "Week": "2026-01-18",
+            "Interest": 38,
+            "text": "November 2025 and\nJanuary 2026: more\nstrong storms"
           }
         ],
         "format": {
@@ -89,6 +94,14 @@
           },
           {
             "Week": "2024-10-06",
+            "Interest": 38
+          },
+          {
+            "Week": "2025-11-09",
+            "Interest": 40
+          },
+          {
+            "Week": "2026-01-18",
             "Interest": 38
           }
         ],

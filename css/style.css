@@ -151,6 +151,7 @@ h2.act span {
 
 /* Key numbers in the text use the colour of their chart */
 .num { font-weight: 700; }
+.description .first { font-weight: 600; }
 .num.teal { color: #1f6f7a; }
 .num.blue { color: #08519c; }
 .num.purple { color: #6a51a3; }
@@ -164,7 +165,7 @@ h2.act span {
 .hint {
   font-size: 16px;
   color: var(--grey);
-  border-left: 3px solid #1f6f7a;
+  border-left: 3px solid var(--rule);
   padding-left: 10px;
 }
 

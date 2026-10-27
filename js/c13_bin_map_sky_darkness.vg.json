@@ -1,10 +1,10 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Big cities have the brightest skies",
+    "text": "Skies are brightest around Melbourne, Sydney and Perth",
     "subtitle": [
       "Typical sky darkness in each 2-degree square (about 200 km wide).",
-      "Outlined squares are the darkest."
+      "Dashed squares have fewer than 5 reports."
     ]
   },
   "width": 700,
@@ -95,9 +95,13 @@
       ],
       "mark": {
         "type": "rect",
-        "fill": "#bfc8de",
-        "stroke": "white",
-        "strokeWidth": 0.8
+        "fill": null,
+        "stroke": "#8f9ab3",
+        "strokeWidth": 1,
+        "strokeDash": [
+          3,
+          2
+        ]
       },
       "encoding": {
         "longitude": {
@@ -319,7 +323,13 @@
         "x2": 264,
         "y": 574,
         "y2": 588,
-        "fill": "#bfc8de"
+        "fill": null,
+        "stroke": "#8f9ab3",
+        "strokeWidth": 1,
+        "strokeDash": [
+          3,
+          2
+        ]
       }
     },
     {
@@ -378,17 +388,8 @@
             "lon": 151.2,
             "lat": -33.9,
             "lx": 156.5,
-            "ly": -35.5,
-            "text": "Sydney",
-            "align": "left",
-            "dx": 8
-          },
-          {
-            "lon": 153.0,
-            "lat": -27.5,
-            "lx": 157.0,
-            "ly": -24.5,
-            "text": "Brisbane",
+            "ly": -35.8,
+            "text": "Sydney (3)",
             "align": "left",
             "dx": 8
           },
@@ -397,16 +398,7 @@
             "lat": -37.8,
             "lx": 139.5,
             "ly": -41.2,
-            "text": "Melbourne",
-            "align": "right",
-            "dx": -8
-          },
-          {
-            "lon": 138.6,
-            "lat": -34.9,
-            "lx": 132.0,
-            "ly": -38.6,
-            "text": "Adelaide",
+            "text": "Melbourne (2)",
             "align": "right",
             "dx": -8
           },
@@ -415,16 +407,43 @@
             "lat": -31.95,
             "lx": 113.0,
             "ly": -37.2,
-            "text": "Perth",
+            "text": "Perth (3)",
             "align": "left",
             "dx": 8
           },
           {
-            "lon": 147.3,
-            "lat": -42.9,
+            "lon": 151.0,
+            "lat": -31.0,
+            "lx": 155.5,
+            "ly": -29.0,
+            "text": "Northern\nTablelands (6)",
+            "align": "left",
+            "dx": 8
+          },
+          {
+            "lon": 139.0,
+            "lat": -31.0,
+            "lx": 131.5,
+            "ly": -34.6,
+            "text": "Flinders Ranges (6)",
+            "align": "right",
+            "dx": -8
+          },
+          {
+            "lon": 133.0,
+            "lat": -25.0,
+            "lx": 127.0,
+            "ly": -18.0,
+            "text": "Central Australia (6)",
+            "align": "right",
+            "dx": -8
+          },
+          {
+            "lon": 147.0,
+            "lat": -43.0,
             "lx": 151.5,
             "ly": -45.8,
-            "text": "Hobart",
+            "text": "Southern Tasmania (6)",
             "align": "left",
             "dx": 8
           }
@@ -459,17 +478,8 @@
             "lon": 151.2,
             "lat": -33.9,
             "lx": 156.5,
-            "ly": -35.5,
-            "text": "Sydney",
-            "align": "left",
-            "dx": 8
-          },
-          {
-            "lon": 153.0,
-            "lat": -27.5,
-            "lx": 157.0,
-            "ly": -24.5,
-            "text": "Brisbane",
+            "ly": -35.8,
+            "text": "Sydney (3)",
             "align": "left",
             "dx": 8
           },
@@ -478,16 +488,7 @@
             "lat": -37.8,
             "lx": 139.5,
             "ly": -41.2,
-            "text": "Melbourne",
-            "align": "right",
-            "dx": -8
-          },
-          {
-            "lon": 138.6,
-            "lat": -34.9,
-            "lx": 132.0,
-            "ly": -38.6,
-            "text": "Adelaide",
+            "text": "Melbourne (2)",
             "align": "right",
             "dx": -8
           },
@@ -496,16 +497,43 @@
             "lat": -31.95,
             "lx": 113.0,
             "ly": -37.2,
-            "text": "Perth",
+            "text": "Perth (3)",
             "align": "left",
             "dx": 8
           },
           {
-            "lon": 147.3,
-            "lat": -42.9,
+            "lon": 151.0,
+            "lat": -31.0,
+            "lx": 155.5,
+            "ly": -29.0,
+            "text": "Northern\nTablelands (6)",
+            "align": "left",
+            "dx": 8
+          },
+          {
+            "lon": 139.0,
+            "lat": -31.0,
+            "lx": 131.5,
+            "ly": -34.6,
+            "text": "Flinders Ranges (6)",
+            "align": "right",
+            "dx": -8
+          },
+          {
+            "lon": 133.0,
+            "lat": -25.0,
+            "lx": 127.0,
+            "ly": -18.0,
+            "text": "Central Australia (6)",
+            "align": "right",
+            "dx": -8
+          },
+          {
+            "lon": 147.0,
+            "lat": -43.0,
             "lx": 151.5,
             "ly": -45.8,
-            "text": "Hobart",
+            "text": "Southern Tasmania (6)",
             "align": "left",
             "dx": 8
           }
@@ -534,17 +562,8 @@
             "lon": 151.2,
             "lat": -33.9,
             "lx": 156.5,
-            "ly": -35.5,
-            "text": "Sydney",
-            "align": "left",
-            "dx": 8
-          },
-          {
-            "lon": 153.0,
-            "lat": -27.5,
-            "lx": 157.0,
-            "ly": -24.5,
-            "text": "Brisbane",
+            "ly": -35.8,
+            "text": "Sydney (3)",
             "align": "left",
             "dx": 8
           },
@@ -553,16 +572,25 @@
             "lat": -31.95,
             "lx": 113.0,
             "ly": -37.2,
-            "text": "Perth",
+            "text": "Perth (3)",
             "align": "left",
             "dx": 8
           },
           {
-            "lon": 147.3,
-            "lat": -42.9,
+            "lon": 151.0,
+            "lat": -31.0,
+            "lx": 155.5,
+            "ly": -29.0,
+            "text": "Northern\nTablelands (6)",
+            "align": "left",
+            "dx": 8
+          },
+          {
+            "lon": 147.0,
+            "lat": -43.0,
             "lx": 151.5,
             "ly": -45.8,
-            "text": "Hobart",
+            "text": "Southern Tasmania (6)",
             "align": "left",
             "dx": 8
           }
@@ -601,16 +629,25 @@
             "lat": -37.8,
             "lx": 139.5,
             "ly": -41.2,
-            "text": "Melbourne",
+            "text": "Melbourne (2)",
             "align": "right",
             "dx": -8
           },
           {
-            "lon": 138.6,
-            "lat": -34.9,
-            "lx": 132.0,
-            "ly": -38.6,
-            "text": "Adelaide",
+            "lon": 139.0,
+            "lat": -31.0,
+            "lx": 131.5,
+            "ly": -34.6,
+            "text": "Flinders Ranges (6)",
+            "align": "right",
+            "dx": -8
+          },
+          {
+            "lon": 133.0,
+            "lat": -25.0,
+            "lx": 127.0,
+            "ly": -18.0,
+            "text": "Central Australia (6)",
             "align": "right",
             "dx": -8
           }

@@ -131,7 +131,7 @@
               "legend": {
                 "orient": "none",
                 "legendX": 0,
-                "legendY": 545,
+                "legendY": 500,
                 "direction": "horizontal",
                 "values": [
                   10,
@@ -404,7 +404,10 @@
     {
       "title": {
         "text": "One night in June 2020 brought in most reports",
-        "subtitle": "Reports each year. A national sky survey on 21 June 2020 explains the spike."
+        "subtitle": [
+          "Reports each year. A national sky survey on 21 June 2020 explains the spike.",
+          "Drag across the bars to filter the map above. Double-click to reset."
+        ]
       },
       "width": 700,
       "height": 150,
@@ -488,11 +491,41 @@
         },
         {
           "data": {
+            "url": "data/globe_at_night_australia.csv"
+          },
+          "transform": [
+            {
+              "filter": "datum.Year != 2020"
+            }
+          ],
+          "mark": {
+            "type": "text",
+            "dy": -8,
+            "fontSize": 13,
+            "color": "#4a5568"
+          },
+          "encoding": {
+            "x": {
+              "field": "Year",
+              "type": "quantitative"
+            },
+            "y": {
+              "aggregate": "count",
+              "type": "quantitative"
+            },
+            "text": {
+              "aggregate": "count",
+              "type": "quantitative"
+            }
+          }
+        },
+        {
+          "data": {
             "values": [
               {
                 "Year": 2020,
                 "y": 5200,
-                "text": "2020: 5,622 reports,\n4,425 of them on 21 June.\nNo other year passes 250."
+                "text": "2020: 5,622 reports,\n4,425 of them on 21 June"
               }
             ]
           },

@@ -4,7 +4,7 @@
     "text": "Searches for \"stargazing\" almost tripled",
     "subtitle": "Average monthly Google searches in Australia (100 = busiest month)."
   },
-  "width": 520,
+  "width": 540,
   "height": 420,
   "data": {
     "url": "data/stargazing_searches_monthly.csv",
@@ -53,7 +53,7 @@
       "as": "TermName"
     },
     {
-      "calculate": "datum.Year == 2025 ? (datum.Term == 'Stargazing' ? datum.AverageInterest + 1.6 : (datum.Term == 'StarMap' ? datum.AverageInterest - 1.6 : datum.AverageInterest)) : (datum.Term == 'Astrophotography' ? datum.AverageInterest + 1.8 : (datum.Term == 'Stargazing' ? datum.AverageInterest - 1.8 : datum.AverageInterest))",
+      "calculate": "datum.Year == 2025 ? (datum.Term == 'Stargazing' ? datum.AverageInterest + 1.6 : (datum.Term == 'StarMap' ? datum.AverageInterest - 1.6 : datum.AverageInterest)) : (datum.Term == 'Astrophotography' ? datum.AverageInterest + 2.6 : (datum.Term == 'Stargazing' ? datum.AverageInterest - 2.6 : datum.AverageInterest))",
       "as": "LabelY"
     },
     {
@@ -99,17 +99,11 @@
         "gridColor": {
           "condition": {
             "test": "datum.value == 0",
-            "value": "#14213d"
+            "value": "#8f9ab3"
           },
           "value": "#cfd6e6"
         },
-        "gridWidth": {
-          "condition": {
-            "test": "datum.value == 0",
-            "value": 1.5
-          },
-          "value": 1
-        },
+        "gridWidth": 1,
         "domain": false,
         "ticks": false
       },

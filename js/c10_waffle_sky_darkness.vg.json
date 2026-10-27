@@ -89,9 +89,10 @@
             "orient": "bottom",
             "direction": "horizontal",
             "symbolType": "square",
-            "symbolSize": 200,
+            "symbolSize": 260,
             "columns": 7,
-            "columnPadding": 10,
+            "columnPadding": 12,
+            "labelFontSize": 14,
             "labelExpr": "datum.value == '1' ? '1 bright' : (datum.value == '7' ? '7 dark' : datum.value)"
           }
         },
@@ -124,7 +125,7 @@
           {
             "Column": "10",
             "Row": "10",
-            "text": "These 3 squares:\nscore 7, a truly\ndark sky"
+            "text": "These 3 squares: score 7,\na truly dark sky"
           }
         ]
       },

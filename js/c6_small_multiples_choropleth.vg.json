@@ -4,7 +4,7 @@
     "text": "Aurora beats every other sky event, in every state",
     "subtitle": [
       "Share of each state's searches for four sky events, October 2021 to October 2026.",
-      "The four numbers for a state add up to 100% (Australian Capital Territory in the tooltip)."
+      "The four shares for a state add up to 100%. Aurora map: every state labelled; others: top state only."
     ]
   },
   "repeat": [
@@ -140,7 +140,6 @@
             {
               "lon": 122,
               "lat": -26,
-              "align": "center",
               "Aurora": "47%",
               "Comet": "",
               "SolarEclipse": "",
@@ -149,7 +148,6 @@
             {
               "lon": 133.5,
               "lat": -20,
-              "align": "center",
               "Aurora": "55%",
               "Comet": "",
               "SolarEclipse": "",
@@ -158,7 +156,6 @@
             {
               "lon": 144.5,
               "lat": -22.5,
-              "align": "center",
               "Aurora": "50%",
               "Comet": "",
               "SolarEclipse": "",
@@ -167,7 +164,6 @@
             {
               "lon": 135.5,
               "lat": -30,
-              "align": "center",
               "Aurora": "61%",
               "Comet": "",
               "SolarEclipse": "",
@@ -176,7 +172,6 @@
             {
               "lon": 146.5,
               "lat": -32.3,
-              "align": "center",
               "Aurora": "59%",
               "Comet": "",
               "SolarEclipse": "",
@@ -185,7 +180,6 @@
             {
               "lon": 144,
               "lat": -36.9,
-              "align": "center",
               "Aurora": "66%",
               "Comet": "",
               "SolarEclipse": "",
@@ -223,56 +217,18 @@
             {
               "lon": 122,
               "lat": -26,
-              "align": "center",
               "Aurora": "",
               "Comet": "25%",
               "SolarEclipse": "20%",
-              "LunarEclipse": "8%"
-            },
-            {
-              "lon": 133.5,
-              "lat": -20,
-              "align": "center",
-              "Aurora": "",
-              "Comet": "17%",
-              "SolarEclipse": "18%",
-              "LunarEclipse": "10%"
+              "LunarEclipse": ""
             },
             {
               "lon": 144.5,
               "lat": -22.5,
-              "align": "center",
               "Aurora": "",
               "Comet": "25%",
-              "SolarEclipse": "13%",
+              "SolarEclipse": "",
               "LunarEclipse": "12%"
-            },
-            {
-              "lon": 135.5,
-              "lat": -30,
-              "align": "center",
-              "Aurora": "",
-              "Comet": "18%",
-              "SolarEclipse": "11%",
-              "LunarEclipse": "10%"
-            },
-            {
-              "lon": 146.5,
-              "lat": -32.3,
-              "align": "center",
-              "Aurora": "",
-              "Comet": "19%",
-              "SolarEclipse": "12%",
-              "LunarEclipse": "10%"
-            },
-            {
-              "lon": 144,
-              "lat": -36.9,
-              "align": "center",
-              "Aurora": "",
-              "Comet": "15%",
-              "SolarEclipse": "11%",
-              "LunarEclipse": "8%"
             }
           ]
         },
@@ -306,20 +262,10 @@
             {
               "lon": 149.6,
               "lat": -42.6,
-              "align": "left",
               "Aurora": "91%",
               "Comet": "",
               "SolarEclipse": "",
               "LunarEclipse": ""
-            },
-            {
-              "lon": 149.6,
-              "lat": -42.6,
-              "align": "left",
-              "Aurora": "",
-              "Comet": "4%",
-              "SolarEclipse": "3%",
-              "LunarEclipse": "2%"
             }
           ]
         },
@@ -368,34 +314,6 @@
           "fontSize": 17,
           "fontWeight": 600,
           "color": "#14213d"
-        },
-        "encoding": {
-          "text": {
-            "field": {
-              "repeat": "repeat"
-            }
-          }
-        }
-      },
-      {
-        "data": {
-          "values": [
-            {
-              "Aurora": "Top: Tasmania, 91%",
-              "Comet": "Top: Queensland and Western Australia, 25%",
-              "SolarEclipse": "Top: Western Australia, 20%",
-              "LunarEclipse": "Top: Queensland, 12%"
-            }
-          ]
-        },
-        "mark": {
-          "type": "text",
-          "align": "left",
-          "baseline": "top",
-          "x": 0,
-          "y": 26,
-          "fontSize": 14,
-          "color": "#4a5568"
         },
         "encoding": {
           "text": {
