@@ -404,10 +404,7 @@
     {
       "title": {
         "text": "One night in June 2020 brought in most reports",
-        "subtitle": [
-          "Reports each year. A national sky survey on 21 June 2020 explains the spike.",
-          "Drag across the bars to filter the map above."
-        ]
+        "subtitle": "Reports each year. A national sky survey on 21 June 2020 explains the spike."
       },
       "width": 700,
       "height": 150,

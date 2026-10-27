@@ -3,8 +3,7 @@
   "title": {
     "text": "Most states reported far more on the survey night",
     "subtitle": [
-      "Sky reports for every million residents, 21 June 2020 compared with all other nights.",
-      "Where only one dot shows, the two numbers match."
+      "Sky reports for every million residents, 21 June 2020 compared with all other nights."
     ]
   },
   "width": 560,
@@ -51,6 +50,11 @@
           "op": "max",
           "field": "PerMillion",
           "as": "Top"
+        },
+        {
+          "op": "min",
+          "field": "PerMillion",
+          "as": "Low"
         }
       ],
       "groupby": [
@@ -173,6 +177,28 @@
             "title": "Reports per million residents"
           }
         ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.Top == datum.Low && datum.Night == 'All other nights'"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 14,
+        "color": "#4a5568"
+      },
+      "encoding": {
+        "x": {
+          "field": "PerMillion",
+          "type": "quantitative"
+        },
+        "text": {
+          "value": "same on both"
+        }
       }
     },
     {

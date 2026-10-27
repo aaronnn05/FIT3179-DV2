@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Per million people, the Northern Territory has the most clubs",
+    "text": "One club puts the Northern Territory on top per million people",
     "subtitle": "Clubs for every million residents. Darker = more clubs."
   },
   "width": 700,

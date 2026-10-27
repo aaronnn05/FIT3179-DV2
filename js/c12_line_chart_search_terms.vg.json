@@ -37,7 +37,7 @@
       "as": "TermName"
     },
     {
-      "calculate": "datum.Term == 'Stargazing' ? datum.Interest + 2.5 : (datum.Term == 'StarMap' ? datum.Interest - 2.5 : datum.Interest)",
+      "calculate": "datum.Term == 'StarMap' ? datum.Interest + 5 : (datum.Term == 'Stargazing' ? datum.Interest - 1.5 : datum.Interest)",
       "as": "LabelY"
     }
   ],

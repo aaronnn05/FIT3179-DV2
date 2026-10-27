@@ -1,13 +1,13 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Telescope searches barely change, with two exceptions",
+    "text": "Telescope searches rise only with big sky news",
     "subtitle": [
       "Monthly Google searches for \"telescope\" in Australia. Darker = more searches.",
       "Every month above 30 gets the darkest colour, so small changes stay visible."
     ]
   },
-  "width": 440,
+  "width": 400,
   "height": 340,
   "data": {
     "url": "data/telescope_searches_monthly.csv",
@@ -75,8 +75,7 @@
             "titleLimit": 400,
             "values": [
               0,
-              10,
-              20,
+              15,
               30
             ],
             "labelExpr": "datum.value == 30 ? '30 or more' : datum.value"
@@ -100,7 +99,7 @@
     {
       "transform": [
         {
-          "filter": "(year(datum.Month) == 2022 && month(datum.Month) == 6) || (year(datum.Month) == 2021 && month(datum.Month) == 11)"
+          "filter": "(year(datum.Month) == 2022 && month(datum.Month) == 6) || (year(datum.Month) == 2021 && month(datum.Month) == 11) || (year(datum.Month) == 2020 && month(datum.Month) == 11) || (year(datum.Month) == 2022 && month(datum.Month) == 0)"
         }
       ],
       "mark": {
@@ -128,8 +127,8 @@
         "values": [
           {
             "Month": "2022-12-01",
-            "Row": "2021-07-01",
-            "text": "December 2021: Webb launches"
+            "Row": "2020-07-01",
+            "text": "December 2020: Jupiter meets Saturn"
           }
         ],
         "format": {
@@ -167,8 +166,8 @@
         "values": [
           {
             "Month": "2022-12-01",
-            "Row": "2022-07-01",
-            "text": "July 2022 (the busiest\nmonth, 100): Webb shares\nits first pictures"
+            "Row": "2021-07-01",
+            "text": "December 2021: the Webb Space\nTelescope launches (January too)"
           }
         ],
         "format": {
@@ -184,9 +183,83 @@
         "align": "left",
         "baseline": "top",
         "dx": 26,
-        "dy": -6,
+        "dy": -10,
         "lineBreak": "\n",
-        "lineHeight": 16
+        "lineHeight": 14
+      },
+      "encoding": {
+        "x": {
+          "field": "Month",
+          "timeUnit": "month",
+          "type": "ordinal"
+        },
+        "y": {
+          "field": "Row",
+          "timeUnit": "year",
+          "type": "ordinal"
+        },
+        "text": {
+          "field": "text"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "Row": "2022-07-01"
+          }
+        ],
+        "format": {
+          "type": "json",
+          "parse": {
+            "Row": "date"
+          }
+        }
+      },
+      "mark": {
+        "type": "rule",
+        "color": "#14213d",
+        "strokeWidth": 1,
+        "x": {
+          "expr": "width * 7 / 12 + 1"
+        },
+        "x2": {
+          "expr": "width + 5"
+        }
+      },
+      "encoding": {
+        "y": {
+          "field": "Row",
+          "timeUnit": "year",
+          "type": "ordinal",
+          "bandPosition": 0.5
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "Month": "2022-12-01",
+            "Row": "2022-07-01",
+            "text": "July 2022: Webb's first pictures"
+          }
+        ],
+        "format": {
+          "type": "json",
+          "parse": {
+            "Month": "date",
+            "Row": "date"
+          }
+        }
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 26,
+        "fontWeight": "bold"
       },
       "encoding": {
         "x": {

@@ -4,7 +4,7 @@
     "text": "Aurora beats every other sky event, in every state",
     "subtitle": [
       "Share of each state's searches for four sky events, October 2021 to October 2026.",
-      "The four maps for a state add up to 100%."
+      "The four numbers for a state add up to 100% (Australian Capital Territory in the tooltip)."
     ]
   },
   "repeat": [
@@ -101,7 +101,6 @@
                   1
                 ]
               },
-              "type": "sqrt",
               "domain": [
                 0,
                 100
@@ -113,9 +112,9 @@
               "gradientLength": 240,
               "values": [
                 0,
-                10,
                 25,
                 50,
+                75,
                 100
               ]
             }
@@ -133,6 +132,219 @@
               "title": "Share of this state's searches (%)"
             }
           ]
+        }
+      },
+      {
+        "data": {
+          "values": [
+            {
+              "lon": 122,
+              "lat": -26,
+              "align": "center",
+              "Aurora": "47%",
+              "Comet": "",
+              "SolarEclipse": "",
+              "LunarEclipse": ""
+            },
+            {
+              "lon": 133.5,
+              "lat": -20,
+              "align": "center",
+              "Aurora": "55%",
+              "Comet": "",
+              "SolarEclipse": "",
+              "LunarEclipse": ""
+            },
+            {
+              "lon": 144.5,
+              "lat": -22.5,
+              "align": "center",
+              "Aurora": "50%",
+              "Comet": "",
+              "SolarEclipse": "",
+              "LunarEclipse": ""
+            },
+            {
+              "lon": 135.5,
+              "lat": -30,
+              "align": "center",
+              "Aurora": "61%",
+              "Comet": "",
+              "SolarEclipse": "",
+              "LunarEclipse": ""
+            },
+            {
+              "lon": 146.5,
+              "lat": -32.3,
+              "align": "center",
+              "Aurora": "59%",
+              "Comet": "",
+              "SolarEclipse": "",
+              "LunarEclipse": ""
+            },
+            {
+              "lon": 144,
+              "lat": -36.9,
+              "align": "center",
+              "Aurora": "66%",
+              "Comet": "",
+              "SolarEclipse": "",
+              "LunarEclipse": ""
+            }
+          ]
+        },
+        "mark": {
+          "type": "text",
+          "align": "center",
+          "baseline": "middle",
+          "fontSize": 13,
+          "fontWeight": "bold",
+          "color": "#ffffff"
+        },
+        "encoding": {
+          "longitude": {
+            "field": "lon",
+            "type": "quantitative"
+          },
+          "latitude": {
+            "field": "lat",
+            "type": "quantitative"
+          },
+          "text": {
+            "field": {
+              "repeat": "repeat"
+            }
+          }
+        }
+      },
+      {
+        "data": {
+          "values": [
+            {
+              "lon": 122,
+              "lat": -26,
+              "align": "center",
+              "Aurora": "",
+              "Comet": "25%",
+              "SolarEclipse": "20%",
+              "LunarEclipse": "8%"
+            },
+            {
+              "lon": 133.5,
+              "lat": -20,
+              "align": "center",
+              "Aurora": "",
+              "Comet": "17%",
+              "SolarEclipse": "18%",
+              "LunarEclipse": "10%"
+            },
+            {
+              "lon": 144.5,
+              "lat": -22.5,
+              "align": "center",
+              "Aurora": "",
+              "Comet": "25%",
+              "SolarEclipse": "13%",
+              "LunarEclipse": "12%"
+            },
+            {
+              "lon": 135.5,
+              "lat": -30,
+              "align": "center",
+              "Aurora": "",
+              "Comet": "18%",
+              "SolarEclipse": "11%",
+              "LunarEclipse": "10%"
+            },
+            {
+              "lon": 146.5,
+              "lat": -32.3,
+              "align": "center",
+              "Aurora": "",
+              "Comet": "19%",
+              "SolarEclipse": "12%",
+              "LunarEclipse": "10%"
+            },
+            {
+              "lon": 144,
+              "lat": -36.9,
+              "align": "center",
+              "Aurora": "",
+              "Comet": "15%",
+              "SolarEclipse": "11%",
+              "LunarEclipse": "8%"
+            }
+          ]
+        },
+        "mark": {
+          "type": "text",
+          "align": "center",
+          "baseline": "middle",
+          "fontSize": 13,
+          "fontWeight": "bold",
+          "color": "#14213d"
+        },
+        "encoding": {
+          "longitude": {
+            "field": "lon",
+            "type": "quantitative"
+          },
+          "latitude": {
+            "field": "lat",
+            "type": "quantitative"
+          },
+          "text": {
+            "field": {
+              "repeat": "repeat"
+            }
+          }
+        }
+      },
+      {
+        "data": {
+          "values": [
+            {
+              "lon": 149.6,
+              "lat": -42.6,
+              "align": "left",
+              "Aurora": "91%",
+              "Comet": "",
+              "SolarEclipse": "",
+              "LunarEclipse": ""
+            },
+            {
+              "lon": 149.6,
+              "lat": -42.6,
+              "align": "left",
+              "Aurora": "",
+              "Comet": "4%",
+              "SolarEclipse": "3%",
+              "LunarEclipse": "2%"
+            }
+          ]
+        },
+        "mark": {
+          "type": "text",
+          "align": "left",
+          "baseline": "middle",
+          "fontSize": 13,
+          "fontWeight": "bold",
+          "color": "#14213d"
+        },
+        "encoding": {
+          "longitude": {
+            "field": "lon",
+            "type": "quantitative"
+          },
+          "latitude": {
+            "field": "lat",
+            "type": "quantitative"
+          },
+          "text": {
+            "field": {
+              "repeat": "repeat"
+            }
+          }
         }
       },
       {

@@ -149,6 +149,18 @@ h2.act span {
   font-weight: 600;
 }
 
+/* Key numbers in the text use the colour of their chart */
+.num { font-weight: 700; }
+.num.teal { color: #1f6f7a; }
+.num.blue { color: #08519c; }
+.num.purple { color: #6a51a3; }
+.num.orange { color: #c2410c; }
+
+/* Text stays beside its chart while a tall chart scrolls past */
+@media (min-width: 1101px) {
+  .row .description { position: sticky; top: 24px; }
+}
+
 .hint {
   font-size: 16px;
   color: var(--grey);

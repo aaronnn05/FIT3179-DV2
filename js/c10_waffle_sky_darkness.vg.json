@@ -12,10 +12,6 @@
   "data": {
     "url": "data/sky_score_waffle.csv"
   },
-  "mark": {
-    "type": "rect",
-    "cornerRadius": 2
-  },
   "encoding": {
     "x": {
       "field": "Column",
@@ -58,45 +54,97 @@
         "paddingInner": 0.1,
         "paddingOuter": 0
       }
-    },
-    "color": {
-      "field": "Score",
-      "type": "ordinal",
-      "title": "Sky darkness",
-      "scale": {
-        "scheme": {
-          "name": "blues",
-          "extent": [
-            0.18,
-            1
-          ]
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "rect",
+        "cornerRadius": 2
+      },
+      "encoding": {
+        "color": {
+          "field": "Score",
+          "type": "ordinal",
+          "title": "Sky darkness score",
+          "scale": {
+            "scheme": {
+              "name": "blues",
+              "extent": [
+                0.18,
+                1
+              ]
+            },
+            "domain": [
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "7"
+            ]
+          },
+          "legend": {
+            "orient": "bottom",
+            "direction": "horizontal",
+            "symbolType": "square",
+            "symbolSize": 200,
+            "columns": 7,
+            "columnPadding": 10,
+            "labelExpr": "datum.value == '1' ? '1 bright' : (datum.value == '7' ? '7 dark' : datum.value)"
+          }
         },
-        "domain": [
-          "1",
-          "2",
-          "3",
-          "4",
-          "5",
-          "6",
-          "7"
+        "tooltip": [
+          {
+            "field": "Score",
+            "type": "ordinal",
+            "title": "Sky darkness score"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.Score == '7'"
+        }
+      ],
+      "mark": {
+        "type": "rect",
+        "fill": null,
+        "stroke": "#14213d",
+        "strokeWidth": 2.5,
+        "cornerRadius": 2
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "Column": "10",
+            "Row": "10",
+            "text": "These 3 squares:\nscore 7, a truly\ndark sky"
+          }
         ]
       },
-      "legend": {
-        "orient": "right",
-        "symbolType": "square",
-        "symbolSize": 200,
-        "labelExpr": "datum.value == '1' ? '1 (bright sky)' : (datum.value == '7' ? '7 (dark sky)' : datum.value)",
-        "offset": 16
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "bottom",
+        "dx": 24,
+        "dy": 14,
+        "fontWeight": "bold",
+        "lineBreak": "\n",
+        "lineHeight": 16
+      },
+      "encoding": {
+        "text": {
+          "field": "text"
+        }
       }
-    },
-    "tooltip": [
-      {
-        "field": "Score",
-        "type": "ordinal",
-        "title": "Sky darkness score"
-      }
-    ]
-  },
+    }
+  ],
   "padding": {
     "left": 0,
     "top": 2,

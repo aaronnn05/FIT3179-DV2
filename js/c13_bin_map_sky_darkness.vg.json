@@ -4,7 +4,7 @@
     "text": "Big cities have the brightest skies",
     "subtitle": [
       "Typical sky darkness in each 2-degree square (about 200 km wide).",
-      "Grey squares have fewer than 5 reports."
+      "Outlined squares are the darkest."
     ]
   },
   "width": 700,
@@ -234,6 +234,141 @@
             "title": "Typical sky darkness (1 to 7)"
           }
         ]
+      }
+    },
+    {
+      "data": {
+        "url": "data/globe_at_night_australia.csv"
+      },
+      "transform": [
+        {
+          "bin": {
+            "step": 2
+          },
+          "field": "Latitude",
+          "as": [
+            "lat0",
+            "lat1"
+          ]
+        },
+        {
+          "bin": {
+            "step": 2
+          },
+          "field": "Longitude",
+          "as": [
+            "lon0",
+            "lon1"
+          ]
+        },
+        {
+          "aggregate": [
+            {
+              "op": "count",
+              "as": "Reports"
+            },
+            {
+              "op": "median",
+              "field": "SkyDarkness",
+              "as": "MedianDarkness"
+            }
+          ],
+          "groupby": [
+            "lat0",
+            "lat1",
+            "lon0",
+            "lon1"
+          ]
+        },
+        {
+          "filter": "datum.Reports >= 5 && datum.MedianDarkness >= 6"
+        }
+      ],
+      "mark": {
+        "type": "rect",
+        "fill": null,
+        "stroke": "#14213d",
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon0",
+          "type": "quantitative"
+        },
+        "longitude2": {
+          "field": "lon1"
+        },
+        "latitude": {
+          "field": "lat0",
+          "type": "quantitative"
+        },
+        "latitude2": {
+          "field": "lat1"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {}
+        ]
+      },
+      "mark": {
+        "type": "rect",
+        "x": 250,
+        "x2": 264,
+        "y": 574,
+        "y2": 588,
+        "fill": "#bfc8de"
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {}
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "x": 270,
+        "y": 581,
+        "align": "left",
+        "baseline": "middle",
+        "text": "Fewer than 5 reports",
+        "color": "#4a5568"
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {}
+        ]
+      },
+      "mark": {
+        "type": "rect",
+        "x": 420,
+        "x2": 434,
+        "y": 574,
+        "y2": 588,
+        "fill": null,
+        "stroke": "#14213d",
+        "strokeWidth": 2
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {}
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "x": 440,
+        "y": 581,
+        "align": "left",
+        "baseline": "middle",
+        "text": "Darkest squares (typical score 6)",
+        "color": "#4a5568"
       }
     },
     {
