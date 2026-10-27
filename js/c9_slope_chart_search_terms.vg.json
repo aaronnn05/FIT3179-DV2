@@ -57,11 +57,11 @@
       "as": "LabelY"
     },
     {
-      "calculate": "datum.TermName + '  ' + format(datum.AverageInterest, '.0f')",
+      "calculate": "datum.TermName",
       "as": "LabelRight"
     },
     {
-      "calculate": "format(datum.AverageInterest, '.0f') + '  ' + datum.TermName",
+      "calculate": "datum.TermName",
       "as": "LabelLeft"
     }
   ],
@@ -166,8 +166,26 @@
       "mark": {
         "type": "point",
         "filled": true,
-        "size": 45,
+        "size": 120,
         "opacity": 1
+      },
+      "encoding": {
+        "tooltip": [
+          {
+            "field": "TermName",
+            "title": "Search term"
+          },
+          {
+            "field": "Year",
+            "type": "ordinal"
+          },
+          {
+            "field": "AverageInterest",
+            "type": "quantitative",
+            "format": ".1f",
+            "title": "Average searches"
+          }
+        ]
       }
     },
     {
