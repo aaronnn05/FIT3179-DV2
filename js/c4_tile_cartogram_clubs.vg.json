@@ -1,0 +1,299 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "One club puts the Northern Territory on top per million people",
+    "subtitle": "Clubs for every million residents. Every state is an equal square."
+  },
+  "width": 520,
+  "height": 520,
+  "data": {
+    "url": "data/astronomy_clubs.csv"
+  },
+  "transform": [
+    {
+      "aggregate": [
+        {
+          "op": "count",
+          "as": "Clubs"
+        }
+      ],
+      "groupby": [
+        "State"
+      ]
+    },
+    {
+      "lookup": "State",
+      "from": {
+        "data": {
+          "url": "data/state_population.csv"
+        },
+        "key": "State",
+        "fields": [
+          "Population"
+        ]
+      }
+    },
+    {
+      "lookup": "State",
+      "from": {
+        "data": {
+          "url": "data/state_tiles.csv"
+        },
+        "key": "State",
+        "fields": [
+          "Column",
+          "Row",
+          "Label"
+        ]
+      }
+    },
+    {
+      "calculate": "toNumber(datum.Column)",
+      "as": "Col"
+    },
+    {
+      "calculate": "toNumber(datum.Row)",
+      "as": "Rw"
+    },
+    {
+      "calculate": "datum.Clubs / datum.Population * 1000000",
+      "as": "ClubsPerMillion"
+    },
+    {
+      "calculate": "split(datum.Label + ';' + format(datum.ClubsPerMillion, '.1f') + ';' + datum.Clubs + (datum.Clubs == 1 ? ' club' : ' clubs'), ';')",
+      "as": "TileText"
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "Col",
+      "type": "ordinal",
+      "axis": null,
+      "scale": {
+        "domain": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "paddingInner": 0.06,
+        "paddingOuter": 0
+      }
+    },
+    "y": {
+      "field": "Rw",
+      "type": "ordinal",
+      "axis": null,
+      "scale": {
+        "domain": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "paddingInner": 0.06,
+        "paddingOuter": 0
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "rect",
+        "cornerRadius": 3
+      },
+      "encoding": {
+        "color": {
+          "field": "ClubsPerMillion",
+          "type": "quantitative",
+          "title": "Clubs per million people",
+          "scale": {
+            "scheme": {
+              "name": "purples",
+              "extent": [
+                0.15,
+                1
+              ]
+            },
+            "domain": [
+              0,
+              4
+            ]
+          },
+          "legend": {
+            "orient": "bottom",
+            "direction": "horizontal",
+            "gradientLength": 240,
+            "values": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          }
+        },
+        "tooltip": [
+          {
+            "field": "State",
+            "type": "nominal"
+          },
+          {
+            "field": "Clubs",
+            "type": "quantitative",
+            "title": "Clubs"
+          },
+          {
+            "field": "Population",
+            "type": "quantitative",
+            "format": ",",
+            "title": "People"
+          },
+          {
+            "field": "ClubsPerMillion",
+            "type": "quantitative",
+            "format": ".1f",
+            "title": "Clubs per million people"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "length(datum.TileText) == 3"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "baseline": "middle",
+        "fontSize": 15,
+        "lineHeight": 18,
+        "dy": -18
+      },
+      "encoding": {
+        "text": {
+          "field": "TileText"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.ClubsPerMillion > 2.5",
+            "value": "white"
+          },
+          "value": "#14213d"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "length(datum.TileText) == 4"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "baseline": "middle",
+        "fontSize": 15,
+        "lineHeight": 18,
+        "dy": -27
+      },
+      "encoding": {
+        "text": {
+          "field": "TileText"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.ClubsPerMillion > 2.5",
+            "value": "white"
+          },
+          "value": "#14213d"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "length(datum.TileText) == 5"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "baseline": "middle",
+        "fontSize": 15,
+        "lineHeight": 18,
+        "dy": -36
+      },
+      "encoding": {
+        "text": {
+          "field": "TileText"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.ClubsPerMillion > 2.5",
+            "value": "white"
+          },
+          "value": "#14213d"
+        }
+      }
+    }
+  ],
+  "padding": {
+    "left": 0,
+    "top": 2,
+    "right": 8,
+    "bottom": 4
+  },
+  "background": "transparent",
+  "config": {
+    "font": "'Source Sans 3', Helvetica, Arial, sans-serif",
+    "background": "transparent",
+    "view": {
+      "stroke": null
+    },
+    "title": {
+      "font": "'Source Serif 4', Georgia, serif",
+      "fontSize": 23,
+      "fontWeight": 600,
+      "color": "#14213d",
+      "anchor": "start",
+      "frame": "bounds",
+      "offset": 14,
+      "subtitleFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "subtitleFontSize": 16,
+      "subtitleColor": "#4a5568",
+      "subtitlePadding": 6,
+      "lineHeight": 26,
+      "subtitleLineHeight": 19
+    },
+    "axis": {
+      "labelFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "titleFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "labelFontSize": 14,
+      "titleFontSize": 14,
+      "titleFontWeight": "normal",
+      "labelColor": "#4a5568",
+      "titleColor": "#4a5568",
+      "domainColor": "#a9b2c6",
+      "tickColor": "#a9b2c6",
+      "gridColor": "#d3d9e8"
+    },
+    "legend": {
+      "labelFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "titleFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "labelFontSize": 14,
+      "titleFontSize": 14,
+      "titleFontWeight": "normal",
+      "labelColor": "#4a5568",
+      "titleColor": "#14213d"
+    },
+    "text": {
+      "font": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "fontSize": 14,
+      "color": "#14213d"
+    },
+    "header": {
+      "labelFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
+      "titleFont": "'Source Serif 4', Georgia, serif"
+    }
+  }
+}
