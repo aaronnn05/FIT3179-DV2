@@ -37,7 +37,7 @@
       },
       "mark": {
         "type": "geoshape",
-        "fill": "#cdd4e6",
+        "fill": "#c3cbdf",
         "stroke": "white",
         "strokeWidth": 1
       }
@@ -53,8 +53,8 @@
       ],
       "mark": {
         "type": "circle",
-        "size": 110,
-        "opacity": 0.8,
+        "size": 80,
+        "opacity": 0.7,
         "fill": "#6a51a3",
         "stroke": "white",
         "strokeWidth": 1
@@ -100,7 +100,7 @@
         "baseline": "middle",
         "dx": 0,
         "fontSize": 15,
-        "color": "#4a5568",
+        "color": "#364152",
         "fontWeight": "normal",
         "lineBreak": "\n",
         "lineHeight": 16
@@ -331,8 +331,8 @@
       "frame": "bounds",
       "offset": 14,
       "subtitleFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
-      "subtitleFontSize": 16,
-      "subtitleColor": "#4a5568",
+      "subtitleFontSize": 17,
+      "subtitleColor": "#364152",
       "subtitlePadding": 6,
       "lineHeight": 26,
       "subtitleLineHeight": 19
@@ -340,11 +340,11 @@
     "axis": {
       "labelFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
       "titleFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
-      "labelFontSize": 14,
-      "titleFontSize": 14,
+      "labelFontSize": 15,
+      "titleFontSize": 15,
       "titleFontWeight": "normal",
-      "labelColor": "#4a5568",
-      "titleColor": "#4a5568",
+      "labelColor": "#364152",
+      "titleColor": "#364152",
       "domainColor": "#a9b2c6",
       "tickColor": "#a9b2c6",
       "gridColor": "#d3d9e8"
@@ -352,15 +352,15 @@
     "legend": {
       "labelFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
       "titleFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
-      "labelFontSize": 14,
-      "titleFontSize": 14,
+      "labelFontSize": 15,
+      "titleFontSize": 15,
       "titleFontWeight": "normal",
-      "labelColor": "#4a5568",
+      "labelColor": "#364152",
       "titleColor": "#14213d"
     },
     "text": {
       "font": "'Source Sans 3', Helvetica, Arial, sans-serif",
-      "fontSize": 14,
+      "fontSize": 15,
       "color": "#14213d"
     },
     "header": {

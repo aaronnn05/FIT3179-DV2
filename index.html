@@ -81,7 +81,7 @@
       <div class="pure-g row">
         <div class="pure-u-1-3">
           <div class="description">
-            <p class="first">Counted per million people, the order changes.</p>
+            <p class="first">Counted per million people, so big and small states compare fairly, the order changes.</p>
             <p>The Australian Capital Territory comes first with <strong class="num teal">537</strong> reports per million people, ahead of the Northern Territory and Queensland.</p>
           </div>
         </div>
@@ -101,12 +101,17 @@
           <div id="vis13" class="vis-container"></div>
         </div>
       </div>
+    </section>
+
+    <!-- 2. Dark skies -->
+    <section>
+      <h2 class="act"><span>2</span>Where is the sky darkest?</h2>
 
       <div class="pure-g row">
         <div class="pure-u-1-3">
           <div class="description">
-            <p class="first">Where is the sky darkest?</p>
-            <p>Not near the big cities. Melbourne scores <strong class="num blue">2</strong>, Sydney and Perth <strong class="num blue">3</strong>. The darkest squares score <strong class="num blue">6</strong>, inland and in the far south.</p>
+            <p class="lead">Not near the big cities.</p>
+            <p> Melbourne scores <strong class="num blue">2</strong>, Sydney and Perth <strong class="num blue">3</strong>. The darkest squares score <strong class="num blue">6</strong>, inland and in the far south.</p>
           </div>
         </div>
         <div class="pure-u-2-3">
@@ -127,14 +132,14 @@
       </div>
     </section>
 
-    <!-- 2. Clubs -->
+    <!-- 3. Clubs -->
     <section>
-      <h2 class="act"><span>2</span>Where do people meet?</h2>
+      <h2 class="act"><span>3</span>Where do people meet?</h2>
       <div class="pure-g row">
         <div class="pure-u-1-3">
           <div class="description">
             <p class="lead">Most astronomy clubs are near the big east-coast cities.</p>
-            <p>None meet in the centre of the country.</p>
+            <p>Clubs follow people, so most of the country has none nearby.</p>
           </div>
         </div>
         <div class="pure-u-2-3">
@@ -167,9 +172,9 @@
       </div>
     </section>
 
-    <!-- 3. Sky events -->
+    <!-- 4. Sky events -->
     <section>
-      <h2 class="act"><span>3</span>What gets people outside?</h2>
+      <h2 class="act"><span>4</span>What gets people outside?</h2>
       <div class="pure-g row">
         <div class="pure-u-1-3">
           <div class="description">
@@ -179,6 +184,16 @@
         </div>
         <div class="pure-u-2-3">
           <div id="vis7" class="vis-container"></div>
+          <div class="class-key" aria-label="Colour key for the four maps: share of the state's searches in classes">
+            <span class="class-key-title">Share of the state's searches (%)</span>
+            <span><i style="background:#feedde"></i>under 5</span>
+            <span><i style="background:#fdd0a2"></i>5 to 10</span>
+            <span><i style="background:#fdae6b"></i>10 to 15</span>
+            <span><i style="background:#fd8d3c"></i>15 to 20</span>
+            <span><i style="background:#f16913"></i>20 to 30</span>
+            <span><i style="background:#d94801"></i>30 to 60</span>
+            <span><i style="background:#8c2d04"></i>over 60</span>
+          </div>
         </div>
       </div>
 
@@ -196,9 +211,9 @@
       </div>
     </section>
 
-    <!-- 4. Equipment -->
+    <!-- 5. Equipment -->
     <section>
-      <h2 class="act"><span>4</span>Do you need a telescope?</h2>
+      <h2 class="act"><span>5</span>Do you need a telescope?</h2>
       <div class="pure-g row">
         <div class="pure-u-1-3">
           <div class="description">
@@ -235,12 +250,18 @@
       </div>
     </section>
 
-    <!-- 5. Takeaway -->
+    <!-- 6. Takeaway -->
     <section class="takeaway">
-      <h2 class="act"><span>5</span>So, should you look up?</h2>
+      <h2 class="act"><span>6</span>So, should you look up?</h2>
       <div class="pure-g">
         <div class="pure-u-2-3">
           <p class="lead">Yes, and you don't need much to start.</p>
+          <ul class="recap">
+            <li><strong class="num teal">4,425</strong> of 6,432 sky reports came from one survey night, so a single event can bring thousands outside.</li>
+            <li>The darkest skies score <strong class="num blue">6</strong> out of 7, far from Melbourne, Sydney and Perth.</li>
+            <li>Most of the <strong class="num purple">45</strong> clubs sit on the east coast. Elsewhere, you may be on your own.</li>
+            <li>Searches for plain "stargazing" rose from <strong class="num orange">7</strong> to <strong class="num orange">20</strong>, while gear and photography stayed flat.</li>
+          </ul>
           <p>Interest is growing among people who just want to look, not buy gear. If you live outside the east coast, there may be no club nearby, so look for the darkest sky you can reach and start there.</p>
         </div>
       </div>
@@ -255,11 +276,11 @@
           <div class="footer-col">
             <h3>Data sources</h3>
             <ul>
-              <li><a href="https://globeatnight.org/">Globe at Night</a>: sky ratings in Australia, 2017 to 2025. Invalid scores and locations removed.</li>
-              <li><a href="https://www.iceinspace.com.au/">IceInSpace</a>: list of astronomy clubs. Club locations are approximate town centres.</li>
-              <li><a href="https://trends.google.com/">Google Trends</a>: searches in Australia and by state, downloaded October 2026.</li>
-              <li><a href="https://www.abs.gov.au/">Australian Bureau of Statistics</a>: state populations, March 2026.</li>
-              <li><a href="https://www.naturalearthdata.com/">Natural Earth</a>: state boundaries.</li>
+              <li><a href="https://globeatnight.org/maps.php">Globe at Night</a>: sky ratings in Australia, 2017 to 2025. Invalid scores and locations removed.</li>
+              <li><a href="https://iceinspace.com.au/clublistings.html">IceInSpace</a>: list of astronomy clubs. Club locations are approximate town centres.</li>
+              <li>Google Trends: searches in Australia and by state for <a href="https://trends.google.com/trends/explore?geo=AU&amp;q=telescope">telescope</a>, <a href="https://trends.google.com/trends/explore?geo=AU&amp;q=stargazing">stargazing</a> and <a href="https://trends.google.com/trends/explore?geo=AU&amp;q=aurora">aurora</a>, downloaded October 2026.</li>
+              <li><a href="https://www.abs.gov.au/statistics/people/population/national-state-and-territory-population">Australian Bureau of Statistics</a>: state populations, March 2026.</li>
+              <li><a href="https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-admin-1-states-provinces/">Natural Earth</a>: state boundaries.</li>
             </ul>
           </div>
         </div>
@@ -273,9 +294,13 @@
               <li>Built with Vega-Lite and pure.css, hosted on GitHub Pages.</li>
               <li>AI use: I used Claude (Anthropic) to help plan the story, clean the data and write the chart and page code. I checked the results against the sources.</li>
             </ul>
-            <p class="byline">Aaron Chin &middot; FIT3179 Data Visualisation 2 &middot; Monash University &middot; last updated 27 October 2026</p>
+            <p class="byline">Aaron Chin &middot; FIT3179 Data Visualisation 2 &middot; Monash University &middot; first published 16 October 2026 &middot; last updated 27 October 2026</p>
           </div>
         </div>
+      </div>
+      <div class="chart-code">
+        <h3>Chart code</h3>
+        <p>Full source on <a href="https://github.com/aaronnn05/FIT3179-DV2">GitHub</a>. One Vega-Lite file per chart: <a href="js/c1_c2_symbol_map_bar_brush.vg.json">Reports map and year bars</a> &middot; <a href="js/c5_tile_cartogram.vg.json">Tile map, reports</a> &middot; <a href="js/c14_connected_dot_plot_survey_night.vg.json">Survey-night dot plot</a> &middot; <a href="js/c13_bin_map_sky_darkness.vg.json">Sky darkness bin map</a> &middot; <a href="js/c10_waffle_sky_darkness.vg.json">Waffle</a> &middot; <a href="js/c3_dot_map.vg.json">Clubs dot map</a> &middot; <a href="js/c11_lollipop_chart_clubs_by_state.vg.json">Clubs per state</a> &middot; <a href="js/c4_tile_cartogram_clubs.vg.json">Tile map, clubs</a> &middot; <a href="js/c6_small_multiples_choropleth.vg.json">Sky-event maps</a> &middot; <a href="js/c7_line_chart_aurora_searches.vg.json">Aurora line</a> &middot; <a href="js/c8_heatmap_telescope_searches.vg.json">Telescope heatmap</a> &middot; <a href="js/c9_slope_chart_search_terms.vg.json">Slope chart</a> &middot; <a href="js/c12_line_chart_search_terms.vg.json">Search-term lines</a>.</p>
       </div>
     </div>
   </footer>

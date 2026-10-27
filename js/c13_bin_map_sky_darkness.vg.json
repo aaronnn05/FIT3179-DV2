@@ -3,7 +3,7 @@
   "title": {
     "text": "Skies are brightest around Melbourne, Sydney and Perth",
     "subtitle": [
-      "Typical sky darkness in each 2-degree square (about 200 km wide).",
+      "Typical sky darkness in each square. Each square is about 200 km wide.",
       "Dashed squares have fewer than 5 reports."
     ]
   },
@@ -40,7 +40,7 @@
       },
       "mark": {
         "type": "geoshape",
-        "fill": "#d6dcea",
+        "fill": "#cbd2e3",
         "stroke": "white",
         "strokeWidth": 1
       }
@@ -96,7 +96,7 @@
       "mark": {
         "type": "rect",
         "fill": null,
-        "stroke": "#8f9ab3",
+        "stroke": "#6b7690",
         "strokeWidth": 1,
         "strokeDash": [
           3,
@@ -201,7 +201,7 @@
           "title": "Typical sky darkness (1 = bright, 7 = dark)",
           "scale": {
             "scheme": {
-              "name": "blues",
+              "name": "yellowgreenblue",
               "extent": [
                 0.18,
                 1
@@ -324,7 +324,7 @@
         "y": 574,
         "y2": 588,
         "fill": null,
-        "stroke": "#8f9ab3",
+        "stroke": "#6b7690",
         "strokeWidth": 1,
         "strokeDash": [
           3,
@@ -345,7 +345,7 @@
         "align": "left",
         "baseline": "middle",
         "text": "Fewer than 5 reports",
-        "color": "#4a5568"
+        "color": "#364152"
       }
     },
     {
@@ -378,7 +378,7 @@
         "align": "left",
         "baseline": "middle",
         "text": "Darkest squares (typical score 6)",
-        "color": "#4a5568"
+        "color": "#364152"
       }
     },
     {
@@ -701,8 +701,8 @@
       "frame": "bounds",
       "offset": 14,
       "subtitleFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
-      "subtitleFontSize": 16,
-      "subtitleColor": "#4a5568",
+      "subtitleFontSize": 17,
+      "subtitleColor": "#364152",
       "subtitlePadding": 6,
       "lineHeight": 26,
       "subtitleLineHeight": 19
@@ -710,11 +710,11 @@
     "axis": {
       "labelFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
       "titleFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
-      "labelFontSize": 14,
-      "titleFontSize": 14,
+      "labelFontSize": 15,
+      "titleFontSize": 15,
       "titleFontWeight": "normal",
-      "labelColor": "#4a5568",
-      "titleColor": "#4a5568",
+      "labelColor": "#364152",
+      "titleColor": "#364152",
       "domainColor": "#a9b2c6",
       "tickColor": "#a9b2c6",
       "gridColor": "#d3d9e8"
@@ -722,15 +722,15 @@
     "legend": {
       "labelFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
       "titleFont": "'Source Sans 3', Helvetica, Arial, sans-serif",
-      "labelFontSize": 14,
-      "titleFontSize": 14,
+      "labelFontSize": 15,
+      "titleFontSize": 15,
       "titleFontWeight": "normal",
-      "labelColor": "#4a5568",
+      "labelColor": "#364152",
       "titleColor": "#14213d"
     },
     "text": {
       "font": "'Source Sans 3', Helvetica, Arial, sans-serif",
-      "fontSize": 14,
+      "fontSize": 15,
       "color": "#14213d"
     },
     "header": {

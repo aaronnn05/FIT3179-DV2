@@ -6,7 +6,7 @@
    ========================================================= */
 :root {
   --ink: #14213d;       /* main text: strong contrast */
-  --grey: #4a5568;      /* secondary text */
+  --grey: #364152;      /* secondary text */
   --paper: #e9edf7;     /* soft twilight blue: page background, also behind every chart */
   --night: #0b1a3a;     /* header and footer */
   --rule: #bcc7df;
@@ -177,6 +177,8 @@ h2.act span {
 }
 
 .takeaway p { max-width: 28em; }
+.recap { max-width: 34em; padding-left: 20px; margin: 4px 0 18px 0; }
+.recap li { margin-bottom: 8px; }
 .takeaway { padding-bottom: 32px; }
 
 /* =========================================================
@@ -195,6 +197,9 @@ h2.act span {
 .site-footer ul { padding-left: 18px; margin: 0; }
 .site-footer li { margin-bottom: 8px; }
 .footer-col { padding-right: 40px; max-width: 30em; }
+.chart-code { margin-top: 24px; padding-top: 16px; border-top: 1px solid #2a3b66; }
+.chart-code h3 { font-size: 18px; margin: 0 0 6px 0; }
+.chart-code p { margin: 0; max-width: 60em; }
 .byline { font-size: 14px; color: #aab6cf; margin-top: 16px; }
 
 /* =========================================================
@@ -212,3 +217,8 @@ h2.act span {
   .vis-container { overflow-x: auto; }
   .masthead h1 { font-size: 40px; }
 }
+
+/* Colour key for the sky-event maps (a threshold scale, so it is drawn in HTML) */
+.class-key { display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: center; margin-top: 10px; font-size: 15px; color: var(--grey); }
+.class-key-title { width: 100%; }
+.class-key i { display: inline-block; width: 18px; height: 18px; border-radius: 3px; margin-right: 6px; vertical-align: -4px; }
