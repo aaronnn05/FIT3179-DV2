@@ -1,13 +1,13 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Telescope searches barely change, with one exception",
+    "text": "Telescope searches barely change, with two exceptions",
     "subtitle": [
       "Monthly Google searches for \"telescope\" in Australia. Darker = more searches.",
       "Every month above 30 gets the darkest colour, so small changes stay visible."
     ]
   },
-  "width": 480,
+  "width": 440,
   "height": 340,
   "data": {
     "url": "data/telescope_searches_monthly.csv",
@@ -72,6 +72,7 @@
             "orient": "bottom",
             "direction": "horizontal",
             "gradientLength": 240,
+            "titleLimit": 400,
             "values": [
               0,
               10,
@@ -99,7 +100,7 @@
     {
       "transform": [
         {
-          "filter": "year(datum.Month) == 2022 && month(datum.Month) == 6"
+          "filter": "(year(datum.Month) == 2022 && month(datum.Month) == 6) || (year(datum.Month) == 2021 && month(datum.Month) == 11)"
         }
       ],
       "mark": {
@@ -127,8 +128,8 @@
         "values": [
           {
             "Month": "2022-12-01",
-            "Row": "2022-07-01",
-            "text": "July 2022: the James\nWebb Space Telescope\nshared its first\npictures"
+            "Row": "2021-07-01",
+            "text": "December 2021: Webb launches"
           }
         ],
         "format": {
@@ -143,7 +144,47 @@
         "type": "text",
         "align": "left",
         "baseline": "middle",
+        "dx": 26
+      },
+      "encoding": {
+        "x": {
+          "field": "Month",
+          "timeUnit": "month",
+          "type": "ordinal"
+        },
+        "y": {
+          "field": "Row",
+          "timeUnit": "year",
+          "type": "ordinal"
+        },
+        "text": {
+          "field": "text"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "Month": "2022-12-01",
+            "Row": "2022-07-01",
+            "text": "July 2022 (the busiest\nmonth, 100): Webb shares\nits first pictures"
+          }
+        ],
+        "format": {
+          "type": "json",
+          "parse": {
+            "Month": "date",
+            "Row": "date"
+          }
+        }
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "top",
         "dx": 26,
+        "dy": -6,
         "lineBreak": "\n",
         "lineHeight": 16
       },

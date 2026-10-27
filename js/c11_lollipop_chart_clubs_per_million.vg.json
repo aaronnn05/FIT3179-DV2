@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
     "text": "Clubs per million people, ranked",
-    "subtitle": "Highest and lowest in dark purple, with their number of clubs."
+    "subtitle": "Highest and two lowest in dark purple, with their number of clubs."
   },
   "width": 560,
   "height": 300,
@@ -60,7 +60,7 @@
       ]
     },
     {
-      "calculate": "datum.Rank == 1 || datum.Rank == datum.N",
+      "calculate": "datum.Rank == 1 || datum.Rank >= datum.N - 1",
       "as": "Key"
     },
     {
@@ -90,7 +90,19 @@
     "x": {
       "field": "ClubsPerMillion",
       "type": "quantitative",
-      "axis": null,
+      "title": "Clubs per million people",
+      "axis": {
+        "values": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "grid": true,
+        "domain": false,
+        "ticks": false
+      },
       "scale": {
         "domain": [
           0,

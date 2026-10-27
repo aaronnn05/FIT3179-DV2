@@ -4,8 +4,8 @@
     "text": "Per million people, the Australian Capital Territory reports most",
     "subtitle": "Sky reports for every million residents, 2017 to 2025. Every state is an equal square."
   },
-  "width": 640,
-  "height": 470,
+  "width": 520,
+  "height": 520,
   "data": {
     "url": "data/globe_at_night_australia.csv"
   },

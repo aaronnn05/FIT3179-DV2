@@ -159,6 +159,44 @@
           "value": "#4a5568"
         }
       }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "Month": "2018-05-01",
+            "y": 100,
+            "text": "April 2017 and May 2018:\none-month spikes that\nfaded straight away"
+          }
+        ],
+        "format": {
+          "type": "json",
+          "parse": {
+            "Month": "date"
+          }
+        }
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "top",
+        "dx": 8,
+        "lineBreak": "\n",
+        "lineHeight": 16
+      },
+      "encoding": {
+        "x": {
+          "field": "Month",
+          "type": "temporal"
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "text"
+        }
+      }
     }
   ],
   "padding": {

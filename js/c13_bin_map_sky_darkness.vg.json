@@ -278,11 +278,11 @@
           {
             "lon": 115.86,
             "lat": -31.95,
-            "lx": 111.5,
-            "ly": -34.5,
+            "lx": 113.0,
+            "ly": -37.2,
             "text": "Perth",
-            "align": "right",
-            "dx": -8
+            "align": "left",
+            "dx": 8
           },
           {
             "lon": 147.3,
@@ -359,11 +359,11 @@
           {
             "lon": 115.86,
             "lat": -31.95,
-            "lx": 111.5,
-            "ly": -34.5,
+            "lx": 113.0,
+            "ly": -37.2,
             "text": "Perth",
-            "align": "right",
-            "dx": -8
+            "align": "left",
+            "dx": 8
           },
           {
             "lon": 147.3,
@@ -410,6 +410,15 @@
             "lx": 157.0,
             "ly": -24.5,
             "text": "Brisbane",
+            "align": "left",
+            "dx": 8
+          },
+          {
+            "lon": 115.86,
+            "lat": -31.95,
+            "lx": 113.0,
+            "ly": -37.2,
+            "text": "Perth",
             "align": "left",
             "dx": 8
           },
@@ -469,15 +478,6 @@
             "text": "Adelaide",
             "align": "right",
             "dx": -8
-          },
-          {
-            "lon": 115.86,
-            "lat": -31.95,
-            "lx": 111.5,
-            "ly": -34.5,
-            "text": "Perth",
-            "align": "right",
-            "dx": -8
           }
         ]
       },
@@ -508,7 +508,7 @@
     }
   ],
   "padding": {
-    "left": 24,
+    "left": 0,
     "top": 2,
     "right": 34,
     "bottom": 4

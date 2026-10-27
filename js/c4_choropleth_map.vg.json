@@ -26,116 +26,225 @@
       276
     ]
   },
-  "data": {
-    "url": "data/astronomy_clubs.csv"
-  },
-  "transform": [
+  "layer": [
     {
-      "aggregate": [
-        {
-          "op": "count",
-          "as": "Clubs"
-        }
-      ],
-      "groupby": [
-        "State"
-      ]
-    },
-    {
-      "lookup": "State",
-      "from": {
-        "data": {
-          "url": "data/state_population.csv"
-        },
-        "key": "State",
-        "fields": [
-          "Population"
-        ]
-      }
-    },
-    {
-      "calculate": "datum.Clubs / datum.Population * 1000000",
-      "as": "ClubsPerMillion"
-    },
-    {
-      "lookup": "State",
-      "from": {
-        "data": {
-          "url": "data/australia_states.topojson",
-          "format": {
-            "type": "topojson",
-            "feature": "states"
-          }
-        },
-        "key": "properties.name"
+      "data": {
+        "url": "data/astronomy_clubs.csv"
       },
-      "as": "geo"
-    }
-  ],
-  "mark": {
-    "type": "geoshape",
-    "stroke": "white",
-    "strokeWidth": 1
-  },
-  "encoding": {
-    "shape": {
-      "field": "geo",
-      "type": "geojson"
-    },
-    "color": {
-      "field": "ClubsPerMillion",
-      "type": "quantitative",
-      "title": "Clubs per million people",
-      "scale": {
-        "scheme": {
-          "name": "purples",
-          "extent": [
-            0.15,
-            1
+      "transform": [
+        {
+          "aggregate": [
+            {
+              "op": "count",
+              "as": "Clubs"
+            }
+          ],
+          "groupby": [
+            "State"
           ]
         },
-        "domain": [
-          0,
-          4
-        ]
+        {
+          "lookup": "State",
+          "from": {
+            "data": {
+              "url": "data/state_population.csv"
+            },
+            "key": "State",
+            "fields": [
+              "Population"
+            ]
+          }
+        },
+        {
+          "calculate": "datum.Clubs / datum.Population * 1000000",
+          "as": "ClubsPerMillion"
+        },
+        {
+          "lookup": "State",
+          "from": {
+            "data": {
+              "url": "data/australia_states.topojson",
+              "format": {
+                "type": "topojson",
+                "feature": "states"
+              }
+            },
+            "key": "properties.name"
+          },
+          "as": "geo"
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "stroke": "white",
+        "strokeWidth": 1
       },
-      "legend": {
-        "orient": "bottom-left",
-        "direction": "horizontal",
-        "gradientLength": 200,
-        "values": [
-          0,
-          1,
-          2,
-          3,
-          4
+      "encoding": {
+        "shape": {
+          "field": "geo",
+          "type": "geojson"
+        },
+        "color": {
+          "field": "ClubsPerMillion",
+          "type": "quantitative",
+          "title": "Clubs per million people",
+          "scale": {
+            "scheme": {
+              "name": "purples",
+              "extent": [
+                0.15,
+                1
+              ]
+            },
+            "domain": [
+              0,
+              4
+            ]
+          },
+          "legend": {
+            "orient": "bottom-left",
+            "direction": "horizontal",
+            "gradientLength": 200,
+            "values": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          }
+        },
+        "tooltip": [
+          {
+            "field": "State",
+            "type": "nominal"
+          },
+          {
+            "field": "Clubs",
+            "type": "quantitative",
+            "title": "Clubs"
+          },
+          {
+            "field": "Population",
+            "type": "quantitative",
+            "format": ",",
+            "title": "People"
+          },
+          {
+            "field": "ClubsPerMillion",
+            "type": "quantitative",
+            "format": ".1f",
+            "title": "Clubs per million people"
+          }
         ]
       }
     },
-    "tooltip": [
-      {
-        "field": "State",
-        "type": "nominal"
+    {
+      "data": {
+        "values": [
+          {
+            "lon": 132.5,
+            "lat": -17.5,
+            "lx": 124.5,
+            "ly": -11.2,
+            "text": "Northern Territory: 1 club\nfor about 269,000 people",
+            "align": "right",
+            "dx": -8
+          }
+        ]
       },
-      {
-        "field": "Clubs",
-        "type": "quantitative",
-        "title": "Clubs"
+      "mark": {
+        "type": "rule",
+        "color": "#14213d",
+        "strokeWidth": 1
       },
-      {
-        "field": "Population",
-        "type": "quantitative",
-        "format": ",",
-        "title": "People"
-      },
-      {
-        "field": "ClubsPerMillion",
-        "type": "quantitative",
-        "format": ".1f",
-        "title": "Clubs per million people"
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "longitude2": {
+          "field": "lx"
+        },
+        "latitude2": {
+          "field": "ly"
+        }
       }
-    ]
-  },
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "lon": 132.5,
+            "lat": -17.5,
+            "lx": 124.5,
+            "ly": -11.2,
+            "text": "Northern Territory: 1 club\nfor about 269,000 people",
+            "align": "right",
+            "dx": -8
+          }
+        ]
+      },
+      "mark": {
+        "type": "circle",
+        "color": "#14213d",
+        "size": 22
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "lon": 132.5,
+            "lat": -17.5,
+            "lx": 124.5,
+            "ly": -11.2,
+            "text": "Northern Territory: 1 club\nfor about 269,000 people",
+            "align": "right",
+            "dx": -8
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "middle",
+        "fontSize": 14,
+        "fontWeight": "bold",
+        "color": "#14213d",
+        "lineBreak": "\n",
+        "lineHeight": 16,
+        "dx": -8
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lx",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "ly",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "text"
+        }
+      }
+    }
+  ],
   "padding": {
     "left": 0,
     "top": 2,

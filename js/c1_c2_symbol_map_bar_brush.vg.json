@@ -198,11 +198,11 @@
               {
                 "lon": 115.86,
                 "lat": -31.95,
-                "lx": 111.5,
-                "ly": -34.5,
+                "lx": 113.0,
+                "ly": -37.2,
                 "text": "Perth",
-                "align": "right",
-                "dx": -8
+                "align": "left",
+                "dx": 8
               }
             ]
           },
@@ -270,11 +270,11 @@
               {
                 "lon": 115.86,
                 "lat": -31.95,
-                "lx": 111.5,
-                "ly": -34.5,
+                "lx": 113.0,
+                "ly": -37.2,
                 "text": "Perth",
-                "align": "right",
-                "dx": -8
+                "align": "left",
+                "dx": 8
               }
             ]
           },
@@ -312,6 +312,15 @@
                 "lx": 157.0,
                 "ly": -24.5,
                 "text": "Brisbane",
+                "align": "left",
+                "dx": 8
+              },
+              {
+                "lon": 115.86,
+                "lat": -31.95,
+                "lx": 113.0,
+                "ly": -37.2,
+                "text": "Perth",
                 "align": "left",
                 "dx": 8
               }
@@ -362,15 +371,6 @@
                 "text": "Adelaide",
                 "align": "right",
                 "dx": -8
-              },
-              {
-                "lon": 115.86,
-                "lat": -31.95,
-                "lx": 111.5,
-                "ly": -34.5,
-                "text": "Perth",
-                "align": "right",
-                "dx": -8
               }
             ]
           },
@@ -410,7 +410,7 @@
         ]
       },
       "width": 700,
-      "height": 120,
+      "height": 150,
       "layer": [
         {
           "data": {
@@ -472,7 +472,7 @@
                 "test": "datum.Year == 2020",
                 "value": "#1f6f7a"
               },
-              "value": "#9bd0d4"
+              "value": "#5fa8b0"
             },
             "tooltip": [
               {
@@ -494,8 +494,8 @@
             "values": [
               {
                 "Year": 2020,
-                "y": 4300,
-                "text": "21 June 2020 alone:\n4,425 reports"
+                "y": 5200,
+                "text": "2020: 5,622 reports,\n4,425 of them on 21 June.\nNo other year passes 250."
               }
             ]
           },
@@ -534,7 +534,7 @@
     }
   },
   "padding": {
-    "left": 24,
+    "left": 0,
     "top": 2,
     "right": 34,
     "bottom": 4
